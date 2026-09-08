@@ -9,7 +9,42 @@
   }
 }
 
-/* Custom scrollbars */
+/* Custom Scanlines & Grid Utility */
+.bg-cyber-grid {
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 3.5rem 3.5rem;
+}
+
+.bg-circuit-pattern {
+  background-image: radial-gradient(rgba(204, 255, 0, 0.12) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Hard Brutalist Shadows */
+.brutalist-shadow-neon {
+  box-shadow: 5px 5px 0px #ccff00;
+}
+
+.brutalist-shadow-white {
+  box-shadow: 4px 4px 0px #ffffff;
+}
+
+.brutalist-shadow-dark {
+  box-shadow: 4px 4px 0px #000000;
+}
+
+.brutalist-card-hover {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.brutalist-card-hover:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #ccff00;
+}
+
+/* Custom Scrollbars */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
