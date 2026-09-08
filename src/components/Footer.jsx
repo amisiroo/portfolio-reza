@@ -1,6 +1,6 @@
 import React from 'react';
 import { personalInfo } from '../data/portfolioData';
-import { ArrowUp, Terminal, Shield, Coffee } from 'lucide-react';
+import { ArrowUp } from 'lucide-react';
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -22,19 +22,6 @@ export default function Footer() {
                 SYSTEM ANALYST • BACKEND ENGINEER • AI ENTHUSIAST (STI ITB)
               </div>
             </div>
-          </div>
-
-          {/* Slengean / Anti-Slop Badges & Details */}
-          <div className="flex items-center gap-2 text-[10px]">
-            <span className="bg-[#0e0e16] px-2 py-1 border border-zinc-800 text-zinc-400">
-              #santai-tapi-eksekusi-jalan
-            </span>
-            <span className="bg-[#0e0e16] px-2 py-1 border border-zinc-800 text-[#ccff00]">
-              #anti-slop
-            </span>
-            <span className="bg-[#0e0e16] px-2 py-1 border border-zinc-800 text-zinc-400">
-              #bodoamat
-            </span>
           </div>
 
           {/* Center Info */}

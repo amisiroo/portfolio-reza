@@ -9,22 +9,19 @@ export default function Hero() {
       {/* Background Ambient Glow */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[650px] h-[320px] bg-[#ccff00]/5 blur-[100px] pointer-events-none rounded-full" />
 
-      {/* Floating Gambler Stickers in Hero */}
-      <div className="hidden md:block absolute top-32 right-12 lg:right-24 z-20 pointer-events-auto">
-        <div className="relative">
-          <SpadeCardSticker size={84} rotation="-8deg" className="relative z-10" />
-          <DicePairSticker size={62} rotation="16deg" className="absolute -bottom-6 -left-10 z-20" />
-        </div>
+      {/* Floating Ace of Spades (Right Side - Bos favorite!) */}
+      <div className="hidden xl:block absolute top-28 right-16 z-20 pointer-events-auto">
+        <SpadeCardSticker size={88} rotation="-7deg" />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="border-l-2 border-zinc-800/80 pl-4 sm:pl-8 py-2 relative">
-          {/* Subtle Cyber Reticle Accent */}
+          {/* Top Corner HUD Marker */}
           <div className="absolute -top-3 -left-3 font-mono-code text-[10px] text-[#ccff00] bg-black px-1.5 py-0.5 border border-zinc-800">
             [SYS_INTEGRATION]
           </div>
 
-          {/* Status Badges */}
+          {/* Status Badges with Mini Left Sticker */}
           <div className="flex flex-wrap items-center gap-2.5 mb-6 font-mono-code pt-3">
             <div className="inline-flex items-center gap-2 bg-[#101018] border border-[#ccff00]/40 px-3 py-1 text-xs text-zinc-200 shadow-[0_0_15px_rgba(204,255,0,0.12)]">
               <span className="w-2 h-2 rounded-full bg-[#ccff00] animate-ping"></span>
@@ -44,7 +41,7 @@ export default function Hero() {
           </div>
 
           {/* Main Headline */}
-          <div className="space-y-4 max-w-5xl">
+          <div className="space-y-4 max-w-4xl">
             <div className="text-xs sm:text-sm font-mono-code tracking-widest text-[#ccff00] uppercase flex items-center gap-2 font-bold">
               <span className="inline-block w-8 h-[2px] bg-[#ccff00]"></span>
               <span>SYSTEM ANALYSIS • BACKEND ENGINEERING • AI ENTHUSIAST</span>
@@ -63,7 +60,7 @@ export default function Hero() {
           </div>
 
           {/* Action CTAs */}
-          <div className="mt-8 flex flex-wrap gap-4 font-mono-code">
+          <div className="mt-8 flex flex-wrap items-center gap-4 font-mono-code">
             <a
               href="#architecture"
               className="flex items-center gap-2 bg-[#ccff00] text-black font-black text-xs sm:text-sm px-6 py-3.5 border-2 border-white shadow-[4px_4px_0px_#ffffff] hover:shadow-[6px_6px_0px_#ffffff] hover:translate-x-[-1px] hover:translate-y-[-1px] transition-all"
@@ -88,6 +85,11 @@ export default function Hero() {
             >
               <span>WHATSAPP ({personalInfo.phone})</span>
             </a>
+
+            {/* Left-side Dice Sticker in open CTA row */}
+            <div className="hidden sm:inline-block ml-2">
+              <DicePairSticker size={48} rotation="10deg" />
+            </div>
           </div>
 
           {/* 4 Stats Grid */}

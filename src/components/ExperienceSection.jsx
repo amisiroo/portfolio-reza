@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { workExperience } from '../data/portfolioData';
 import { Briefcase, Building2, CheckCircle2, ChevronRight, Calendar, Layers, Activity } from 'lucide-react';
-import { PokerChipSticker } from './GamblerStickers';
+import { PokerChipSticker, EightBallSticker } from './GamblerStickers';
 
 export default function ExperienceSection() {
   const [selectedId, setSelectedId] = useState(workExperience[0].id);
@@ -25,6 +25,7 @@ export default function ExperienceSection() {
             </p>
           </div>
 
+          {/* Right Header Sticker */}
           <div className="hidden lg:block absolute -top-4 right-0">
             <PokerChipSticker size={58} rotation="-10deg" />
           </div>
@@ -32,10 +33,10 @@ export default function ExperienceSection() {
 
         {/* Experience Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          {/* Company Selector Sidebar */}
-          <div className="lg:col-span-4 space-y-3">
-            <div className="text-xs font-mono-code text-zinc-400 uppercase tracking-wider mb-2">
-              SELECT EXPERIENCE RECORD:
+          {/* Company Selector Sidebar (Left Side) */}
+          <div className="lg:col-span-4 space-y-3 relative">
+            <div className="text-xs font-mono-code text-zinc-400 uppercase tracking-wider mb-2 flex items-center justify-between">
+              <span>SELECT EXPERIENCE RECORD:</span>
             </div>
 
             {workExperience.map((exp) => {
@@ -69,9 +70,14 @@ export default function ExperienceSection() {
                 </button>
               );
             })}
+
+            {/* Left Sidebar Bottom Accent Sticker */}
+            <div className="hidden sm:flex justify-start pt-4 pl-2">
+              <EightBallSticker size={50} rotation="-14deg" />
+            </div>
           </div>
 
-          {/* Active Detail Display Card */}
+          {/* Active Detail Display Card (Right Side) */}
           <div className="lg:col-span-8 bg-[#0c0c14] border-2 border-white p-6 sm:p-8 shadow-[8px_8px_0px_#ccff00] relative">
             <div className="flex flex-wrap items-start justify-between gap-4 border-b-2 border-zinc-800 pb-6 mb-6">
               <div>

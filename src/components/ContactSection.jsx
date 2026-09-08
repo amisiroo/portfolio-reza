@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { personalInfo } from '../data/portfolioData';
-import { Mail, MessageSquare, Send, Copy, Check, Sparkles, MapPin, Globe, Coffee, Shield } from 'lucide-react';
+import { Mail, MessageSquare, Send, Copy, Check, MapPin } from 'lucide-react';
 import { SpadeCardSticker, DicePairSticker } from './GamblerStickers';
 
 export default function ContactSection() {
@@ -26,7 +26,7 @@ export default function ContactSection() {
   return (
     <section id="contact" className="py-24 bg-[#050507] relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           {/* Left Column */}
           <div className="lg:col-span-6 space-y-6 relative">
             <div className="inline-flex items-center gap-2 text-xs font-mono-code text-[#ccff00] uppercase tracking-widest bg-[#121218] px-3 py-1 border border-zinc-800">
@@ -94,20 +94,12 @@ export default function ContactSection() {
             </div>
           </div>
 
-          {/* Right Column: Dispatch Form with Floating Sticker */}
+          {/* Right Column: Dispatch Form (Clean, no text overlap) */}
           <div className="lg:col-span-6 bg-[#0c0c14] border-2 border-white p-6 sm:p-8 shadow-[8px_8px_0px_#ccff00] relative">
-            {/* Corner Gambler Sticker Accent */}
-            <div className="absolute -top-7 -right-6 hidden sm:block z-20">
-              <DicePairSticker size={56} rotation="18deg" />
-            </div>
-
             <div className="flex items-center justify-between mb-1">
               <h3 className="text-2xl font-extrabold text-white font-display uppercase tracking-wide">
                 DISPATCH COLLABORATION INQUIRY
               </h3>
-              <span className="text-[10px] font-mono-code text-[#ccff00] bg-[#12121a] px-2 py-0.5 border border-zinc-800">
-                #anti-slop
-              </span>
             </div>
             <p className="text-xs font-mono-code text-zinc-400 mb-6">
               Kirim brief kebutuhan sistem, request konsultasi BPMN / Salesforce, atau jadwal interview langsung.

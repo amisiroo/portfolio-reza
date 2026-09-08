@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { skillCategories } from '../data/portfolioData';
 import { Layers, Server, Database, Cpu, Terminal, CheckCircle2, Zap } from 'lucide-react';
+import { WildCardSticker, PokerChipSticker } from './GamblerStickers';
 
 const iconMap = {
   Layers: Layers,
@@ -15,17 +16,24 @@ export default function SkillsMatrix() {
     <section id="skills" className="py-24 bg-[#050507] relative border-b-2 border-[#1c1c24]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="mb-8">
-          <div className="inline-flex items-center gap-2 text-xs font-mono-code text-[#ccff00] uppercase tracking-widest mb-2 bg-[#121218] px-3 py-1 border border-zinc-800">
-            <Cpu className="w-3.5 h-3.5" />
-            <span>//03_CORE_COMPETENCIES</span>
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-8 gap-4 relative">
+          <div>
+            <div className="inline-flex items-center gap-2 text-xs font-mono-code text-[#ccff00] uppercase tracking-widest mb-2 bg-[#121218] px-3 py-1 border border-zinc-800">
+              <Cpu className="w-3.5 h-3.5" />
+              <span>//03_CORE_COMPETENCIES</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white uppercase font-display">
+              SKILLS & TECHNICAL CAPABILITIES
+            </h2>
+            <p className="text-xs sm:text-sm font-mono-code text-zinc-400 max-w-2xl mt-2">
+              Matriks keahlian teknis terstruktur: analisis kebutuhan sistem, pemodelan BPMN Camunda, static code mapping ANTLR v4, arsitektur backend microservices, hingga audit database.
+            </p>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white uppercase font-display">
-            SKILLS & TECHNICAL CAPABILITIES
-          </h2>
-          <p className="text-xs sm:text-sm font-mono-code text-zinc-400 max-w-2xl mt-2">
-            Matriks keahlian teknis terstruktur mulai dari analisis kebutuhan sistem, pemodelan alur kerja BPMN, arsitektur backend microservices, hingga audit database.
-          </p>
+
+          {/* Left/Right Floating Accent Sticker */}
+          <div className="hidden lg:block absolute -top-4 right-0">
+            <WildCardSticker size={64} rotation="12deg" />
+          </div>
         </div>
 
         {/* Integrated Segmented Control Navigation */}
