@@ -1,6 +1,6 @@
 # Muhammad Reza Nur Fauzi — System Analyst Portfolio
 
-[![Vercel Deployment](https://img.shields.io/badge/Deployed%20on-Vercel-black?logo=vercel)](https://portfolio-reza-zeta.vercel.app)
+[![Live Production](https://img.shields.io/badge/Live%20Domain-amisiroo.my.id-brightgreen?logo=vercel)](https://amisiroo.my.id)
 [![Tech Stack](https://img.shields.io/badge/Tech-React%20%7C%20Vite%20%7C%20TailwindCSS-brightgreen)](https://github.com/amisiroo/portfolio-reza)
 
 Personal portfolio and technical showcase of **Muhammad Reza Nur Fauzi**, System Analyst & IT Technical Integration Specialist (ITB STI Alum).
