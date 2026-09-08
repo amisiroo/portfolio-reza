@@ -7,7 +7,8 @@ export default function ArchitectureVisualizer() {
   const [selectedStep, setSelectedStep] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
   const [logs, setLogs] = useState([]);
-  const logEndRef = useRef(null);
+  const logBoxRef = useRef(null);
+  const isInitialLogMount = useRef(true);
 
   const architectures = {
     los: {
@@ -238,7 +239,13 @@ export default function ArchitectureVisualizer() {
   }, [activeTab]);
 
   useEffect(() => {
-    logEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (isInitialLogMount.current) {
+      isInitialLogMount.current = false;
+      return;
+    }
+    if (logBoxRef.current) {
+      logBoxRef.current.scrollTop = logBoxRef.current.scrollHeight;
+    }
   }, [logs]);
 
   const runSimulation = () => {
@@ -502,14 +509,13 @@ export default function ArchitectureVisualizer() {
                   <span>LIVE EXECUTION LOGS</span>
                   <span className="text-[#ccff00] animate-pulse">● LIVE STREAM</span>
                 </div>
-                <div className="h-28 overflow-y-auto space-y-1 text-zinc-300 text-[11px] bg-[#050508] p-2 border border-zinc-900">
+                <div ref={logBoxRef} className="h-28 overflow-y-auto space-y-1 text-zinc-300 text-[11px] bg-[#050508] p-2 border border-zinc-900">
                   {logs.map((log, i) => (
                     <div key={i} className="leading-snug">
                       <span className="text-[#ccff00]">{log.slice(0, 10)}</span>
                       <span>{log.slice(10)}</span>
                     </div>
                   ))}
-                  <div ref={logEndRef} />
                 </div>
               </div>
             </div>
