@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { personalInfo, workExperience, skillCategories } from '../data/portfolioData';
 import { Terminal as TermIcon, CornerDownLeft, Trash2 } from 'lucide-react';
-import { SpadeEmblemSticker } from './GamblerStickers';
+import { SpadeCardSticker } from './GamblerStickers';
 
 export default function TerminalSimulator() {
   const [inputVal, setInputVal] = useState('');
@@ -234,7 +234,7 @@ PASSION     : System Analysis, BPMN 2.0 Camunda, ANTLR v4 Parser, & AI Engineeri
             </p>
           </div>
           <div className="hidden lg:block shrink-0 pb-1">
-            <SpadeEmblemSticker size={48} rotation="-8deg" />
+            <SpadeCardSticker size={52} rotation="-8deg" />
           </div>
         </div>
 

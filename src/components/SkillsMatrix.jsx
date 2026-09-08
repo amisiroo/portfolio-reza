@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { skillCategories } from '../data/portfolioData';
 import { Layers, Server, Database, Cpu, Terminal, CheckCircle2, Zap } from 'lucide-react';
-import { SpadeEmblemSticker, SpilledCoffeeSticker } from './GamblerStickers';
+import { SpadeCardSticker, WildCardSticker } from './GamblerStickers';
 
 const iconMap = {
   Layers: Layers,
@@ -30,9 +30,9 @@ export default function SkillsMatrix() {
             </p>
           </div>
 
-          {/* Right Header Sticker: Gelas Kopi Tumpah Santai */}
+          {/* Right Header Sticker: Wild Card Joker */}
           <div className="hidden lg:block shrink-0 pb-1">
-            <SpilledCoffeeSticker size={62} rotation="-10deg" />
+            <WildCardSticker size={64} rotation="10deg" />
           </div>
         </div>
 

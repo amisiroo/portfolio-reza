@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { personalInfo } from '../data/portfolioData';
 import { Send, Menu, X } from 'lucide-react';
-import { SpadeEmblemSticker, DicePairSticker } from './GamblerStickers';
+import { SpadeCardSticker, DicePairSticker } from './GamblerStickers';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,11 +28,11 @@ export default function Navbar() {
         : 'bg-[#050507]/80 backdrop-blur-sm border-b border-zinc-900 py-3.5'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        {/* Far Left: Spade Sticker + Brand Logo */}
+        {/* Far Left: Compact Playing Card Sticker + Brand */}
         <div className="flex items-center gap-3">
-          {/* Ujung Kiri: Spade Emblem Sticker */}
+          {/* Ujung Kiri: Ace of Spades Card Sticker */}
           <div className="hidden sm:block">
-            <SpadeEmblemSticker size={28} rotation="-10deg" />
+            <SpadeCardSticker size={28} rotation="-8deg" />
           </div>
 
           <a href="#profile" className="flex items-center gap-2.5 group">

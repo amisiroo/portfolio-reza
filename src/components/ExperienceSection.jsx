@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { workExperience } from '../data/portfolioData';
 import { Briefcase, Building2, CheckCircle2, ChevronRight, Calendar, Layers, Activity } from 'lucide-react';
-import { PokerChipSticker, PlasticChairSticker } from './GamblerStickers';
+import { PokerChipSticker, KingSpadeCardSticker } from './GamblerStickers';
 
 export default function ExperienceSection() {
   const [selectedId, setSelectedId] = useState(workExperience[0].id);
@@ -25,7 +25,7 @@ export default function ExperienceSection() {
             </p>
           </div>
 
-          {/* Right Header Sticker */}
+          {/* Right Header Sticker: Poker Chip */}
           <div className="hidden lg:block absolute -top-4 right-0">
             <PokerChipSticker size={58} rotation="-10deg" />
           </div>
@@ -71,9 +71,9 @@ export default function ExperienceSection() {
               );
             })}
 
-            {/* Left Sidebar Bottom Accent: Kursi Plastik Santai */}
+            {/* Left Sidebar Bottom Accent: King of Spades Card */}
             <div className="hidden sm:flex justify-start pt-4 pl-2">
-              <PlasticChairSticker size={56} rotation="6deg" />
+              <KingSpadeCardSticker size={64} rotation="8deg" />
             </div>
           </div>
 

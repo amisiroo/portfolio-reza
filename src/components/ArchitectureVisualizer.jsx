@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Workflow, Play, RefreshCw, CheckCircle2, ArrowRight, ShieldCheck, Database, Layers, GitFork, Terminal, Code2, Server, Cpu, Box, FileJson, Check, Coffee } from 'lucide-react';
-import { SpadeEmblemSticker, DicePairSticker } from './GamblerStickers';
+import { Workflow, Play, RefreshCw, CheckCircle2, ArrowRight, ShieldCheck, Database, Layers, GitFork, Terminal, Code2, Server, Cpu, Box, FileJson, Check } from 'lucide-react';
+import { KingSpadeCardSticker, DicePairSticker } from './GamblerStickers';
 
 export default function ArchitectureVisualizer() {
   const [activeTab, setActiveTab] = useState('los');
@@ -199,7 +199,7 @@ export default function ArchitectureVisualizer() {
   return (
     <section id="architecture" className="py-24 bg-[#07070b] border-t-2 border-b-2 border-[#1c1c24] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header with balanced right sticker in clear open space */}
+        {/* Section Header with balanced right card sticker in clear open space */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-8 gap-6">
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 text-xs font-mono-code text-[#ccff00] uppercase tracking-widest mb-2 bg-[#121218] px-3 py-1 border border-zinc-800">
@@ -215,7 +215,7 @@ export default function ArchitectureVisualizer() {
           </div>
 
           <div className="hidden lg:block shrink-0 pb-1">
-            <SpadeEmblemSticker size={50} rotation="-8deg" />
+            <KingSpadeCardSticker size={64} rotation="8deg" />
           </div>
         </div>
 
