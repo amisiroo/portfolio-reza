@@ -1,7 +1,7 @@
 import React from 'react';
 import { achievements } from '../data/portfolioData';
 import { Award, Trophy, GraduationCap, CheckCircle2, Shield, ExternalLink } from 'lucide-react';
-import { LuckySevenSticker, PokerChipSticker } from './GamblerStickers';
+import { SpilledCoffeeSticker, PokerChipSticker } from './GamblerStickers';
 
 export default function AchievementsSection() {
   return (
@@ -24,7 +24,7 @@ export default function AchievementsSection() {
 
           <div className="hidden lg:flex items-center gap-4 shrink-0 pb-1">
             <PokerChipSticker size={52} rotation="-8deg" />
-            <LuckySevenSticker size={62} rotation="8deg" />
+            <SpilledCoffeeSticker size={58} rotation="6deg" />
           </div>
         </div>
 

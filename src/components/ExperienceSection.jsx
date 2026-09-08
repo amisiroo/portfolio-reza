@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { workExperience } from '../data/portfolioData';
 import { Briefcase, Building2, CheckCircle2, ChevronRight, Calendar, Layers, Activity } from 'lucide-react';
-import { PokerChipSticker, EightBallSticker } from './GamblerStickers';
+import { PokerChipSticker, PlasticChairSticker } from './GamblerStickers';
 
 export default function ExperienceSection() {
   const [selectedId, setSelectedId] = useState(workExperience[0].id);
@@ -71,9 +71,9 @@ export default function ExperienceSection() {
               );
             })}
 
-            {/* Left Sidebar Bottom Accent Sticker */}
+            {/* Left Sidebar Bottom Accent: Kursi Plastik Santai */}
             <div className="hidden sm:flex justify-start pt-4 pl-2">
-              <EightBallSticker size={50} rotation="-14deg" />
+              <PlasticChairSticker size={56} rotation="6deg" />
             </div>
           </div>
 

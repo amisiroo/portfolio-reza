@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Workflow, Play, RefreshCw, CheckCircle2, ArrowRight, ShieldCheck, Database, Layers, GitFork, Terminal, Code2, Server, Cpu, Box, FileJson, Check, Coffee } from 'lucide-react';
-import { LuckySevenSticker, DicePairSticker } from './GamblerStickers';
+import { SpadeEmblemSticker, DicePairSticker } from './GamblerStickers';
 
 export default function ArchitectureVisualizer() {
   const [activeTab, setActiveTab] = useState('los');
@@ -215,7 +215,7 @@ export default function ArchitectureVisualizer() {
           </div>
 
           <div className="hidden lg:block shrink-0 pb-1">
-            <LuckySevenSticker size={64} rotation="6deg" />
+            <SpadeEmblemSticker size={50} rotation="-8deg" />
           </div>
         </div>
 

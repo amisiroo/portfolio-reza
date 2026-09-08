@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { personalInfo, workExperience, skillCategories } from '../data/portfolioData';
-import { Terminal as TermIcon, CornerDownLeft, Trash2, Cpu, Activity, Sparkles, CheckCircle2 } from 'lucide-react';
-import { EightBallSticker } from './GamblerStickers';
+import { Terminal as TermIcon, CornerDownLeft, Trash2 } from 'lucide-react';
+import { SpadeEmblemSticker } from './GamblerStickers';
 
 export default function TerminalSimulator() {
   const [inputVal, setInputVal] = useState('');
@@ -35,13 +35,11 @@ export default function TerminalSimulator() {
     'help', 'bio', 'skills', 'exp', 'bpmn', 'neofetch', 'contact', 'hire', 'clear'
   ];
 
-  // Character-by-character typewriter streamer
   const streamOutput = (fullText, targetId) => {
     setIsTyping(true);
     setTypingId(targetId);
     let currentLen = 0;
     const totalLen = fullText.length;
-    // Step size based on length for smooth high-tech feel
     const step = totalLen > 300 ? 5 : totalLen > 100 ? 3 : 1;
     const speed = totalLen > 300 ? 12 : 16;
 
@@ -182,7 +180,6 @@ PASSION     : System Analysis, BPMN 2.0 Camunda, ANTLR v4 Parser, & AI Engineeri
     setHistory(newHistory);
     setInputVal('');
 
-    // Trigger typewriter stream
     streamOutput(outputText, outputEntryId);
   };
 
@@ -222,7 +219,7 @@ PASSION     : System Analysis, BPMN 2.0 Camunda, ANTLR v4 Parser, & AI Engineeri
   return (
     <section id="terminal" className="py-24 bg-[#050507] relative border-b-2 border-[#1c1c24]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
+        {/* Section Header with clear non-overlapping Spade Emblem on right */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-8 gap-6">
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 text-xs font-mono-code text-[#ccff00] uppercase tracking-widest mb-2 bg-[#121218] px-3 py-1 border border-zinc-800">
@@ -237,7 +234,7 @@ PASSION     : System Analysis, BPMN 2.0 Camunda, ANTLR v4 Parser, & AI Engineeri
             </p>
           </div>
           <div className="hidden lg:block shrink-0 pb-1">
-            <EightBallSticker size={58} rotation="-14deg" />
+            <SpadeEmblemSticker size={48} rotation="-8deg" />
           </div>
         </div>
 

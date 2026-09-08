@@ -1,6 +1,6 @@
 import React from 'react';
 import { personalInfo, heroStats } from '../data/portfolioData';
-import { Terminal, ArrowDownRight, Briefcase, Award, Code2, Layers, Zap, Sparkles } from 'lucide-react';
+import { Terminal, ArrowDownRight, Coffee } from 'lucide-react';
 import { SpadeCardSticker, DicePairSticker } from './GamblerStickers';
 
 export default function Hero() {
@@ -21,12 +21,12 @@ export default function Hero() {
             [SYS_INTEGRATION]
           </div>
 
-          {/* Status Badges with Mini Left Sticker */}
+          {/* Status Badges */}
           <div className="flex flex-wrap items-center gap-2.5 mb-6 font-mono-code pt-3">
             <div className="inline-flex items-center gap-2 bg-[#101018] border border-[#ccff00]/40 px-3 py-1 text-xs text-zinc-200 shadow-[0_0_15px_rgba(204,255,0,0.12)]">
               <span className="w-2 h-2 rounded-full bg-[#ccff00] animate-ping"></span>
-              <span className="text-[#ccff00] font-extrabold">ACTIVE:</span>
-              <span>PT. AGANSA PRIMATAMA (OSM DEPT)</span>
+              <span className="text-[#ccff00] font-extrabold">STATUS:</span>
+              <span>AVAILABLE FOR DRILLS & COLLABORATION</span>
             </div>
 
             <div className="inline-flex items-center gap-1.5 bg-[#14141e] border border-zinc-800 px-3 py-1 text-xs text-zinc-300">
@@ -35,8 +35,8 @@ export default function Hero() {
             </div>
 
             <div className="inline-flex items-center gap-1.5 bg-[#14141e] border border-zinc-800 px-3 py-1 text-xs text-zinc-300">
-              <span className="text-[#ccff00] font-bold">PASSION:</span>
-              <span>AI ENTHUSIAST & BPMN 2.0</span>
+              <span className="text-[#ccff00] font-bold">FOCUS:</span>
+              <span>SYSTEM ANALYST • AI ENTHUSIAST</span>
             </div>
           </div>
 
@@ -54,8 +54,9 @@ export default function Hero() {
               </span>
             </h1>
 
-            <p className="text-base sm:text-lg text-zinc-300 max-w-3xl font-sans leading-relaxed pt-1">
-              <strong className="text-white font-bold">System Analyst, Backend Engineer & AI Enthusiast</strong> lulusan <strong className="text-[#ccff00] font-semibold">S1 Sistem & Teknologi Informasi ITB</strong>. Berpengalaman di <strong className="text-white">PT. Agansa Primatama</strong> (OSM Department — Salesforce Management & Web), <strong className="text-white">PT. Padepokan Tujuh Sembilan</strong> (Loan Origination System Phase 2: 30+ BPMN Camunda, ANTLR v4 static code call graph & Kafka topic mapping), dan <strong className="text-white">PT. Foom Lab Global</strong> (Omnichannel Commerce Platform).
+            {/* Slengean Santai Free-talk Paragraph (As Requested) */}
+            <p className="text-base sm:text-lg text-zinc-300 max-w-3xl font-sans leading-relaxed pt-2">
+              gausah ribet mikirin birokrasi bertele-tele atau jargon korporat yang muter-muter. intinya kalo ada alur sistem yang kusut, data yang bottleneck, atau logic yang mau dibangun—bikin simpel dan jalanin aja sampe beres. gausah pusingin validasi algoritma atau omongan orang, yang penting sistemnya jalan beneran di production dan masalah kelar. santai aja, kopi dulu.
             </p>
           </div>
 
