@@ -5,7 +5,7 @@ export function SpadeCardSticker({ className = '', size = 84, rotation = '-7deg'
   return (
     <div
       style={{ transform: `rotate(${rotation})` }}
-      className={`inline-block select-none transition-transform duration-200 hover:rotate-0 hover:scale-110 cursor-pointer drop-shadow-[5px_5px_0px_#000000] ${className}`}
+      className={`inline-block select-none transition-transform duration-200 hover:rotate-0 hover:scale-110 cursor-default drop-shadow-[5px_5px_0px_#000000] ${className}`}
       title="Ace of Spades"
     >
       <svg
@@ -60,7 +60,7 @@ export function DicePairSticker({ className = '', size = 66, rotation = '12deg' 
   return (
     <div
       style={{ transform: `rotate(${rotation})` }}
-      className={`inline-block select-none transition-transform duration-200 hover:rotate-0 hover:scale-110 cursor-pointer drop-shadow-[5px_5px_0px_#000000] ${className}`}
+      className={`inline-block select-none transition-transform duration-200 hover:rotate-0 hover:scale-110 cursor-default drop-shadow-[5px_5px_0px_#000000] ${className}`}
       title="Snake Eyes • Lucky Roll"
     >
       <svg
@@ -135,7 +135,7 @@ export function PokerChipSticker({ className = '', size = 62, rotation = '-9deg'
   return (
     <div
       style={{ transform: `rotate(${rotation})` }}
-      className={`inline-block select-none transition-transform duration-200 hover:rotate-0 hover:scale-110 cursor-pointer drop-shadow-[5px_5px_0px_#000000] ${className}`}
+      className={`inline-block select-none transition-transform duration-200 hover:rotate-0 hover:scale-110 cursor-default drop-shadow-[5px_5px_0px_#000000] ${className}`}
       title="High Stakes Token"
     >
       <svg
@@ -189,7 +189,7 @@ export function LuckySevenSticker({ className = '', size = 68, rotation = '7deg'
   return (
     <div
       style={{ transform: `rotate(${rotation})` }}
-      className={`inline-block select-none transition-transform duration-200 hover:rotate-0 hover:scale-110 cursor-pointer drop-shadow-[5px_5px_0px_#000000] ${className}`}
+      className={`inline-block select-none transition-transform duration-200 hover:rotate-0 hover:scale-110 cursor-default drop-shadow-[5px_5px_0px_#000000] ${className}`}
       title="Jackpot 777"
     >
       <svg
@@ -277,7 +277,7 @@ export function EightBallSticker({ className = '', size = 58, rotation = '-12deg
   return (
     <div
       style={{ transform: `rotate(${rotation})` }}
-      className={`inline-block select-none transition-transform duration-200 hover:rotate-0 hover:scale-110 cursor-pointer drop-shadow-[5px_5px_0px_#000000] ${className}`}
+      className={`inline-block select-none transition-transform duration-200 hover:rotate-0 hover:scale-110 cursor-default drop-shadow-[5px_5px_0px_#000000] ${className}`}
       title="Magic 8-Ball"
     >
       <svg
@@ -321,7 +321,7 @@ export function WildCardSticker({ className = '', size = 78, rotation = '14deg' 
   return (
     <div
       style={{ transform: `rotate(${rotation})` }}
-      className={`inline-block select-none transition-transform duration-200 hover:rotate-0 hover:scale-110 cursor-pointer drop-shadow-[5px_5px_0px_#000000] ${className}`}
+      className={`inline-block select-none transition-transform duration-200 hover:rotate-0 hover:scale-110 cursor-default drop-shadow-[5px_5px_0px_#000000] ${className}`}
       title="Wild Card Joker"
     >
       <svg
