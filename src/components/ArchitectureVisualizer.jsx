@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Workflow, Play, RefreshCw, CheckCircle2, ArrowRight, ShieldCheck, Database, Layers, GitFork, Terminal, Code2, Server, Cpu, Box, FileJson, Check } from 'lucide-react';
+import { Workflow, Play, RefreshCw, CheckCircle2, ArrowRight, ShieldCheck, Database, Layers, GitFork, Terminal, Code2, Server, Cpu, Box, FileJson, Check, Coffee } from 'lucide-react';
 
 export default function ArchitectureVisualizer() {
   const [activeTab, setActiveTab] = useState('los');
@@ -13,22 +13,22 @@ export default function ArchitectureVisualizer() {
 
   const architectures = {
     los: {
-      title: 'Loan Origination System (LOS) Phase 2 — Workflow Orchestration',
-      company: 'PT Padepokan Tujuh Sembilan',
-      badge: 'ENTERPRISE BANKING WORKFLOW',
+      title: 'Loan Origination System (LOS) Phase 2 — System Analysis & Static Code Mapping',
+      company: 'PT. Padepokan Tujuh Sembilan',
+      badge: 'ENTERPRISE SYSTEM ANALYSIS',
       period: 'Dec 2025 – Jun 2026',
-      description: 'Analisis sistem eksisting LOS Phase 2, pemodelan 30+ diagram BPMN Camunda, review struktur controller & OpenFeign Java Spring Boot, serta analisis persistensi database.',
+      description: 'Menganalisis sistem eksisting LOS Phase 2, memetakan logika aplikasi & komunikasi Kafka via static code analysis ANTLR v4 (call graph), pemodelan 30+ BPMN Camunda, dan audit persistensi SQL Server.',
       metrics: {
         coverage: '30+ BPMN Diagrams',
-        stack: 'Java 17 / Spring Boot',
-        focus: 'Feign & Gap Analysis'
+        method: 'ANTLR v4 Call Graphs',
+        events: 'Kafka Topics Mapping'
       },
       steps: [
         {
-          name: '1. Ingestion & Controller Structure Review',
-          role: 'Spring Boot REST Controller / DTO',
+          name: '1. Financing Ingestion & Controller Structure Analysis',
+          role: 'Spring Boot Application Layer',
           protocol: 'HTTP POST /api/v2/los/financing/applications',
-          desc: 'Menganalisis struktur controller dan payload pengajuan pembiayaan, validasi skema DTO, dan inisiasi business rules awal pada sistem LOS Phase 2.',
+          desc: 'Menganalisis arsitektur sistem eksisting LOS Phase 2 untuk memahami end-to-end alur pengajuan pembiayaan, aturan bisnis, validasi DTO, dan dependensi teknis.',
           payload: {
             applicationId: 'LOS-P2-2026-084',
             financingType: 'PEMBIAYAAN_MODAL_KERJA',
@@ -39,62 +39,62 @@ export default function ArchitectureVisualizer() {
           techContract: '@RestController\n@RequestMapping("/api/v2/los/financing")\npublic class LosFinancingController {\n  @PostMapping("/applications")\n  public ResponseEntity<ApiResponse> ingestApplication(@Valid @RequestBody FinancingDto dto) {\n    log.info("Ingesting LOS Phase 2 Application: {}", dto.getApplicationId());\n    return ResponseEntity.ok(losService.initiateFinancingWorkflow(dto));\n  }\n}'
         },
         {
-          name: '2. Feign Client Inter-Service Communication',
-          role: 'Spring Cloud OpenFeign Integration',
-          protocol: 'FeignClient -> SLIK_OJK & Credit Services',
-          desc: 'Mereview integrasi antarmikroservis Java Spring Boot via OpenFeign declarative client untuk memetakan alur komunikasi data dan dependensi teknis.',
+          name: '2. ANTLR v4 Static Code Analysis & Function Call Graph',
+          role: 'Grammar Parser & Call Graph Generator',
+          protocol: 'ANTLR v4 AST Tree Traversal',
+          desc: 'Memetakan application logic dan dependensi internal method microservices secara statis menggunakan parser ANTLR v4 guna menghasilkan graph panggilan fungsi yang akurat.',
           payload: {
-            feignClient: 'CreditScoringClient',
-            endpoint: '/v1/internal/credit-evaluation',
-            slikStatus: 'KOL_1_LANCAR',
-            serviceDependency: 'UPSTREAM_FINANCING_SERVICE'
+            parserGrammar: 'JavaLexer & JavaParser (ANTLR v4)',
+            parsedClasses: 142,
+            generatedCallGraph: 'AST_NODE_FUNCTION_DEPENDENCY_GRAPH',
+            extractedMethods: ['evaluateRiskThreshold()', 'dispatchKafkaEvent()', 'persistApplicationState()']
           },
-          techContract: '@FeignClient(name = "credit-scoring-service", url = "${app.services.credit-scoring.url}")\npublic interface CreditScoringFeignClient {\n  @GetMapping("/v1/internal/credit-evaluation/{applicantId}")\n  CreditEvaluationResult fetchCreditBureauData(@PathVariable("applicantId") String id);\n}'
+          techContract: '// ANTLR v4 AST Listener for Call Graph Extraction\npublic class JavaCallGraphListener extends JavaParserBaseListener {\n  @Override\n  public void enterMethodInvocation(JavaParser.MethodInvocationContext ctx) {\n    String caller = currentMethod;\n    String callee = ctx.IDENTIFIER().getText();\n    callGraph.addEdge(caller, callee);\n  }\n}'
         },
         {
-          name: '3. Camunda Modeler BPMN 2.0 Orchestration',
-          role: '30+ BPMN Workflow Diagrams',
-          protocol: 'BPMN 2.0 Process Orchestration',
-          desc: 'Merancang dan memodelkan 30+ diagram alur kerja menggunakan Camunda Modeler untuk menerjemahkan proses bisnis eksisting ke dalam alur orkestrasi yang terstandarisasi.',
+          name: '3. Kafka Inter-Service Topic Communication Mapping',
+          role: 'Kafka Event-Driven Architecture',
+          protocol: 'Kafka Topics Producer / Consumer Mapping',
+          desc: 'Memetakan jalur komunikasi asinkron antarmikroservis melalui event Kafka topics untuk memahami pertukaran data terdistribusi dan audit alur transaksi antar-service.',
+          payload: {
+            kafkaTopic: 'los.financing.application.events',
+            eventType: 'APPLICATION_SUBMITTED_EVENT',
+            partitionKey: 'LOS-P2-2026-084',
+            consumerServices: ['credit-evaluation-service', 'notification-service', 'audit-trail-service']
+          },
+          techContract: '@KafkaListener(topics = "los.financing.application.events", groupId = "los-processor-group")\npublic void handleApplicationEvent(ConsumerRecord<String, FinancingEventPayload> record) {\n  log.info("Kafka Event Ingested from Partition: {}, Key: {}", record.partition(), record.key());\n  losEventProcessor.process(record.value());\n}'
+        },
+        {
+          name: '4. Camunda Modeler BPMN 2.0 Workflow Orchestration',
+          role: '30+ BPMN Diagrams (Camunda Modeler)',
+          protocol: 'BPMN 2.0 Workflow Orchestration',
+          desc: 'Merancang dan mendokumentasikan 30+ model diagram alur kerja menggunakan Camunda Modeler untuk menerjemahkan proses bisnis eksisting ke dalam orkestrasi workflow yang terstandarisasi.',
           payload: {
             processDefinitionKey: 'Process_LOS_Phase2_Orchestration',
             bpmnDiagramCount: '30+ Modeled Workflows',
-            engine: 'Camunda Modeler 5.x',
+            gapAnalysisResult: '3 Critical Workflows Refactored',
             executionState: 'BPMN_ORCHESTRATION_VALIDATED'
           },
-          techContract: '<!-- Camunda BPMN 2.0 Process Fragment -->\n<bpmn:process id="Process_LOS_Phase2_Orchestration" isExecutable="true">\n  <bpmn:serviceTask id="Task_FeignScore" name="Fetch Credit Score" camunda:delegateExpression="${feignScoreDelegate}" />\n  <bpmn:sequenceFlow id="Flow_1" sourceRef="Task_FeignScore" targetRef="Gateway_Approval" />\n</bpmn:process>'
+          techContract: '<!-- Camunda BPMN 2.0 Process Fragment -->\n<bpmn:process id="Process_LOS_Phase2_Orchestration" isExecutable="true">\n  <bpmn:serviceTask id="Task_KafkaScore" name="Stream Kafka Evaluation" camunda:delegateExpression="${kafkaScoreDelegate}" />\n  <bpmn:sequenceFlow id="Flow_1" sourceRef="Task_KafkaScore" targetRef="Gateway_Approval" />\n</bpmn:process>'
         },
         {
-          name: '4. AS-IS / TO-BE Gap Analysis & Mitigation',
-          role: 'System Requirements & Impact Analysis',
-          protocol: 'Gap Matrix & Migration Plan',
-          desc: 'Melakukan gap analysis komprehensif antara implementasi eksisting dan rencana peningkatan LOS Phase 2 guna mengidentifikasi area terdampak dan risiko migrasi.',
+          name: '5. SQL Server Persistence & Query Access Pattern Audit',
+          role: 'Database Behavior Analysis (SQL Server)',
+          protocol: 'SQL Server Schema & JPA Repository Audit',
+          desc: 'Mendokumentasikan pola akses basis data, penggunaan repository layer, dan analisis query SQL Server untuk memahami perilaku persistensi dan konsistensi integrasi data.',
           payload: {
-            gapAnalysisResult: '3 Critical Workflows Refactored',
-            impactedMicroservices: ['los-core-service', 'approval-router-service'],
-            migrationRisk: 'LOW_MITIGATED',
-            stakeholderSignOff: 'ALIGNED_WITH_BUSINESS'
-          },
-          techContract: '// Gap Analysis Matrix Spec\npublic class GapAnalysisReport {\n  private String workflowId = "LOS_P2_APPROVAL_GATE";\n  private String asIsState = "Manual multi-hop authorization";\n  private String toBeState = "Automated Camunda dynamic rule-based routing";\n}'
-        },
-        {
-          name: '5. Database Persistence & Repository Pattern Audit',
-          role: 'Repository Layer & Query Behavior',
-          protocol: 'SQL Server / PostgreSQL Persistence',
-          desc: 'Mendokumentasikan pola akses basis data, penggunaan repository pattern, dan analisis query SQL untuk menjamin konsistensi logika persistensi sistem.',
-          payload: {
-            databaseEngine: 'PostgreSQL / SQL Server',
-            repositoryPattern: 'Spring Data JPA & Custom Queries',
-            persistenceStatus: 'AUDITED_AND_DOCUMENTED',
-            queryLatency: '< 15ms'
+            databaseEngine: 'SQL Server (Enterprise RDBMS)',
+            auditedRepositories: ['LosApplicationRepository', 'FinancingDisbursementRepository'],
+            queryLatency: '< 12ms',
+            persistenceStatus: 'AUDITED_AND_DOCUMENTED'
           },
           techContract: '@Repository\npublic interface LosApplicationRepository extends JpaRepository<LosApplication, String> {\n  @Query("SELECT a FROM LosApplication a WHERE a.status = :status AND a.createdAt >= :date")\n  List<LosApplication> findPendingApplications(@Param("status") String status, @Param("date") LocalDateTime date);\n}'
         }
       ]
     },
     omnichannel: {
-      title: 'Omnichannel E-Commerce & ERP Integration Pipeline',
-      company: 'PT Foom Lab Global',
+      title: 'Omnichannel Commerce & Logistics Integration Pipeline',
+      company: 'PT. Foom Lab Global',
       badge: 'COMMERCE INTEGRATION',
       period: 'Jul 2022 – Oct 2022',
       description: 'Pengembangan fitur aplikasi web PHP Laravel, integrasi marketplace e-commerce, sistem ERP, dan API ekspedisi logistik untuk otomatisasi order & inventaris.',
@@ -185,7 +185,7 @@ export default function ArchitectureVisualizer() {
         setIsCompleted(true);
         setSimStep(currentArch.steps.length - 1);
         setSelectedStep(currentArch.steps.length - 1);
-        setLogs(prev => [...prev, `[SUCCESS] All ${currentArch.steps.length} steps verified. Process instance completed with 100% test passing.`]);
+        setLogs(prev => [...prev, `[SUCCESS] All ${currentArch.steps.length} nodes verified. Process instance completed with 100% test passing.`]);
       } else {
         setSimStep(current);
         setSelectedStep(current);
@@ -224,7 +224,7 @@ export default function ArchitectureVisualizer() {
                   : 'bg-transparent text-zinc-400 hover:text-white hover:bg-[#181826]'
               }`}
             >
-              <span>1. CAMUNDA BPMN 2.0 LOS (PT PADEPOKAN TUJUH SEMBILAN)</span>
+              <span>1. CAMUNDA BPMN & ANTLR v4 KAFKA MAPPING (PT. PADEPOKAN 79)</span>
             </button>
             <button
               onClick={() => setActiveTab('omnichannel')}
@@ -234,7 +234,7 @@ export default function ArchitectureVisualizer() {
                   : 'bg-transparent text-zinc-400 hover:text-white hover:bg-[#181826]'
               }`}
             >
-              <span>2. OMNICHANNEL ERP & COMMERCE (PT FOOM LAB GLOBAL)</span>
+              <span>2. OMNICHANNEL ERP & LOGISTICS API SYNC (PT. FOOM LAB)</span>
             </button>
           </div>
 
@@ -285,12 +285,12 @@ export default function ArchitectureVisualizer() {
               <div className="text-white font-bold text-sm mt-0.5 text-[#ccff00]">{currentArch.metrics.coverage}</div>
             </div>
             <div className="bg-[#12121c] p-3 border border-zinc-800">
-              <div className="text-zinc-500 text-[10px]">TECHNOLOGY STACK</div>
-              <div className="text-white font-bold text-sm mt-0.5">{currentArch.metrics.stack}</div>
+              <div className="text-zinc-500 text-[10px]">ANALYSIS METHOD</div>
+              <div className="text-white font-bold text-sm mt-0.5">{currentArch.metrics.method || currentArch.metrics.stack}</div>
             </div>
             <div className="bg-[#12121c] p-3 border border-zinc-800">
-              <div className="text-zinc-500 text-[10px]">PRIMARY FOCUS</div>
-              <div className="text-white font-bold text-sm mt-0.5">{currentArch.metrics.focus}</div>
+              <div className="text-zinc-500 text-[10px]">EVENT MAPPING</div>
+              <div className="text-white font-bold text-sm mt-0.5">{currentArch.metrics.events || currentArch.metrics.focus}</div>
             </div>
           </div>
 
@@ -394,7 +394,7 @@ export default function ArchitectureVisualizer() {
                 <div>
                   <div className="text-[11px] text-zinc-400 uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#ccff00]"></span>
-                    <span>LIVE DATA PAYLOAD (DTO STATE):</span>
+                    <span>LIVE DATA PAYLOAD (STATE DTO):</span>
                   </div>
                   <pre className="bg-[#0f0f18] p-3 text-xs text-[#a3e635] border border-zinc-800 overflow-x-auto selection:bg-[#ccff00] selection:text-black">
                     {JSON.stringify(activeStepDetail.payload, null, 2)}
@@ -405,7 +405,7 @@ export default function ArchitectureVisualizer() {
                 <div>
                   <div className="text-[11px] text-zinc-400 uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
                     <Code2 className="w-3 h-3 text-[#ccff00]" />
-                    <span>TECHNICAL CONTRACT / CODE DELEGATE:</span>
+                    <span>TECHNICAL CONTRACT / PARSER FRAGMENT:</span>
                   </div>
                   <pre className="bg-[#0f0f18] p-3 text-[11px] text-zinc-200 border border-zinc-800 overflow-x-auto whitespace-pre-wrap selection:bg-[#ccff00] selection:text-black leading-relaxed">
                     {activeStepDetail.techContract}

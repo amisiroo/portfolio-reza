@@ -1,11 +1,12 @@
 export const personalInfo = {
   name: "Muhammad Reza Nur Fauzi",
-  title: "Junior System Analyst & IT Integration Specialist",
+  title: "System Analyst, Backend Engineer & AI Enthusiast",
   location: "Bandung, Indonesia",
   timezone: "UTC+07:00 (WIB)",
   email: "mrezanurfauzi@gmail.com",
-  phone: "+62 821-5767-5493",
-  waLink: "https://wa.me/6282157675493?text=Halo%20Reza,%20saya%20melihat%20portfolio%20anda.",
+  phone: "08988090008",
+  displayPhone: "+62 898-8090-008",
+  waLink: "https://wa.me/628988090008?text=Halo%20Reza,%20saya%20melihat%20portfolio%20anda.",
   education: {
     institution: "Institut Teknologi Bandung (ITB)",
     degree: "Bachelor's Degree in Information Systems and Technology (S1 STI)",
@@ -19,70 +20,93 @@ export const personalInfo = {
 
 export const heroStats = [
   {
-    label: "BPMN Diagrams Modeled",
-    value: "30+",
-    desc: "Camunda Modeler LOS Workflows"
+    label: "Active Corporate Role",
+    value: "OSM Dept",
+    desc: "PT. Agansa Primatama (Salesforce & Web)"
   },
   {
-    label: "Microservices & Feign",
-    value: "100%",
-    desc: "Java Spring Boot & REST APIs"
+    label: "BPMN & Static Analysis",
+    value: "30+ Flow",
+    desc: "Camunda Modeler & ANTLR v4 Code Graph"
   },
   {
-    label: "Formal Education",
+    label: "Alumni Credential",
     value: "ITB",
     desc: "S1 Sistem & Teknologi Informasi"
   },
   {
-    label: "Omnichannel Sync",
-    value: "E-Commerce",
-    desc: "PHP Laravel, ERP & Logistics"
+    label: "AI & Modern Tech",
+    value: "Enthusiast",
+    desc: "Autonomous Workflows & Agentic AI"
   }
 ];
 
 export const workExperience = [
   {
-    id: "padepokan79",
-    role: "System Analyst — Loan Origination System (LOS) Phase 2",
-    company: "PT Padepokan Tujuh Sembilan",
-    division: "Enterprise Banking & Financing Systems",
-    period: "Dec 2025 – Jun 2026",
-    badge: "CORE SYSTEM ANALYST",
-    type: "Contract / Project",
-    description: "Menganalisis sistem eksisting Loan Origination System (LOS) Phase 2 untuk memahami alur pembiayaan, aturan bisnis, dependensi teknis, serta area terdampak oleh peningkatan fitur baru. Merancang orkestrasi alur kerja proses bisnis ke dalam 30+ diagram BPMN dan mereview integrasi antarmikroservis Java Spring Boot.",
+    id: "agansa",
+    role: "IT Technical & System Integration",
+    company: "PT. Agansa Primatama",
+    division: "Divisi OSM (Office of Strategic Management)",
+    period: "Aug 2026 – Present",
+    badge: "CURRENT ACTIVE ROLE",
+    type: "Full-time",
+    description: "Memegang peranan manajemen dan administrasi pada implementasi Salesforce CRM perusahaan, mengelola kebutuhan teknis integrasi sistem, pemeliharaan arsitektur website, serta otomasi kebutuhan operasional IT di bawah Office of Strategic Management (OSM).",
     highlights: [
-      "Menganalisis arsitektur sistem eksisting LOS Phase 2 untuk pemetaan alur pembiayaan, aturan bisnis, dan dependensi teknis.",
-      "Mereview multiple microservices Java Spring Boot, API flows, Feign client integrations, dan struktur controller untuk memetakan komunikasi antarlayanan.",
-      "Mendokumentasikan pola akses basis data, penggunaan repository, dan perilaku query untuk analisis logika persistensi dan dependensi sistem.",
-      "Merancang 30+ diagram alur kerja BPMN menggunakan Camunda Modeler untuk menerjemahkan proses bisnis eksisting ke dalam orkestrasi workflow yang presisi.",
-      "Melakukan gap analysis antara implementasi eksisting dan rencana peningkatan LOS Phase 2 untuk mengidentifikasi perubahan workflow dan mitigasi risiko migrasi.",
-      "Berkolaborasi aktif dengan developers, product stakeholders, dan tim bisnis untuk menyelaraskan alur sistem dengan kebutuhan bisnis.",
-      "Mengembangkan backend service dan REST API pendukung menggunakan Java 17 dan Spring Boot dalam lingkungan microservices."
+      "Mengelola administrasi & management sistem CRM Salesforce untuk menyelaraskan alur kerja divisi korporat.",
+      "Bertanggung jawab atas pengelolaan kebutuhan IT Technical, maintenance, dan integrasi website perusahaan.",
+      "Mengembangkan arsitektur teknis dan otomasi alur data strategis untuk efisiensi operasional manajemen (OSM)."
     ],
     tags: [
+      "Salesforce CRM",
+      "System Integration",
+      "OSM Management",
+      "Web Infrastructure",
+      "IT Technical Support"
+    ]
+  },
+  {
+    id: "padepokan79",
+    role: "System Analyst — Loan Origination System (LOS) Phase 2",
+    company: "PT. Padepokan Tujuh Sembilan",
+    division: "Enterprise Banking & Financing Systems",
+    period: "Dec 2025 – Jun 2026",
+    badge: "SYSTEM ANALYST DRILL",
+    type: "Contract / Project",
+    description: "Menganalisis sistem eksisting LOS Phase 2 untuk memahami end-to-end financing workflows, business rules, dan technical dependencies. Memetakan application logic & komunikasi antarlayanan menggunakan static code analysis ANTLR v4 (membuat function call graph dan pemetaan komunikasi Kafka topics). Merancang 30+ diagram alur kerja BPMN pada Camunda Modeler, mendokumentasikan pola akses query SQL Server, serta mengembangkan backend Java 17 Spring Boot.",
+    highlights: [
+      "Menganalisis sistem eksisting LOS Phase 2 untuk memahami end-to-end alur pembiayaan, aturan bisnis, dan dependensi teknis.",
+      "Memetakan application logic dan komunikasi antarmikroservis melalui static code analysis menggunakan ANTLR v4 dengan membuat graph fungsi dan komunikasi Kafka topics.",
+      "Mendokumentasikan pola akses query database SQL Server untuk memahami perilaku persistensi dan integrasi data.",
+      "Merancang 30+ model diagram alur kerja BPMN menggunakan Camunda Modeler untuk orkestrasi alur bisnis yang dinamis dan terstandarisasi.",
+      "Melakukan gap analysis mendalam antara implementasi eksisting dan arsitektur berbasis BPMN untuk mitigasi risiko migrasi.",
+      "Berkolaborasi aktif dengan developers, product stakeholders, dan tim bisnis untuk menyelaraskan sistem dengan kebutuhan operasional.",
+      "Mengembangkan backend services dan REST API pendukung menggunakan Java 17 dan Spring Boot dalam lingkungan microservices."
+    ],
+    tags: [
+      "ANTLR v4",
+      "Function Call Graph",
+      "Kafka Topics",
       "Camunda Modeler",
       "BPMN 2.0",
       "Java 17",
       "Spring Boot",
-      "Spring Cloud OpenFeign",
-      "Gap Analysis",
-      "AS-IS / TO-BE",
-      "SQL Server / PostgreSQL"
+      "SQL Server",
+      "Gap Analysis"
     ]
   },
   {
     id: "foom",
     role: "Software Engineer — Omnichannel Platform",
-    company: "PT Foom Lab Global",
+    company: "PT. Foom Lab Global",
     division: "Commerce & Digital Platforms",
     period: "Jul 2022 – Oct 2022",
     badge: "COMMERCE INTEGRATION",
-    type: "Internship / Full-time",
-    description: "Mengembangkan fitur aplikasi web omnichannel commerce platform dan mengintegrasikan marketplace e-commerce, sistem ERP, serta API logistik pihak ketiga untuk sinkronisasi pesanan, inventaris, dan pengiriman secara otomatis.",
+    type: "Project / Full-time",
+    description: "Mengembangkan aplikasi web menggunakan PHP Laravel & MySQL, serta membangun integrasi omnichannel terpadu dengan platform e-commerce, sistem ERP, dan API ekspedisi logistik untuk sinkronisasi otomatis pesanan, stok, dan pengiriman.",
     highlights: [
       "Mengembangkan fitur aplikasi web menggunakan PHP, Laravel, dan MySQL untuk platform omnichannel commerce.",
       "Mengintegrasikan platform e-commerce, sistem ERP, dan API ekspedisi logistik untuk sinkronisasi pesanan, inventaris, dan data pengiriman.",
-      "Mengimplementasikan logika backend dan integrasi API untuk meningkatkan efisiensi operasional commerce lintas platform dan memangkas penanganan data manual."
+      "Mengimplementasikan backend logic dan integrasi API untuk meningkatkan efisiensi operasional commerce dan memangkas pekerjaan manual."
     ],
     tags: [
       "PHP Laravel",
@@ -101,12 +125,12 @@ export const skillCategories = [
     icon: "Layers",
     color: "#ccff00",
     skills: [
-      { name: "Requirements & Gap Analysis", level: "Expert", context: "AS-IS / TO-BE Workflows & SRS" },
+      { name: "ANTLR v4 Static Code Analysis", level: "Expert", context: "Function call graph & Kafka topic mapping" },
       { name: "BPMN 2.0 & Camunda Modeler", level: "Expert", context: "30+ production workflows modeled" },
-      { name: "Service Communication Mapping", level: "Advanced", context: "Feign Client & API Flow Review" },
-      { name: "Database Behavior Analysis", level: "Advanced", context: "Repository & Query pattern audit" },
-      { name: "Technical Documentation", level: "Advanced", context: "API Specs & Architecture Docs" },
-      { name: "ANTLR v4 & Figma", level: "Proficient", context: "Grammar parsing & UI Wireframing" }
+      { name: "AS-IS / TO-BE Gap Analysis", level: "Advanced", context: "Workflow refactoring & Migration risk" },
+      { name: "Technical Documentation", level: "Advanced", context: "API specs & Service communication docs" },
+      { name: "Salesforce CRM Management", level: "Advanced", context: "Corporate management & workflow sync" },
+      { name: "Figma UI/UX & Wireframing", level: "Advanced", context: "AIS Competition 2nd Runner Up" }
     ]
   },
   {
@@ -114,12 +138,12 @@ export const skillCategories = [
     icon: "Server",
     color: "#a3e635",
     skills: [
-      { name: "Java 17 & Spring Boot", level: "Advanced", context: "Enterprise Microservice Services" },
-      { name: "Spring Cloud OpenFeign", level: "Advanced", context: "Declarative Inter-service REST" },
-      { name: "Node.js & Express.js", level: "Advanced", context: "REST API Development" },
-      { name: "PHP & Laravel Framework", level: "Advanced", context: "Omnichannel & Backend Logic" },
-      { name: "REST API & Webhooks", level: "Expert", context: "Integration & Sync Protocols" },
-      { name: "Git & Linux Terminal", level: "Expert", context: "Git workflows & CLI debugging" }
+      { name: "Java 17 & Spring Boot", level: "Advanced", context: "Enterprise Microservices & REST APIs" },
+      { name: "Kafka Event Communication", level: "Advanced", context: "Asynchronous topic event streaming" },
+      { name: "Node.js & Express.js", level: "Advanced", context: "REST API Backend Services" },
+      { name: "PHP & Laravel Framework", level: "Advanced", context: "Omnichannel Commerce Platforms" },
+      { name: "AI Engineering & Workflows", level: "Enthusiast", context: "Agentic pipelines & LLM tool-calling" },
+      { name: "Git & Linux Terminal", level: "Expert", context: "Git workflows, CLI debugging, DevOps" }
     ]
   },
   {
@@ -127,12 +151,12 @@ export const skillCategories = [
     icon: "Database",
     color: "#ccff00",
     skills: [
-      { name: "SQL Server & PostgreSQL", level: "Advanced", context: "Enterprise RDBMS & Optimization" },
-      { name: "MySQL & MariaDB", level: "Advanced", context: "Commerce DB Schema & Querying" },
-      { name: "MongoDB", level: "Proficient", context: "Document Storage & NoSQL" },
-      { name: "Postman & DBeaver", level: "Expert", context: "API Testing & DB Analysis" },
-      { name: "VS Code & Camunda Modeler", level: "Expert", context: "Daily Dev & Modeling Environment" },
-      { name: "Git Version Control", level: "Expert", context: "Branching, PRs & Repository Sync" }
+      { name: "SQL Server & PostgreSQL", level: "Advanced", context: "Query access pattern audit & JPA" },
+      { name: "MySQL & MariaDB", level: "Advanced", context: "Relational schema & transaction locks" },
+      { name: "MongoDB", level: "Proficient", context: "Document persistence & NoSQL storage" },
+      { name: "DBeaver & Postman", level: "Expert", context: "Database inspection & API test suite" },
+      { name: "Camunda Modeler & VS Code", level: "Expert", context: "Daily analysis & dev environment" },
+      { name: "Adobe Illustrator", level: "Proficient", context: "Vector graphics & design assets" }
     ]
   }
 ];

@@ -6,9 +6,10 @@ export default function TerminalSimulator() {
   const [inputVal, setInputVal] = useState('');
   const [history, setHistory] = useState([
     { id: 1, type: 'system', text: '╔══════════════════════════════════════════════════════════════════╗' },
-    { id: 2, type: 'system', text: '║  REZA.OS v3.3.0 (x86_64-hermes-system) • PRODUCTION ACTIVE       ║' },
-    { id: 3, type: 'system', text: '╚══════════════════════════════════════════════════════════════════╝' },
-    { id: 4, type: 'system', text: 'Type "help" to inspect commands, or press [Tab] / click quick chips below.' }
+    { id: 2, type: 'system', text: '║  REZA.OS v3.4.0 (x86_64-hermes-system) • PRODUCTION ACTIVE       ║' },
+    { id: 3, type: 'system', text: '║  SYSTEM ANALYST • BACKEND ENGINEER • AI ENTHUSIAST               ║' },
+    { id: 4, type: 'system', text: '╚══════════════════════════════════════════════════════════════════╝' },
+    { id: 5, type: 'system', text: 'Type "help" to inspect commands, or press [Tab] / click quick chips below.' }
   ]);
   const [cmdHistory, setCmdHistory] = useState([]);
   const [historyIdx, setHistoryIdx] = useState(-1);
@@ -30,7 +31,7 @@ export default function TerminalSimulator() {
   }, [history, displayedTextMap]);
 
   const availableCommands = [
-    'help', 'bio', 'skills', 'exp', 'bpmn', 'arch', 'neofetch', 'contact', 'hire', 'clear'
+    'help', 'bio', 'skills', 'exp', 'bpmn', 'neofetch', 'contact', 'hire', 'clear'
   ];
 
   // Character-by-character typewriter streamer
@@ -40,8 +41,8 @@ export default function TerminalSimulator() {
     let currentLen = 0;
     const totalLen = fullText.length;
     // Step size based on length for smooth high-tech feel
-    const step = totalLen > 300 ? 6 : totalLen > 100 ? 3 : 1;
-    const speed = totalLen > 300 ? 12 : 18;
+    const step = totalLen > 300 ? 5 : totalLen > 100 ? 3 : 1;
+    const speed = totalLen > 300 ? 12 : 16;
 
     const timer = setInterval(() => {
       currentLen += step;
@@ -56,8 +57,33 @@ export default function TerminalSimulator() {
     }, speed);
   };
 
+  const formatExperienceOutput = () => {
+    const divider = '─'.repeat(64);
+    return workExperience.map((exp, i) => {
+      const highlightsFormatted = exp.highlights
+        .map(h => `    • ${h}`)
+        .join('\n');
+      const tagsFormatted = exp.tags.map(t => `#${t}`).join('  ');
+
+      return `[0${i + 1}] ${exp.company.toUpperCase()}
+    ROLE     : ${exp.role}
+    DIVISION : ${exp.division}
+    PERIOD   : ${exp.period} [${exp.badge}]
+    TYPE     : ${exp.type}
+${divider}
+    SUMMARY:
+    ${exp.description}
+
+    CORE DELIVERABLES:
+${highlightsFormatted}
+
+    STACK:
+    ${tagsFormatted}`;
+    }).join(`\n\n${'═'.repeat(64)}\n\n`);
+  };
+
   const handleCommand = (cmdStr) => {
-    if (isTyping) return; // Prevent overlapping while streaming
+    if (isTyping) return;
     const cleanCmd = cmdStr.trim().toLowerCase();
     if (!cleanCmd) return;
 
@@ -74,12 +100,11 @@ export default function TerminalSimulator() {
       case 'help':
         outputText = `AVAILABLE COMMANDS IN REZA.OS:
   • bio        : Ringkasan profil & latar belakang akademik STI ITB
-  • exp        : Riwayat profesional di PT Padepokan Tujuh Sembilan & PT Foom Lab
+  • exp        : Riwayat pengalaman terstruktur (PT Agansa, Padepokan 79, Foom)
   • skills     : Audit lengkap matriks kompetensi teknis & framework
-  • bpmn       : Detail pemodelan 30+ alur kerja Camunda BPMN 2.0
-  • arch       : Arsitektur microservices, Feign Client, dan Controller mapping
+  • bpmn       : Detail pemodelan 30+ BPMN Camunda & ANTLR v4 static mapping
   • neofetch   : System specs, kernel version, and tech stack telemetry
-  • contact    : Endpoint komunikasi (Email & WhatsApp direct)
+  • contact    : Endpoint komunikasi (Email & WhatsApp direct 08988090008)
   • hire       : Jalur kolaborasi / project inquiry
   • clear      : Bersihkan buffer layar terminal`;
         break;
@@ -90,11 +115,12 @@ ROLE        : ${personalInfo.title}
 ALUMNI      : ${personalInfo.education.institution} (${personalInfo.education.degree})
 PERIOD      : ${personalInfo.education.period}
 LOCATION    : ${personalInfo.location} (${personalInfo.timezone})
-CORE DOMAIN : System Analysis, BPMN 2.0 Camunda Modeler, Java Spring Boot OpenFeign, and Omnichannel E-Commerce Integration.`;
+CURRENT     : PT. Agansa Primatama (OSM Dept — Salesforce Management & Web)
+PASSION     : System Analysis, BPMN 2.0 Camunda, ANTLR v4 Parser, & AI Engineering.`;
         break;
 
       case 'exp':
-        outputText = workExperience.map(e => `[${e.badge}] ${e.company} — ${e.role} (${e.period})\n  → Division: ${e.division}\n  → Highlights: ${e.highlights.join(' | ')}`).join('\n\n');
+        outputText = formatExperienceOutput();
         break;
 
       case 'skills':
@@ -102,19 +128,12 @@ CORE DOMAIN : System Analysis, BPMN 2.0 Camunda Modeler, Java Spring Boot OpenFe
         break;
 
       case 'bpmn':
-        outputText = `CAMUNDA BPMN 2.0 WORKFLOW DRILL (PT Padepokan Tujuh Sembilan):
-  • Modeled 30+ production BPMN diagrams in Camunda Modeler for loan origination approval pipelines.
-  • Mapped inter-microservice communication using Spring Cloud OpenFeign declarative clients.
-  • Executed AS-IS / TO-BE Gap Analysis and identified technical migration dependencies.
-  • Documented database persistence patterns and query access for SQL Server & PostgreSQL.`;
-        break;
-
-      case 'arch':
-        outputText = `ENTERPRISE ARCHITECTURE INTEGRATION:
-  [Ingestion / API Gateway] ──> [Camunda BPMN Orchestrator] ──> [Feign Client Inter-Service]
-            │                               │                                 │
-            ▼                               ▼                                 ▼
-   [DTO Schema Validation]        [30+ BPMN Workflows]            [Database Persistence]`;
+        outputText = `CAMUNDA BPMN 2.0 & ANTLR v4 STATIC CODE ANALYSIS:
+  • Modeled 30+ production BPMN diagrams in Camunda Modeler for loan origination workflows.
+  • Mapped application logic & microservices communication using ANTLR v4 function call graphs.
+  • Mapped asynchronous inter-service Kafka topic event streams.
+  • Conducted AS-IS / TO-BE Gap Analysis and identified technical migration dependencies.
+  • Documented database persistence patterns and query access for SQL Server.`;
         break;
 
       case 'neofetch':
@@ -122,22 +141,24 @@ CORE DOMAIN : System Analysis, BPMN 2.0 Camunda Modeler, Java Spring Boot OpenFe
       /  \\            -------------
      / /\\ \\           OS: REZA.OS Enterprise x86_64
     / /  \\ \\          Host: Institut Teknologi Bandung (STI 2019-2025)
-   /_/    \\_\\         Kernel: 6.8.0-spring-boot-camunda
-                      Uptime: 2019 – 2026 (Active Execution)
+   /_/    \\_\\         Role: System Analyst & AI Enthusiast
+                      Active: PT. Agansa Primatama (Divisi OSM)
+                      Kernel: 6.8.0-spring-boot-camunda-antlr4
                       Shell: zsh 5.9 (system-analyst-interactive)
-                      Stack: Java 17, Spring Boot, BPMN 2.0, PHP Laravel, SQL
-                      Status: READY FOR ENTERPRISE DEPLOYMENT`;
+                      Stack: Java 17, Spring Boot, BPMN, ANTLR v4, Kafka, Salesforce, PHP
+                      Vibe: santai tapi eksekusi beres. anti-slop.`;
         break;
 
       case 'contact':
         outputText = `COMMUNICATION CHANNELS:
   • EMAIL    : ${personalInfo.email}
   • WHATSAPP : ${personalInfo.phone} (${personalInfo.waLink})
-  • STATUS   : Available for System Analyst & Engineering Roles`;
+  • LOCATION : ${personalInfo.location}
+  • STATUS   : Available for System Analyst & Engineering Collaboration`;
         break;
 
       case 'hire':
-        outputText = `[!] Dispatching direct communication channel...\nDirect WhatsApp Link: ${personalInfo.waLink}`;
+        outputText = `[!] Dispatching direct communication channel...\nDirect WhatsApp: ${personalInfo.waLink}`;
         break;
 
       case 'clear':
@@ -161,7 +182,7 @@ CORE DOMAIN : System Analysis, BPMN 2.0 Camunda Modeler, Java Spring Boot OpenFe
     setHistory(newHistory);
     setInputVal('');
 
-    // Trigger typewriter stream for the output
+    // Trigger typewriter stream
     streamOutput(outputText, outputEntryId);
   };
 
@@ -196,7 +217,7 @@ CORE DOMAIN : System Analysis, BPMN 2.0 Camunda Modeler, Java Spring Boot OpenFe
     }
   };
 
-  const quickChips = ['help', 'bio', 'skills', 'exp', 'bpmn', 'arch', 'neofetch', 'contact', 'clear'];
+  const quickChips = ['help', 'bio', 'skills', 'exp', 'bpmn', 'neofetch', 'contact', 'clear'];
 
   return (
     <section id="terminal" className="py-24 bg-[#050507] relative border-b-2 border-[#1c1c24]">
@@ -213,12 +234,12 @@ CORE DOMAIN : System Analysis, BPMN 2.0 Camunda Modeler, Java Spring Boot OpenFe
             </h2>
           </div>
           <p className="text-xs sm:text-sm font-mono-code text-zinc-400 max-w-md">
-            Interface shell developer dengan simulasi komputasi per karakter (*character-by-character typewriter*), autocompletion [Tab], dan history [↑/↓].
+            Interface shell developer dengan simulasi komputasi karakter per karakter (*typewriter stream*), autocompletion [Tab], dan history [↑/↓].
           </p>
         </div>
 
-        {/* Terminal Window Box (FIXED HEIGHT 460px to prevent layout shift) */}
-        <div className="bg-[#09090f] border-2 border-white shadow-[8px_8px_0px_#ccff00] h-[460px] flex flex-col justify-between">
+        {/* Terminal Window Box (FIXED HEIGHT 480px to prevent layout shift) */}
+        <div className="bg-[#09090f] border-2 border-white shadow-[8px_8px_0px_#ccff00] h-[480px] flex flex-col justify-between">
           {/* Top Titlebar */}
           <div className="bg-[#12121c] border-b-2 border-zinc-800 px-4 py-2.5 flex items-center justify-between shrink-0">
             <div className="flex items-center gap-2">
@@ -229,7 +250,7 @@ CORE DOMAIN : System Analysis, BPMN 2.0 Camunda Modeler, Java Spring Boot OpenFe
                 <span>reza@macbook-pro: ~/sys_analyst (zsh)</span>
                 {isTyping && (
                   <span className="text-[10px] text-[#ccff00] font-mono-code animate-pulse">
-                    [COMPUTING...]
+                    [COMPUTING_STREAM...]
                   </span>
                 )}
               </span>
@@ -280,13 +301,13 @@ CORE DOMAIN : System Analysis, BPMN 2.0 Camunda Modeler, Java Spring Boot OpenFe
                     <div className="text-[#ccff00] font-bold">{item.text}</div>
                   )}
                   {item.type === 'output' && (
-                    <pre className="text-zinc-200 whitespace-pre-wrap leading-relaxed font-mono-code bg-[#0e0e16] p-3.5 border-l-2 border-[#ccff00] my-1 shadow-inner">
+                    <pre className="text-zinc-200 whitespace-pre-wrap leading-relaxed font-mono-code bg-[#0e0e16] p-4 border-l-2 border-[#ccff00] my-1 shadow-inner">
                       {currentContent}
                       {isCurrentlyStreaming && <span className="inline-block w-2 h-4 bg-[#ccff00] ml-1 animate-pulse align-middle" />}
                     </pre>
                   )}
                   {item.type === 'error' && (
-                    <div className="text-red-400 font-bold bg-red-950/30 p-2 border-l-2 border-red-500">
+                    <div className="text-red-400 font-bold bg-red-950/30 p-2.5 border-l-2 border-red-500">
                       {currentContent}
                       {isCurrentlyStreaming && <span className="inline-block w-2 h-4 bg-red-400 ml-1 animate-pulse align-middle" />}
                     </div>

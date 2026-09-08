@@ -1,21 +1,26 @@
 import React from 'react';
 import { personalInfo, heroStats } from '../data/portfolioData';
-import { Terminal, ArrowDownRight, Briefcase, Award, Code2, Layers, Zap } from 'lucide-react';
+import { Terminal, ArrowDownRight, Briefcase, Award, Code2, Layers, Zap, Sparkles, Coffee } from 'lucide-react';
 
 export default function Hero() {
   return (
     <section id="profile" className="relative pt-28 pb-20 overflow-hidden border-b-2 border-[#1c1c24] bg-cyber-grid">
       {/* Background Ambient Glow */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-[#ccff00]/5 blur-[100px] pointer-events-none rounded-full" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[650px] h-[320px] bg-[#ccff00]/5 blur-[100px] pointer-events-none rounded-full" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="border-l-2 border-zinc-800/80 pl-4 sm:pl-8 py-2">
+        <div className="border-l-2 border-zinc-800/80 pl-4 sm:pl-8 py-2 relative">
+          {/* Subtle Cyber Reticle Accent */}
+          <div className="absolute -top-3 -left-3 font-mono-code text-[10px] text-[#ccff00] bg-black px-1.5 py-0.5 border border-zinc-800">
+            [SYS_INTEGRATION]
+          </div>
+
           {/* Status Badges */}
-          <div className="flex flex-wrap items-center gap-2.5 mb-6 font-mono-code">
-            <div className="inline-flex items-center gap-2 bg-[#101018] border border-[#ccff00]/40 px-3 py-1 text-xs text-zinc-200">
+          <div className="flex flex-wrap items-center gap-2.5 mb-6 font-mono-code pt-3">
+            <div className="inline-flex items-center gap-2 bg-[#101018] border border-[#ccff00]/40 px-3 py-1 text-xs text-zinc-200 shadow-[0_0_15px_rgba(204,255,0,0.12)]">
               <span className="w-2 h-2 rounded-full bg-[#ccff00] animate-ping"></span>
-              <span className="text-[#ccff00] font-extrabold">STATUS:</span>
-              <span>AVAILABLE FOR SYSTEM ANALYST & ENGINEERING ROLES</span>
+              <span className="text-[#ccff00] font-extrabold">ACTIVE:</span>
+              <span>PT. AGANSA PRIMATAMA (OSM DEPT)</span>
             </div>
 
             <div className="inline-flex items-center gap-1.5 bg-[#14141e] border border-zinc-800 px-3 py-1 text-xs text-zinc-300">
@@ -24,8 +29,8 @@ export default function Hero() {
             </div>
 
             <div className="inline-flex items-center gap-1.5 bg-[#14141e] border border-zinc-800 px-3 py-1 text-xs text-zinc-300">
-              <span className="text-[#ccff00] font-bold">FOCUS:</span>
-              <span>BPMN 2.0 • JAVA SPRING BOOT • API INTEGRATION</span>
+              <span className="text-[#ccff00] font-bold">PASSION:</span>
+              <span>AI ENTHUSIAST & BPMN 2.0</span>
             </div>
           </div>
 
@@ -33,7 +38,7 @@ export default function Hero() {
           <div className="space-y-4 max-w-5xl">
             <div className="text-xs sm:text-sm font-mono-code tracking-widest text-[#ccff00] uppercase flex items-center gap-2 font-bold">
               <span className="inline-block w-8 h-[2px] bg-[#ccff00]"></span>
-              <span>SYSTEM ANALYSIS • WORKFLOW ORCHESTRATION • BACKEND INTEGRATION</span>
+              <span>SYSTEM ANALYSIS • BACKEND ENGINEERING • AI ENTHUSIAST</span>
             </div>
 
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white uppercase font-display leading-[0.95]">
@@ -44,7 +49,7 @@ export default function Hero() {
             </h1>
 
             <p className="text-base sm:text-lg text-zinc-300 max-w-3xl font-sans leading-relaxed pt-1">
-              <strong className="text-white font-bold">System Analyst</strong> dengan latar belakang teknis software engineering di backend development, integrasi API, analisis database, pemodelan workflow BPMN, dan analisis sistem eksisting. Berpengalaman di <strong className="text-white">PT Padepokan Tujuh Sembilan</strong> (Loan Origination System Phase 2) dan <strong className="text-white">PT Foom Lab Global</strong> (Omnichannel Platform).
+              <strong className="text-white font-bold">System Analyst, Backend Engineer & AI Enthusiast</strong> lulusan <strong className="text-[#ccff00] font-semibold">S1 Sistem & Teknologi Informasi ITB</strong>. Berpengalaman di <strong className="text-white">PT. Agansa Primatama</strong> (OSM Department — Salesforce Management & Web), <strong className="text-white">PT. Padepokan Tujuh Sembilan</strong> (Loan Origination System Phase 2: 30+ BPMN Camunda, ANTLR v4 static code call graph & Kafka topic mapping), dan <strong className="text-white">PT. Foom Lab Global</strong> (Omnichannel Commerce Platform).
             </p>
           </div>
 
@@ -72,7 +77,7 @@ export default function Hero() {
               rel="noopener noreferrer"
               className="flex items-center gap-2 bg-[#0c0c12] text-zinc-300 hover:text-[#ccff00] font-bold text-xs sm:text-sm px-5 py-3.5 border border-zinc-800 hover:border-zinc-600 transition-all"
             >
-              <span>WHATSAPP CONNECT</span>
+              <span>WHATSAPP ({personalInfo.phone})</span>
             </a>
           </div>
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { personalInfo } from '../data/portfolioData';
-import { Mail, MessageSquare, Send, Copy, Check, Sparkles, MapPin, Globe } from 'lucide-react';
+import { Mail, MessageSquare, Send, Copy, Check, Sparkles, MapPin, Globe, Coffee, Shield } from 'lucide-react';
 
 export default function ContactSection() {
   const [copied, setCopied] = useState(false);
@@ -16,7 +16,7 @@ export default function ContactSection() {
 
   const handleSendEmail = (e) => {
     e.preventDefault();
-    const mailtoUrl = `mailto:${personalInfo.email}?subject=${encodeURIComponent(subject || 'Inquiry: System Analyst Opportunity')}&body=${encodeURIComponent(message)}`;
+    const mailtoUrl = `mailto:${personalInfo.email}?subject=${encodeURIComponent(subject || 'Inquiry: System Analyst & Engineering Opportunity')}&body=${encodeURIComponent(message)}`;
     window.location.href = mailtoUrl;
     setSentStatus(true);
     setTimeout(() => setSentStatus(false), 5000);
@@ -34,12 +34,12 @@ export default function ContactSection() {
             </div>
 
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white uppercase font-display leading-[0.95]">
-              READY FOR SYSTEM <br />
-              <span className="text-[#ccff00]">ANALYSIS ROLES.</span>
+              READY FOR PRODUCTION <br />
+              <span className="text-[#ccff00]">COLLABORATION.</span>
             </h2>
 
             <p className="text-base sm:text-lg text-zinc-300 font-sans leading-relaxed">
-              Membuka peluang kerja sama posisi <strong className="text-white">System Analyst / IT Integration Specialist</strong>, konsultasi alur kerja BPMN, atau diskusi integrasi backend microservices.
+              Membuka peluang kerja sama posisi <strong className="text-white">System Analyst / IT Technical Integration Specialist</strong>, konsultasi alur kerja BPMN Camunda, manajemen Salesforce, atau arsitektur backend.
             </p>
 
             {/* Direct Contact Cards */}
@@ -74,8 +74,8 @@ export default function ContactSection() {
                     <MessageSquare className="w-5 h-5" />
                   </div>
                   <div>
-                    <div className="text-[10px] font-mono-code text-zinc-400 uppercase">WHATSAPP DIRECT</div>
-                    <div className="text-sm sm:text-base font-mono-code font-bold text-white mt-0.5">{personalInfo.phone}</div>
+                    <div className="text-[10px] font-mono-code text-zinc-400 uppercase">WHATSAPP DIRECT ENCRYPTED</div>
+                    <div className="text-sm sm:text-base font-mono-code font-bold text-white mt-0.5">{personalInfo.displayPhone} ({personalInfo.phone})</div>
                   </div>
                 </div>
                 <span className="text-xs font-mono-code font-bold text-[#ccff00] group-hover:translate-x-1 transition-transform flex items-center gap-1">
@@ -95,11 +95,16 @@ export default function ContactSection() {
 
           {/* Right Column: Dispatch Form */}
           <div className="lg:col-span-6 bg-[#0c0c14] border-2 border-white p-6 sm:p-8 shadow-[8px_8px_0px_#ccff00]">
-            <h3 className="text-2xl font-extrabold text-white font-display uppercase tracking-wide mb-1">
-              DISPATCH COLLABORATION INQUIRY
-            </h3>
+            <div className="flex items-center justify-between mb-1">
+              <h3 className="text-2xl font-extrabold text-white font-display uppercase tracking-wide">
+                DISPATCH COLLABORATION INQUIRY
+              </h3>
+              <span className="text-[10px] font-mono-code text-[#ccff00] bg-[#12121a] px-2 py-0.5 border border-zinc-800">
+                #anti-slop
+              </span>
+            </div>
             <p className="text-xs font-mono-code text-zinc-400 mb-6">
-              Kirim brief kebutuhan sistem, request review arsitektur, atau undangan interview teknis langsung.
+              Kirim brief kebutuhan sistem, request konsultasi BPMN / Salesforce, atau jadwal interview langsung.
             </p>
 
             <form onSubmit={handleSendEmail} className="space-y-4 font-mono-code text-xs">
@@ -111,7 +116,7 @@ export default function ContactSection() {
                   type="text"
                   value={subject}
                   onChange={(e) => setSubject(e.target.value)}
-                  placeholder="e.g. System Analyst Opportunity / Technical Interview"
+                  placeholder="e.g. System Analyst Opportunity / BPMN & Backend Project"
                   className="w-full bg-[#12121c] border-2 border-zinc-700 p-3.5 text-white focus:border-[#ccff00] focus:outline-none placeholder:text-zinc-600 font-mono-code"
                 />
               </div>
@@ -124,7 +129,7 @@ export default function ContactSection() {
                   rows={5}
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
-                  placeholder="Ceritakan detail posisi, lingkup sistem yang ingin dianalisis, atau jadwal diskusi..."
+                  placeholder="Ceritakan detail proyek, lingkup sistem yang ingin dianalisis, atau jadwal diskusi teknis..."
                   className="w-full bg-[#12121c] border-2 border-zinc-700 p-3.5 text-white focus:border-[#ccff00] focus:outline-none placeholder:text-zinc-600 resize-none font-sans text-sm"
                 />
               </div>
