@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { personalInfo } from '../data/portfolioData';
 import { Mail, MessageSquare, Send, Copy, Check, MapPin } from 'lucide-react';
-import { SpadeCardSticker, DicePairSticker } from './GamblerStickers';
+import { AceOfHeartsCard, DicePairSticker } from './GamblerStickers';
 
 export default function ContactSection() {
   const [copied, setCopied] = useState(false);
@@ -94,7 +94,7 @@ export default function ContactSection() {
             </div>
           </div>
 
-          {/* Right Column: Dispatch Form (Clean, no text overlap) */}
+          {/* Right Column: Dispatch Form with Floating Sticker */}
           <div className="lg:col-span-6 bg-[#0c0c14] border-2 border-white p-6 sm:p-8 shadow-[8px_8px_0px_#ccff00] relative">
             <div className="flex items-center justify-between mb-1">
               <h3 className="text-2xl font-extrabold text-white font-display uppercase tracking-wide">
