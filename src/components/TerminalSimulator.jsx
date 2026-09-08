@@ -1,13 +1,13 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { personalInfo, workExperience, skillCategories } from '../data/portfolioData';
-import { Terminal as TermIcon, CornerDownLeft, Trash2 } from 'lucide-react';
+import { Terminal as TermIcon, CornerDownLeft, Trash2, Download } from 'lucide-react';
 import { SpadeCardSticker } from './GamblerStickers';
 
 export default function TerminalSimulator() {
   const [inputVal, setInputVal] = useState('');
   const [history, setHistory] = useState([
     { id: 1, type: 'system', text: '╔══════════════════════════════════════════════════════════════════╗' },
-    { id: 2, type: 'system', text: '║  REZA.OS v3.4.0 (x86_64-hermes-system) • PRODUCTION ACTIVE       ║' },
+    { id: 2, type: 'system', text: '║  REZA.OS v3.5.0 (x86_64-hermes-system) • PRODUCTION ACTIVE       ║' },
     { id: 3, type: 'system', text: '║  SYSTEM ANALYST • BACKEND ENGINEER • AI ENTHUSIAST               ║' },
     { id: 4, type: 'system', text: '╚══════════════════════════════════════════════════════════════════╝' },
     { id: 5, type: 'system', text: 'Type "help" to inspect commands, or press [Tab] / click quick chips below.' }
@@ -32,7 +32,7 @@ export default function TerminalSimulator() {
   }, [history, displayedTextMap]);
 
   const availableCommands = [
-    'help', 'bio', 'skills', 'exp', 'bpmn', 'neofetch', 'contact', 'hire', 'clear'
+    'help', 'bio', 'skills', 'exp', 'bpmn', 'cv', 'neofetch', 'contact', 'hire', 'clear'
   ];
 
   const streamOutput = (fullText, targetId) => {
@@ -102,6 +102,7 @@ ${highlightsFormatted}
   • exp        : Riwayat pengalaman terstruktur (PT Agansa, Padepokan 79, Foom)
   • skills     : Audit lengkap matriks kompetensi teknis & framework
   • bpmn       : Detail pemodelan 30+ BPMN Camunda & ANTLR v4 static mapping
+  • cv         : Unduh resume resmi PDF (CV - Muhammad Reza Nur Fauzi.pdf)
   • neofetch   : System specs, kernel version, and tech stack telemetry
   • contact    : Endpoint komunikasi (Email & WhatsApp direct 08988090008)
   • hire       : Jalur kolaborasi / project inquiry
@@ -133,6 +134,18 @@ PASSION     : System Analysis, BPMN 2.0 Camunda, ANTLR v4 Parser, & AI Engineeri
   • Mapped asynchronous inter-service Kafka topic event streams.
   • Conducted AS-IS / TO-BE Gap Analysis and identified technical migration dependencies.
   • Documented database persistence patterns and query access for SQL Server.`;
+        break;
+
+      case 'cv':
+      case 'download-cv':
+        outputText = `[!] Initiating official resume download...\nFile: CV_Muhammad_Reza_Nur_Fauzi.pdf (Updated & Verified)\nURL : /CV_Muhammad_Reza_Nur_Fauzi.pdf`;
+        // Trigger browser download
+        const link = document.createElement('a');
+        link.href = '/CV_Muhammad_Reza_Nur_Fauzi.pdf';
+        link.download = 'CV_Muhammad_Reza_Nur_Fauzi.pdf';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
         break;
 
       case 'neofetch':
@@ -214,12 +227,12 @@ PASSION     : System Analysis, BPMN 2.0 Camunda, ANTLR v4 Parser, & AI Engineeri
     }
   };
 
-  const quickChips = ['help', 'bio', 'skills', 'exp', 'bpmn', 'neofetch', 'contact', 'clear'];
+  const quickChips = ['help', 'bio', 'skills', 'exp', 'bpmn', 'cv', 'neofetch', 'contact', 'clear'];
 
   return (
     <section id="terminal" className="py-24 bg-[#050507] relative border-b-2 border-[#1c1c24]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header with clear non-overlapping Spade Emblem on right */}
+        {/* Section Header */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-8 gap-6">
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 text-xs font-mono-code text-[#ccff00] uppercase tracking-widest mb-2 bg-[#121218] px-3 py-1 border border-zinc-800">
@@ -326,7 +339,7 @@ PASSION     : System Analysis, BPMN 2.0 Camunda, ANTLR v4 Parser, & AI Engineeri
               disabled={isTyping}
               onChange={(e) => setInputVal(e.target.value)}
               onKeyDown={handleKeyDown}
-              placeholder={isTyping ? "Streaming computation output..." : "type a command (e.g. bio, skills, exp, bpmn)..."}
+              placeholder={isTyping ? "Streaming computation output..." : "type a command (e.g. bio, skills, exp, bpmn, cv)..."}
               className="flex-1 bg-transparent text-white focus:outline-none text-xs sm:text-sm placeholder:text-zinc-600 font-mono-code disabled:opacity-60"
             />
             <button
