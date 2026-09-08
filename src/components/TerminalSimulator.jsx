@@ -8,10 +8,17 @@ export default function TerminalSimulator() {
     { type: 'system', text: 'REZA_OS v2.4 (x86_64-hermes-enterprise)' },
     { type: 'system', text: 'Type "help" to view available commands or click one of the quick chips below to inspect system state.' }
   ]);
-  const endRef = useRef(null);
+  const scrollContainerRef = useRef(null);
+  const isInitialMount = useRef(true);
 
   useEffect(() => {
-    endRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollTop = scrollContainerRef.current.scrollHeight;
+    }
   }, [history]);
 
   const handleCommand = (cmdStr) => {
@@ -167,7 +174,7 @@ WHATSAPP : ${personalInfo.waLink}`
           </div>
 
           {/* Terminal Buffer */}
-          <div className="p-4 sm:p-6 font-mono-code text-xs sm:text-sm h-80 overflow-y-auto space-y-3 selection:bg-[#ccff00] selection:text-black">
+          <div ref={scrollContainerRef} className="p-4 sm:p-6 font-mono-code text-xs sm:text-sm h-80 overflow-y-auto space-y-3 selection:bg-[#ccff00] selection:text-black">
             {history.map((item, i) => (
               <div key={i}>
                 {item.type === 'system' && (
@@ -186,7 +193,6 @@ WHATSAPP : ${personalInfo.waLink}`
                 )}
               </div>
             ))}
-            <div ref={endRef} />
           </div>
 
           {/* Input Line */}
