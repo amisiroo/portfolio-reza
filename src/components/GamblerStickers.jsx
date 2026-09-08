@@ -50,7 +50,7 @@ export function SpadeCardSticker({ className = '', size = 84, rotation = '-7deg'
 }
 
 // 2. Gritty Isometric Dice Pair Sticker (Bos's Favorite!)
-export function DicePairSticker({ className = '', size = 66, rotation = '12deg' }) {
+export function DicePairSticker({ className = '', size = 64, rotation = '12deg' }) {
   return (
     <div
       style={{ transform: `rotate(${rotation})` }}
@@ -116,126 +116,50 @@ export function DicePairSticker({ className = '', size = 66, rotation = '12deg' 
   );
 }
 
-// 3. Spilled Coffee Cup Sticker (Gelas Kopi Tumpah Santai)
-export function SpilledCoffeeSticker({ className = '', size = 68, rotation = '-12deg' }) {
+// 3. Spilled Coffee Cup Sticker (Generated with Imagen 3 & Clean Cutout)
+export function SpilledCoffeeSticker({ className = '', size = 76, rotation = '-10deg' }) {
   return (
     <div
       style={{ transform: `rotate(${rotation})` }}
       className={`inline-block select-none transition-transform duration-200 hover:rotate-0 hover:scale-110 cursor-default drop-shadow-[5px_5px_0px_#000000] ${className}`}
       title="Gelas Kopi Tumpah"
     >
-      <svg
-        width={size * 1.25}
-        height={size}
-        viewBox="0 0 120 96"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        className="overflow-visible"
-      >
-        {/* Thick White Die-Cut Base */}
-        <path
-          d="M18 16 L65 24 L52 76 L12 68 Z M62 28 C74 30 84 40 80 54 C76 68 64 74 52 72 M60 70 C80 66 112 72 114 82 C116 92 84 94 48 90 C20 86 6 82 8 74 C10 68 30 68 60 70 Z"
-          fill="#ffffff"
-          stroke="#ffffff"
-          strokeWidth="6"
-          strokeLinejoin="round"
-        />
-
-        {/* Spilled Puddle (Neon Green & Black Contrast) */}
-        <path
-          d="M12 76 C28 72 65 72 90 76 C110 80 108 88 80 88 C45 88 15 84 12 76 Z"
-          fill="#ccff00"
-        />
-
-        {/* Tilted Cup Body */}
-        <path
-          d="M20 20 L62 27 L50 72 L16 64 Z"
-          fill="#0c0c14"
-          stroke="#1f1f2e"
-          strokeWidth="2"
-        />
-
-        {/* Cup Rim */}
-        <ellipse cx="41" cy="23.5" rx="21" ry="6" fill="#181826" stroke="#ccff00" strokeWidth="2" />
-        
-        {/* Coffee Handle */}
-        <path
-          d="M58 32 C68 34 76 42 73 52 C70 62 60 66 50 65"
-          fill="none"
-          stroke="#ffffff"
-          strokeWidth="4"
-          strokeLinecap="round"
-        />
-
-        {/* Drip / Steam Line */}
-        <path d="M40 14 C40 8 44 6 42 2" stroke="#ccff00" strokeWidth="2" strokeLinecap="round" strokeDasharray="2 2" />
-      </svg>
+      <img
+        src="/stickers/spilled_coffee_clean.png"
+        alt="Spilled Coffee Sticker"
+        style={{ width: size, height: 'auto' }}
+        className="filter drop-shadow-[0_0_2px_#ffffff] drop-shadow-[0_0_4px_#ffffff]"
+        draggable="false"
+      />
     </div>
   );
 }
 
-// 4. Distressed Plastic Chair Sticker (Kursi Plastik Ikonik)
-export function PlasticChairSticker({ className = '', size = 65, rotation = '8deg' }) {
+// 4. Distressed Plastic Chair Sticker (Generated with Imagen 3 & Clean Cutout)
+export function PlasticChairSticker({ className = '', size = 72, rotation = '8deg' }) {
   return (
     <div
       style={{ transform: `rotate(${rotation})` }}
       className={`inline-block select-none transition-transform duration-200 hover:rotate-0 hover:scale-110 cursor-default drop-shadow-[5px_5px_0px_#000000] ${className}`}
       title="Kursi Plastik Santai"
     >
-      <svg
-        width={size}
-        height={size * 1.15}
-        viewBox="0 0 90 104"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        className="overflow-visible"
-      >
-        {/* Thick White Die-Cut Silhouette */}
-        <path
-          d="M20 10 L70 10 L68 55 L78 95 L68 95 L60 60 L30 60 L22 95 L12 95 L22 55 Z"
-          fill="#ffffff"
-          stroke="#ffffff"
-          strokeWidth="6"
-          strokeLinejoin="round"
-        />
-
-        {/* Chair Backrest */}
-        <path
-          d="M24 14 L66 14 C68 14 69 16 68 19 L64 50 L26 50 L22 19 C21 16 22 14 24 14 Z"
-          fill="#0c0c14"
-          stroke="#ccff00"
-          strokeWidth="2.5"
-        />
-
-        {/* Backrest Vents (3 slots) */}
-        <line x1="36" y1="20" x2="34" y2="44" stroke="#ccff00" strokeWidth="2.5" strokeLinecap="round" />
-        <line x1="45" y1="20" x2="45" y2="44" stroke="#ffffff" strokeWidth="2.5" strokeLinecap="round" />
-        <line x1="54" y1="20" x2="56" y2="44" stroke="#ccff00" strokeWidth="2.5" strokeLinecap="round" />
-
-        {/* Seat */}
-        <path
-          d="M20 50 L70 50 L64 62 L26 62 Z"
-          fill="#161624"
-          stroke="#ffffff"
-          strokeWidth="2"
-        />
-
-        {/* Chair Legs */}
-        <line x1="28" y1="62" x2="16" y2="95" stroke="#ccff00" strokeWidth="4" strokeLinecap="square" />
-        <line x1="62" y1="62" x2="74" y2="95" stroke="#ccff00" strokeWidth="4" strokeLinecap="square" />
-        <line x1="36" y1="62" x2="30" y2="90" stroke="#1f1f2e" strokeWidth="3" />
-        <line x1="54" y1="62" x2="60" y2="90" stroke="#1f1f2e" strokeWidth="3" />
-      </svg>
+      <img
+        src="/stickers/plastic_chair_clean.png"
+        alt="Plastic Chair Sticker"
+        style={{ width: size, height: 'auto' }}
+        className="filter drop-shadow-[0_0_2px_#ffffff] drop-shadow-[0_0_4px_#ffffff]"
+        draggable="false"
+      />
     </div>
   );
 }
 
 // 5. Standalone Cyber Spade Emblem Sticker (Minimalist Spade)
-export function SpadeEmblemSticker({ className = '', size = 52, rotation = '-10deg' }) {
+export function SpadeEmblemSticker({ className = '', size = 42, rotation = '-8deg' }) {
   return (
     <div
       style={{ transform: `rotate(${rotation})` }}
-      className={`inline-block select-none transition-transform duration-200 hover:rotate-0 hover:scale-110 cursor-default drop-shadow-[5px_5px_0px_#000000] ${className}`}
+      className={`inline-block select-none transition-transform duration-200 hover:rotate-0 hover:scale-110 cursor-default drop-shadow-[4px_4px_0px_#000000] ${className}`}
       title="Spade Icon"
     >
       <svg
@@ -246,7 +170,6 @@ export function SpadeEmblemSticker({ className = '', size = 52, rotation = '-10d
         xmlns="http://www.w3.org/2000/svg"
         className="overflow-visible"
       >
-        {/* Thick White Outer Stroke */}
         <path
           d="M40 8 C40 8 10 38 10 52 C10 65 22 72 34 72 C39 72 40 68 40 68 C40 68 41 72 46 72 C58 72 70 65 70 52 C70 38 40 8 40 8 Z M36 71 L32 78 L48 78 L44 71 Z"
           fill="#ffffff"
@@ -254,7 +177,6 @@ export function SpadeEmblemSticker({ className = '', size = 52, rotation = '-10d
           strokeWidth="6"
           strokeLinejoin="round"
         />
-        {/* Inner Dark & Neon Core */}
         <path
           d="M40 14 C40 14 16 40 16 50 C16 60 25 66 35 66 C38 66 40 63 40 63 C40 63 42 66 45 66 C55 66 64 60 64 50 C64 40 40 14 40 14 Z M37 65 L35 74 L45 74 L43 65 Z"
           fill="#0a0a10"

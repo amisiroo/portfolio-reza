@@ -28,8 +28,13 @@ export default function Navbar() {
         : 'bg-[#050507]/80 backdrop-blur-sm border-b border-zinc-900 py-3.5'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        {/* Brand with compact Spade & Dice stickers */}
+        {/* Far Left: Spade Sticker + Brand Logo */}
         <div className="flex items-center gap-3">
+          {/* Ujung Kiri: Spade Emblem Sticker */}
+          <div className="hidden sm:block">
+            <SpadeEmblemSticker size={28} rotation="-10deg" />
+          </div>
+
           <a href="#profile" className="flex items-center gap-2.5 group">
             <div className="w-7 h-7 bg-black border border-[#ccff00] flex items-center justify-center font-mono-code font-black text-sm text-[#ccff00] shadow-[2px_2px_0px_#ccff00] group-hover:translate-x-[1px] group-hover:translate-y-[1px] transition-transform">
               R
@@ -39,15 +44,9 @@ export default function Navbar() {
               <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#ccff00] animate-pulse"></span>
             </div>
           </a>
-
-          {/* Compact Navbar Stickers (Spade + Dice) */}
-          <div className="hidden sm:flex items-center gap-1.5 pl-2 border-l border-zinc-800">
-            <SpadeEmblemSticker size={26} rotation="-8deg" />
-            <DicePairSticker size={24} rotation="12deg" />
-          </div>
         </div>
 
-        {/* Compact Navigation */}
+        {/* Center: Compact Navigation */}
         <nav className="hidden md:flex items-center gap-5 font-mono-code text-xs">
           {navLinks.map((link) => (
             <a
@@ -60,7 +59,7 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* Action Button & Accurate Phone Number */}
+        {/* Far Right: WhatsApp Link, DISPATCH CTA + Dice Sticker */}
         <div className="hidden sm:flex items-center gap-3">
           <a
             href={personalInfo.waLink}
@@ -70,6 +69,7 @@ export default function Navbar() {
           >
             WA: 08988090008
           </a>
+
           <a
             href="#contact"
             className="flex items-center gap-1.5 text-xs font-mono-code font-bold bg-[#ccff00] text-black border border-white px-3.5 py-1.5 shadow-[2px_2px_0px_#000000] hover:shadow-[3px_3px_0px_#ffffff] hover:translate-y-[-1px] transition-all"
@@ -77,6 +77,11 @@ export default function Navbar() {
             <span>DISPATCH</span>
             <Send className="w-3 h-3 stroke-[2.5]" />
           </a>
+
+          {/* Ujung Kanan: Dice Sticker */}
+          <div className="hidden sm:block pl-1">
+            <DicePairSticker size={26} rotation="12deg" />
+          </div>
         </div>
 
         {/* Mobile toggle */}
