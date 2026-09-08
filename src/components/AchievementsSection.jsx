@@ -1,14 +1,15 @@
 import React from 'react';
 import { achievements } from '../data/portfolioData';
 import { Award, Trophy, GraduationCap, CheckCircle2, Shield, ExternalLink } from 'lucide-react';
+import { LuckySevenSticker, PokerChipSticker } from './GamblerStickers';
 
 export default function AchievementsSection() {
   return (
     <section id="achievements" className="py-24 bg-[#07070b] border-t-2 border-b-2 border-[#1c1c24] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
+        {/* Header with balanced side stickers in open space */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-12 gap-6">
-          <div>
+          <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 text-xs font-mono-code text-[#ccff00] uppercase tracking-widest mb-2 bg-[#121218] px-3 py-1 border border-zinc-800">
               <Award className="w-3.5 h-3.5" />
               <span>//06_CREDENTIALS_AND_AWARDS</span>
@@ -16,9 +17,14 @@ export default function AchievementsSection() {
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white uppercase font-display">
               AWARDS & ACADEMIC CREDENTIALS
             </h2>
-            <p className="text-xs sm:text-sm font-mono-code text-zinc-400 max-w-2xl mt-2">
+            <p className="text-xs sm:text-sm font-mono-code text-zinc-400 mt-2">
               Pengakuan kompetisi perancangan sistem tingkat nasional, lisensi profesional, dan rekam jejak akademik formal ITB.
             </p>
+          </div>
+
+          <div className="hidden lg:flex items-center gap-4 shrink-0 pb-1">
+            <PokerChipSticker size={52} rotation="-8deg" />
+            <LuckySevenSticker size={62} rotation="8deg" />
           </div>
         </div>
 

@@ -146,8 +146,7 @@ PASSION     : System Analysis, BPMN 2.0 Camunda, ANTLR v4 Parser, & AI Engineeri
                       Active: PT. Agansa Primatama (Divisi OSM)
                       Kernel: 6.8.0-spring-boot-camunda-antlr4
                       Shell: zsh 5.9 (system-analyst-interactive)
-                      Stack: Java 17, Spring Boot, BPMN, ANTLR v4, Kafka, Salesforce, PHP
-                      Vibe: santai tapi eksekusi beres. anti-slop.`;
+                      Stack: Java 17, Spring Boot, BPMN, ANTLR v4, Kafka, Salesforce, PHP`;
         break;
 
       case 'contact':
@@ -224,8 +223,8 @@ PASSION     : System Analysis, BPMN 2.0 Camunda, ANTLR v4 Parser, & AI Engineeri
     <section id="terminal" className="py-24 bg-[#050507] relative border-b-2 border-[#1c1c24]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-8 gap-4 relative">
-          <div>
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-8 gap-6">
+          <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 text-xs font-mono-code text-[#ccff00] uppercase tracking-widest mb-2 bg-[#121218] px-3 py-1 border border-zinc-800">
               <TermIcon className="w-3.5 h-3.5" />
               <span>//05_CLI_SHELL_SIMULATOR</span>
@@ -233,12 +232,12 @@ PASSION     : System Analysis, BPMN 2.0 Camunda, ANTLR v4 Parser, & AI Engineeri
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white uppercase font-display">
               INTERACTIVE REZA.OS TERMINAL
             </h2>
+            <p className="text-xs sm:text-sm font-mono-code text-zinc-400 mt-2">
+              Interface shell developer dengan simulasi komputasi karakter per karakter (*typewriter stream*), autocompletion [Tab], dan history [↑/↓].
+            </p>
           </div>
-          <p className="text-xs sm:text-sm font-mono-code text-zinc-400 max-w-md">
-            Interface shell developer dengan simulasi komputasi karakter per karakter (*typewriter stream*), autocompletion [Tab], dan history [↑/↓].
-          </p>
-          <div className="hidden lg:block absolute -top-4 right-0">
-            <EightBallSticker size={54} rotation="-14deg" />
+          <div className="hidden lg:block shrink-0 pb-1">
+            <EightBallSticker size={58} rotation="-14deg" />
           </div>
         </div>
 
