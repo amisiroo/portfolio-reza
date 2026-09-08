@@ -1,224 +1,148 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Workflow, Play, RefreshCw, CheckCircle2, ArrowRight, ShieldCheck, Database, Layers, GitFork, Terminal, Code2, Server, Cpu, Box, FileJson } from 'lucide-react';
+import { Workflow, Play, RefreshCw, CheckCircle2, ArrowRight, ShieldCheck, Database, Layers, GitFork, Terminal, Code2, Server, Cpu, Box, FileJson, Check } from 'lucide-react';
 
 export default function ArchitectureVisualizer() {
   const [activeTab, setActiveTab] = useState('los');
   const [simStep, setSimStep] = useState(0);
   const [selectedStep, setSelectedStep] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
+  const [isCompleted, setIsCompleted] = useState(false);
   const [logs, setLogs] = useState([]);
   const logBoxRef = useRef(null);
   const isInitialLogMount = useRef(true);
 
   const architectures = {
     los: {
-      title: 'Loan Origination System (LOS) Phase 2 — Camunda BPMN 2.0 Engine',
-      badge: 'ENTERPRISE FINTECH ARCHITECTURE',
-      scope: 'PT Pegadaian Digital Lending Ecosystem',
-      description: 'Orkestrasi alur persetujuan kredit mikro-servis enterprise melalui Camunda BPMN engine, inter-service Spring Cloud OpenFeign, dan evaluasi matriks DMN.',
+      title: 'Loan Origination System (LOS) Phase 2 — Workflow Orchestration',
+      company: 'PT Padepokan Tujuh Sembilan',
+      badge: 'ENTERPRISE BANKING WORKFLOW',
+      period: 'Dec 2025 – Jun 2026',
+      description: 'Analisis sistem eksisting LOS Phase 2, pemodelan 30+ diagram BPMN Camunda, review struktur controller & OpenFeign Java Spring Boot, serta analisis persistensi database.',
       metrics: {
-        throughput: '1,200 req/min',
-        latency: '85ms avg',
-        reliability: '99.98%'
+        coverage: '30+ BPMN Diagrams',
+        stack: 'Java 17 / Spring Boot',
+        focus: 'Feign & Gap Analysis'
       },
       steps: [
         {
-          name: '1. Ingestion & DTO Schema Validation',
-          role: 'Spring Boot API Gateway / Controller',
-          protocol: 'HTTP POST /api/v2/los/applications',
-          desc: 'Menerima payload pengajuan pemohon, verifikasi cryptographic signature, validasi skema DTO, dan inisiasi business process instance di Camunda Engine.',
+          name: '1. Ingestion & Controller Structure Review',
+          role: 'Spring Boot REST Controller / DTO',
+          protocol: 'HTTP POST /api/v2/los/financing/applications',
+          desc: 'Menganalisis struktur controller dan payload pengajuan pembiayaan, validasi skema DTO, dan inisiasi business rules awal pada sistem LOS Phase 2.',
           payload: {
-            applicationId: 'LOS-2026-9042',
-            applicantId: 'CUST-88491',
-            loanAmount: 150000000,
-            tenorMonths: 36,
-            productType: 'PINJAMAN_USAHA_MIKRO',
-            status: 'INITIALIZED'
+            applicationId: 'LOS-P2-2026-084',
+            financingType: 'PEMBIAYAAN_MODAL_KERJA',
+            loanAmount: 250000000,
+            tenorMonths: 24,
+            status: 'INITIALIZED_ANALYSIS'
           },
-          techContract: '@PostMapping("/applications")\npublic ResponseEntity<LosResponse> createApplication(@Valid @RequestBody LosApplicationDto dto) {\n  ProcessInstance instance = runtimeService.startProcessInstanceByKey("Process_LOS_Phase2", dto.toVariables());\n  return ResponseEntity.accepted().body(new LosResponse(instance.getId(), "PROCESS_STARTED"));\n}'
+          techContract: '@RestController\n@RequestMapping("/api/v2/los/financing")\npublic class LosFinancingController {\n  @PostMapping("/applications")\n  public ResponseEntity<ApiResponse> ingestApplication(@Valid @RequestBody FinancingDto dto) {\n    log.info("Ingesting LOS Phase 2 Application: {}", dto.getApplicationId());\n    return ResponseEntity.ok(losService.initiateFinancingWorkflow(dto));\n  }\n}'
         },
         {
-          name: '2. KYC & SLIK Credit Scoring Ingestion',
-          role: 'Camunda Service Task (OpenFeign Client)',
-          protocol: 'FeignClient -> SLIK_OJK_SERVICE',
-          desc: 'Camunda Service Task memanggil microservice credit rating OJK SLIK dan internal blacklist database secara asynchronous via OpenFeign declarative client.',
+          name: '2. Feign Client Inter-Service Communication',
+          role: 'Spring Cloud OpenFeign Integration',
+          protocol: 'FeignClient -> SLIK_OJK & Credit Services',
+          desc: 'Mereview integrasi antarmikroservis Java Spring Boot via OpenFeign declarative client untuk memetakan alur komunikasi data dan dependensi teknis.',
           payload: {
-            applicationId: 'LOS-2026-9042',
-            slikScore: 'KOL-1 (LANCAR)',
-            pefindoScore: 785,
-            blacklisted: false,
-            estimatedMonthlyIncome: 35000000
+            feignClient: 'CreditScoringClient',
+            endpoint: '/v1/internal/credit-evaluation',
+            slikStatus: 'KOL_1_LANCAR',
+            serviceDependency: 'UPSTREAM_FINANCING_SERVICE'
           },
-          techContract: '@FeignClient(name = "credit-scoring-service", url = "${enterprise.services.scoring.url}")\npublic interface CreditScoringClient {\n  @GetMapping("/v1/slik-check/{nik}")\n  SlikVerificationResult verifyCreditBureau(@PathVariable("nik") String nik);\n}'
+          techContract: '@FeignClient(name = "credit-scoring-service", url = "${app.services.credit-scoring.url}")\npublic interface CreditScoringFeignClient {\n  @GetMapping("/v1/internal/credit-evaluation/{applicantId}")\n  CreditEvaluationResult fetchCreditBureauData(@PathVariable("applicantId") String id);\n}'
         },
         {
-          name: '3. Automated DMN Underwriting Engine',
-          role: 'Camunda DMN (Decision Table Engine)',
-          protocol: 'DMN Rule Evaluation Engine',
-          desc: 'Evaluasi tabel keputusan DMN: Kalkulasi Debt Service Ratio (DSR), batas plafon maksimum, dan penetapan suku bunga risiko otomatis.',
+          name: '3. Camunda Modeler BPMN 2.0 Orchestration',
+          role: '30+ BPMN Workflow Diagrams',
+          protocol: 'BPMN 2.0 Process Orchestration',
+          desc: 'Merancang dan memodelkan 30+ diagram alur kerja menggunakan Camunda Modeler untuk menerjemahkan proses bisnis eksisting ke dalam alur orkestrasi yang terstandarisasi.',
           payload: {
-            applicationId: 'LOS-2026-9042',
-            calculatedDSR: '28.4% (Max allowed 40%)',
-            riskCategory: 'LOW_RISK_GRADE_A',
-            underwritingDecision: 'AUTOMATIC_PRE_APPROVED',
-            recommendedInterestRate: '0.75% / month'
+            processDefinitionKey: 'Process_LOS_Phase2_Orchestration',
+            bpmnDiagramCount: '30+ Modeled Workflows',
+            engine: 'Camunda Modeler 5.x',
+            executionState: 'BPMN_ORCHESTRATION_VALIDATED'
           },
-          techContract: '<!-- Camunda DMN XML Rule Fragment -->\n<decisionTable id="Decision_UnderwritingMatrix" hitPolicy="FIRST">\n  <rule id="Rule_GradeA">\n    <inputEntry> <![CDATA[ dsrScore < 30 && slikGrade == "KOL-1" ]]> </inputEntry>\n    <outputEntry> "PRE_APPROVED_TIER_1" </outputEntry>\n  </rule>\n</decisionTable>'
+          techContract: '<!-- Camunda BPMN 2.0 Process Fragment -->\n<bpmn:process id="Process_LOS_Phase2_Orchestration" isExecutable="true">\n  <bpmn:serviceTask id="Task_FeignScore" name="Fetch Credit Score" camunda:delegateExpression="${feignScoreDelegate}" />\n  <bpmn:sequenceFlow id="Flow_1" sourceRef="Task_FeignScore" targetRef="Gateway_Approval" />\n</bpmn:process>'
         },
         {
-          name: '4. Multi-Tier Approval Gateway & Signature',
-          role: 'BPMN User Task & Exclusive Gateway',
-          protocol: 'BPMN Dynamic Task Routing',
-          desc: 'Routing dinamis: Jika plafon > 100 Juta, alur otomatis membuka User Task review Branch Manager, lalu men-trigger modul Tanda Tangan Digital (Privy/Teknologi ID).',
+          name: '4. AS-IS / TO-BE Gap Analysis & Mitigation',
+          role: 'System Requirements & Impact Analysis',
+          protocol: 'Gap Matrix & Migration Plan',
+          desc: 'Melakukan gap analysis komprehensif antara implementasi eksisting dan rencana peningkatan LOS Phase 2 guna mengidentifikasi area terdampak dan risiko migrasi.',
           payload: {
-            applicationId: 'LOS-2026-9042',
-            assignedApprover: 'Branch_Manager_Bandung_01',
-            approvalStatus: 'APPROVED_BY_BRANCH_MANAGER',
-            digitalSignatureStatus: 'SIGNED_VERIFIED_SHA256',
-            timestamp: '2026-09-08T10:45:00Z'
+            gapAnalysisResult: '3 Critical Workflows Refactored',
+            impactedMicroservices: ['los-core-service', 'approval-router-service'],
+            migrationRisk: 'LOW_MITIGATED',
+            stakeholderSignOff: 'ALIGNED_WITH_BUSINESS'
           },
-          techContract: '// Camunda Java Delegate Execution\npublic class ApprovalRoutingDelegate implements JavaDelegate {\n  @Override\n  public void execute(DelegateExecution execution) {\n    Long amount = (Long) execution.getVariable("loanAmount");\n    execution.setVariable("requiresBranchManagerReview", amount > 100000000L);\n  }\n}'
+          techContract: '// Gap Analysis Matrix Spec\npublic class GapAnalysisReport {\n  private String workflowId = "LOS_P2_APPROVAL_GATE";\n  private String asIsState = "Manual multi-hop authorization";\n  private String toBeState = "Automated Camunda dynamic rule-based routing";\n}'
         },
         {
-          name: '5. Core Banking Settlement & Disbursement',
-          role: 'Transactional Outbox & Core Banking Client',
-          protocol: 'Kafka Event / REST API Core Banking',
-          desc: 'Pencairan dana kredit langsung ke rekening nasabah via Core Banking API dengan pola Transactional Outbox untuk menjamin konsistensi ACID 100%.',
+          name: '5. Database Persistence & Repository Pattern Audit',
+          role: 'Repository Layer & Query Behavior',
+          protocol: 'SQL Server / PostgreSQL Persistence',
+          desc: 'Mendokumentasikan pola akses basis data, penggunaan repository pattern, dan analisis query SQL untuk menjamin konsistensi logika persistensi sistem.',
           payload: {
-            applicationId: 'LOS-2026-9042',
-            disbursementStatus: 'SUCCESS_FUNDS_DISBURSED',
-            transferReference: 'TRX-CORE-99482103',
-            settledAmount: 150000000,
-            accountDestination: '5350-0089-****-01'
+            databaseEngine: 'PostgreSQL / SQL Server',
+            repositoryPattern: 'Spring Data JPA & Custom Queries',
+            persistenceStatus: 'AUDITED_AND_DOCUMENTED',
+            queryLatency: '< 15ms'
           },
-          techContract: '@Transactional\npublic void completeDisbursement(String applicationId) {\n  OutboxEvent event = new OutboxEvent("LOS_DISBURSED", applicationId, payload);\n  outboxRepository.save(event);\n  coreBankingClient.executeDisburse(applicationId);\n}'
-        }
-      ]
-    },
-    agentic: {
-      title: 'Autonomous Multi-Agent AI Workflow Architecture',
-      badge: 'NEXT-GEN AI ARCHITECTURE',
-      scope: 'Multi-Agent Sandbox Execution & Linter Gates',
-      description: 'Sistem orkestrasi agen otonom untuk dekomposisi task, tool-calling, inspeksi kode, dan validasi output deterministik.',
-      metrics: {
-        throughput: 'Parallel 10 Agents',
-        latency: 'Sub-second tool calls',
-        reliability: '100% Deterministic QA'
-      },
-      steps: [
-        {
-          name: '1. Strategic Task Decomposition',
-          role: 'Chief Planner Agent (LLM Core)',
-          protocol: 'Structured JSON Prompt Decomposition',
-          desc: 'Menganalisis prompt kompleks, memetakan dependensi, dan memecah tujuan strategis menjadi subtask diskrit dengan target terukur.',
-          payload: {
-            taskId: 'TASK-AI-771',
-            intent: 'REFACTOR_MICROSERVICE_SECURITY',
-            subtasksCount: 4,
-            isolationRequired: true
-          },
-          techContract: 'class PlanSchema(BaseModel):\n    objective: str\n    subtasks: List[SubtaskPlan]\n    qa_criteria: Dict[str, Any]'
-        },
-        {
-          name: '2. Parallel Subagent Delegation',
-          role: 'Subagent Dispatcher Runtime',
-          protocol: 'Isolated Process Spawning',
-          desc: 'Menjalankan subproses independen di environment terisolasi secara paralel (code analysis, DB query check, API unit testing).',
-          payload: {
-            activeSubagents: ['agent_code_analyzer', 'agent_sec_audit', 'agent_linter'],
-            concurrencyLimit: 10,
-            status: 'DISPATCHED'
-          },
-          techContract: 'def spawn_subagents(plan: PlanSchema):\n    results = parallel_exec([agent.run(task) for task in plan.subtasks])\n    return results'
-        },
-        {
-          name: '3. Native Tool Execution & Sandboxing',
-          role: 'Tooling Engine (Terminal/AST/API)',
-          protocol: 'POSIX Bash / Node runtime',
-          desc: 'Eksekusi real tooling: static code analysis, AST transformations, build verification, dan Docker sandboxed tests.',
-          payload: {
-            command: 'npm run build && npm run test',
-            exitCode: 0,
-            testResults: '34 passed, 0 failed'
-          },
-          techContract: 'const execResult = await terminal.run("npm test -- --coverage");\nassert(execResult.exitCode === 0);'
-        },
-        {
-          name: '4. Deterministic QA Gate & Schema Validation',
-          role: 'Evaluator / Linter Gate',
-          protocol: 'Pydantic / Vision QA Guardrail',
-          desc: 'Memvalidasi output agen terhadap skema strict, linter rules, dan verifikasi visual untuk mencegah halusinasi AI.',
-          payload: {
-            schemaValid: true,
-            linterErrors: 0,
-            qaVerdict: 'PASSED_QUALITY_GATE'
-          },
-          techContract: 'def enforce_qa_gate(artifact: Artifact) -> bool:\n    validate_pydantic_schema(artifact)\n    assert not artifact.contains_hallucinations()'
-        },
-        {
-          name: '5. Synchronized Delivery & Persistent Memory',
-          role: 'Memory Engine & Git Dispatcher',
-          protocol: 'Git Commit / Holographic Memory Store',
-          desc: 'Commit artefak tervalidasi ke repository GitHub dan sinkronisasi fakta baru ke memory persistent.',
-          payload: {
-            gitCommit: 'feat: updated microservice security filter',
-            branch: 'main',
-            memoryUpdated: true
-          },
-          techContract: 'await git.commitAndPush({ message: "feat: verified release" });\nawait holographicMemory.updateFacts(newLessons);'
+          techContract: '@Repository\npublic interface LosApplicationRepository extends JpaRepository<LosApplication, String> {\n  @Query("SELECT a FROM LosApplication a WHERE a.status = :status AND a.createdAt >= :date")\n  List<LosApplication> findPendingApplications(@Param("status") String status, @Param("date") LocalDateTime date);\n}'
         }
       ]
     },
     omnichannel: {
-      title: 'Omnichannel Retail & Multi-Store ERP Integration',
+      title: 'Omnichannel E-Commerce & ERP Integration Pipeline',
+      company: 'PT Foom Lab Global',
       badge: 'COMMERCE INTEGRATION',
-      scope: 'Multi-Store Catalog, Inventory & Logistics Hub',
-      description: 'Sinkronisasi stok multi-gudang real-time, rekonsiliasi invoice logistik, dan webhook otomatisasi pesanan.',
+      period: 'Jul 2022 – Oct 2022',
+      description: 'Pengembangan fitur aplikasi web PHP Laravel, integrasi marketplace e-commerce, sistem ERP, dan API ekspedisi logistik untuk otomatisasi order & inventaris.',
       metrics: {
-        throughput: '5,000 orders/hour',
-        latency: '< 150ms sync',
-        reliability: 'Zero overselling'
+        coverage: 'Multi-Channel Sync',
+        stack: 'PHP Laravel / MySQL',
+        focus: 'ERP & Logistics API'
       },
       steps: [
         {
-          name: '1. Webhook Ingestion & Order Normalization',
-          role: 'Omnichannel Gateway',
-          protocol: 'HTTPS Webhook Payload Ingestion',
-          desc: 'Menerima order event dari berbagai marketplace, normalisasi format order menjadi schema kanonikal terpadu.',
-          payload: { channel: 'SHOPEE_ID', orderId: 'ORD-99120', sku: 'SKU-BRUTALIST-01', qty: 2 },
-          techContract: 'POST /api/webhooks/orders\nContent-Type: application/json\nHeaders: X-Signature-SHA256'
+          name: '1. Multi-Platform Webhook Ingestion',
+          role: 'PHP Laravel Webhook Gateway',
+          protocol: 'HTTPS POST /api/webhooks/marketplace',
+          desc: 'Menerima order webhook event dari channel e-commerce, verifikasi signature, dan parsing payload pesanan ke format seragam.',
+          payload: { channel: 'SHOPEE / TOKOPEDIA / WEB', orderId: 'ORD-OMNI-4491', totalItems: 3, status: 'ORDER_CAPTURED' },
+          techContract: 'Route::post("/webhooks/marketplace", [OmnichannelOrderController::class, "handleWebhook"]);\npublic function handleWebhook(Request $request) {\n  $order = $this->orderService->normalizePayload($request->all());\n  return response()->json(["status" => "CAPTURED"]);\n}'
         },
         {
-          name: '2. Multi-Warehouse Inventory Reservation',
-          role: 'Distributed Stock Manager',
-          protocol: 'Redis Atomic Distributed Lock',
-          desc: 'Mengunci dan mereservasi kuota stok gudang terdekat secara atomic untuk mencegah overselling.',
-          payload: { warehouseId: 'WH-BDG-01', reservedQty: 2, remainingStock: 48 },
-          techContract: 'redis.set("lock:sku:01", orderId, "NX", "EX", 10);\nupdateInventoryStock(warehouseId, sku, -2);'
+          name: '2. Multi-Store Inventory Synchronization',
+          role: 'Inventory Management Logic',
+          protocol: 'MySQL Transactional Lock',
+          desc: 'Mengalokasikan dan mengupdate kuota stok inventaris multi-store secara otomatis untuk mencegah inkonsistensi dan kesalahan manual.',
+          payload: { sku: 'PROD-SKU-99', reservedQty: 3, stockReconciled: true, manualHandlingSaved: '100%' },
+          techContract: 'DB::transaction(function () use ($sku, $qty) {\n  $stock = Inventory::where("sku", $sku)->lockForUpdate()->first();\n  $stock->decrement("available_stock", $qty);\n});'
         },
         {
-          name: '3. ERP & Accounting Ledger Reconciliation',
-          role: 'Transactional Outbox Service',
-          protocol: 'PostgreSQL Relational DB Ledger',
-          desc: 'Pencatatan jurnal piutang, PPN, dan invoice logistik ke database ERP secara konsisten.',
-          payload: { invoiceNo: 'INV-2026-8819', totalTax: 11000, status: 'RECONCILED' },
-          techContract: 'INSERT INTO erp_ledger (invoice_no, tax, amount) VALUES (?, ?, ?);'
+          name: '3. Corporate ERP System Integration',
+          role: 'ERP Data Sync Service',
+          protocol: 'REST API Client -> Corporate ERP',
+          desc: 'Sinkronisasi data pesanan, pencatatan invoice, dan jurnal persediaan langsung ke sistem ERP perusahaan.',
+          payload: { erpSyncStatus: 'SYNCED_WITH_ERP', ledgerCode: 'SALES_OMNI_2022', invoiceGenerated: true },
+          techContract: '$erpResponse = Http::withHeaders(["Authorization" => "Bearer " . $token])\n  ->post(config("erp.endpoint") . "/orders/sync", $orderData);'
         },
         {
-          name: '4. Logistics Dispatch & Airwaybill Generation',
-          role: '3PL Logistics API Client',
-          protocol: 'REST Client -> Logistics Partner API',
-          desc: 'Men-generate nomor resi otomatis (AWB) dan mengirim data pick-up ke kurir ekspedisi.',
-          payload: { courier: 'JNE_REG', awb: 'JNE-8840192841', pickupScheduled: '14:00 WIB' },
-          techContract: 'await logisticsClient.createShipment({ orderId, courier: "JNE" });'
+          name: '4. 3PL Logistics API & Airwaybill Dispatch',
+          role: 'Logistics Partner Integration',
+          protocol: 'REST Client -> 3PL Couriers',
+          desc: 'Mengirim data paket ke API ekspedisi logistik, men-generate nomor resi otomatis (Airwaybill), dan menjadwalkan penjemputan barang.',
+          payload: { courierPartner: 'JNE / SiCepat', trackingNumber: 'AWB-8840192841', status: 'READY_FOR_PICKUP' },
+          techContract: '$shipping = Http::post("https://api.logistics-partner.com/v1/shipments", [\n  "order_id" => $orderId,\n  "destination" => $address\n]);\n$awb = $shipping["tracking_number"];'
         },
         {
-          name: '5. Real-Time Channel Status Broadcast',
-          role: 'Event Dispatcher',
-          protocol: 'Kafka Event Broadcast',
-          desc: 'Mengabari marketplace bahwa pesanan siap di-pickup dan memperbarui stok agregat di seluruh channel.',
-          payload: { orderStatus: 'READY_TO_SHIP', globalStockSync: 'COMPLETED_ALL_CHANNELS' },
-          techContract: 'kafkaTemplate.send("order-dispatched-topic", orderEvent);'
+          name: '5. Automated Operational State Broadcast',
+          role: 'Cross-Platform Sync Broadcast',
+          protocol: 'Automated Event Notification',
+          desc: 'Memperbarui status pesanan menjadi siap kirim di seluruh channel e-commerce dan memangkas proses rekapitulasi data manual.',
+          payload: { broadcastStatus: 'COMPLETED_ALL_CHANNELS', manualEffortReduced: 'Significant', operationalFlow: 'OPTIMIZED' },
+          techContract: 'event(new OrderProcessedEvent($order));\nLog::info("Omnichannel order processing completed for: " . $orderId);'
         }
       ]
     }
@@ -226,17 +150,6 @@ export default function ArchitectureVisualizer() {
 
   const currentArch = architectures[activeTab];
   const activeStepDetail = currentArch.steps[selectedStep] || currentArch.steps[0];
-
-  const addLog = (msg) => {
-    setLogs(prev => [...prev.slice(-12), `[${new Date().toLocaleTimeString()}] ${msg}`]);
-  };
-
-  useEffect(() => {
-    setSelectedStep(0);
-    setSimStep(0);
-    setIsRunning(false);
-    setLogs([`Initialized architecture: ${currentArch.title}`, `Ready to execute simulation runner.`]);
-  }, [activeTab]);
 
   useEffect(() => {
     if (isInitialLogMount.current) {
@@ -248,8 +161,17 @@ export default function ArchitectureVisualizer() {
     }
   }, [logs]);
 
+  useEffect(() => {
+    setSelectedStep(0);
+    setSimStep(0);
+    setIsRunning(false);
+    setIsCompleted(false);
+    setLogs([`Initialized workflow: ${currentArch.title}`, `Ready to execute simulation.`]);
+  }, [activeTab]);
+
   const runSimulation = () => {
     setIsRunning(true);
+    setIsCompleted(false);
     setSimStep(0);
     setSelectedStep(0);
     setLogs([`[SIMULATION START] Triggering ${currentArch.title}...`]);
@@ -260,9 +182,10 @@ export default function ArchitectureVisualizer() {
       if (current >= currentArch.steps.length) {
         clearInterval(interval);
         setIsRunning(false);
+        setIsCompleted(true);
         setSimStep(currentArch.steps.length - 1);
         setSelectedStep(currentArch.steps.length - 1);
-        setLogs(prev => [...prev, `[SUCCESS] All ${currentArch.steps.length} nodes verified. Process instance completed cleanly.`]);
+        setLogs(prev => [...prev, `[SUCCESS] All ${currentArch.steps.length} steps verified. Process instance completed with 100% test passing.`]);
       } else {
         setSimStep(current);
         setSelectedStep(current);
@@ -276,66 +199,54 @@ export default function ArchitectureVisualizer() {
     <section id="architecture" className="py-24 bg-[#07070b] border-t-2 border-b-2 border-[#1c1c24] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-10 gap-6">
-          <div>
-            <div className="inline-flex items-center gap-2 text-xs font-mono-code text-[#ccff00] uppercase tracking-widest mb-2 bg-[#121218] px-3 py-1 border border-zinc-800">
-              <Workflow className="w-3.5 h-3.5" />
-              <span>//04_SYSTEM_DESIGN_LAB</span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white uppercase font-display">
-              ARCHITECTURE & FLOW VISUALIZER
-            </h2>
-            <p className="text-xs sm:text-sm font-mono-code text-zinc-400 max-w-2xl mt-2">
-              Simulator alur kerja enterprise & arsitektur mikroservis interaktif. Klik node mana saja untuk menginspeksi payload JSON, kontrak Spring Boot, dan alur data nyata.
-            </p>
+        <div className="mb-8">
+          <div className="inline-flex items-center gap-2 text-xs font-mono-code text-[#ccff00] uppercase tracking-widest mb-2 bg-[#121218] px-3 py-1 border border-zinc-800">
+            <Workflow className="w-3.5 h-3.5" />
+            <span>//04_WORKFLOW_SIMULATOR</span>
           </div>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white uppercase font-display">
+            ARCHITECTURE & WORKFLOW SIMULATOR
+          </h2>
+          <p className="text-xs sm:text-sm font-mono-code text-zinc-400 max-w-2xl mt-2">
+            Simulasi alur kerja sistem enterprise berbasis pengalaman kerja nyata. Pilih flow di bawah dan jalankan simulasi interaktif untuk menginspeksi alur data dan kontrak kode.
+          </p>
+        </div>
 
-          {/* Architecture Switcher Tabs */}
-          <div className="flex flex-wrap gap-2 font-mono-code text-xs">
+        {/* Main Board Container with Embedded Integrated Switcher */}
+        <div className="bg-[#0b0b14] border-2 border-white p-6 sm:p-8 shadow-[8px_8px_0px_#ccff00]">
+          {/* Integrated Segmented Control Header */}
+          <div className="flex flex-wrap items-center gap-2 p-1.5 bg-[#12121c] border border-zinc-800 mb-8">
             <button
               onClick={() => setActiveTab('los')}
-              className={`px-4 py-2.5 border-2 font-bold transition-all ${
+              className={`flex-1 min-w-[240px] flex items-center justify-center gap-2 py-3 px-4 font-mono-code text-xs font-bold transition-all ${
                 activeTab === 'los'
-                  ? 'bg-[#ccff00] text-black border-white shadow-[4px_4px_0px_#ffffff]'
-                  : 'bg-[#121218] text-zinc-300 border-zinc-800 hover:border-zinc-500'
+                  ? 'bg-[#ccff00] text-black border border-white shadow-[2px_2px_0px_#000000]'
+                  : 'bg-transparent text-zinc-400 hover:text-white hover:bg-[#181826]'
               }`}
             >
-              1. CAMUNDA LOS (FINTECH)
-            </button>
-            <button
-              onClick={() => setActiveTab('agentic')}
-              className={`px-4 py-2.5 border-2 font-bold transition-all ${
-                activeTab === 'agentic'
-                  ? 'bg-[#ccff00] text-black border-white shadow-[4px_4px_0px_#ffffff]'
-                  : 'bg-[#121218] text-zinc-300 border-zinc-800 hover:border-zinc-500'
-              }`}
-            >
-              2. AGENTIC AI PIPELINE
+              <span>1. CAMUNDA BPMN 2.0 LOS (PT PADEPOKAN TUJUH SEMBILAN)</span>
             </button>
             <button
               onClick={() => setActiveTab('omnichannel')}
-              className={`px-4 py-2.5 border-2 font-bold transition-all ${
+              className={`flex-1 min-w-[240px] flex items-center justify-center gap-2 py-3 px-4 font-mono-code text-xs font-bold transition-all ${
                 activeTab === 'omnichannel'
-                  ? 'bg-[#ccff00] text-black border-white shadow-[4px_4px_0px_#ffffff]'
-                  : 'bg-[#121218] text-zinc-300 border-zinc-800 hover:border-zinc-500'
+                  ? 'bg-[#ccff00] text-black border border-white shadow-[2px_2px_0px_#000000]'
+                  : 'bg-transparent text-zinc-400 hover:text-white hover:bg-[#181826]'
               }`}
             >
-              3. OMNICHANNEL ERP SYNC
+              <span>2. OMNICHANNEL ERP & COMMERCE (PT FOOM LAB GLOBAL)</span>
             </button>
           </div>
-        </div>
 
-        {/* Main Interactive Board */}
-        <div className="bg-[#0b0b14] border-2 border-white p-6 sm:p-8 shadow-[8px_8px_0px_#ccff00]">
-          {/* Header Card Info */}
+          {/* Workflow Header Card */}
           <div className="flex flex-wrap items-start justify-between gap-4 border-b-2 border-zinc-800 pb-6 mb-8">
             <div className="space-y-1.5 max-w-3xl">
-              <div className="flex items-center gap-3">
+              <div className="flex flex-wrap items-center gap-3">
                 <span className="text-xs font-mono-code font-bold bg-[#ccff00] text-black px-2.5 py-0.5 border border-white">
                   {currentArch.badge}
                 </span>
                 <span className="text-xs font-mono-code text-zinc-400">
-                  SCOPE: <strong className="text-zinc-200">{currentArch.scope}</strong>
+                  COMPANY: <strong className="text-zinc-200">{currentArch.company}</strong> ({currentArch.period})
                 </span>
               </div>
               <h3 className="text-2xl sm:text-3xl font-extrabold text-white font-display">
@@ -346,8 +257,8 @@ export default function ArchitectureVisualizer() {
               </p>
             </div>
 
-            {/* Simulation Trigger */}
-            <div className="flex flex-col sm:flex-row items-end sm:items-center gap-3">
+            {/* Run Button */}
+            <div>
               <button
                 onClick={runSimulation}
                 disabled={isRunning}
@@ -362,38 +273,38 @@ export default function ArchitectureVisualizer() {
                 ) : (
                   <Play className="w-4 h-4 fill-black stroke-[2]" />
                 )}
-                <span>{isRunning ? 'FLOW RUNNING...' : 'TRIGGER FLOW SIMULATION'}</span>
+                <span>{isRunning ? 'SIMULATION RUNNING...' : 'TRIGGER FLOW SIMULATION'}</span>
               </button>
             </div>
           </div>
 
-          {/* Metrics Pill Bar */}
+          {/* Key Metrics Bar */}
           <div className="grid grid-cols-3 gap-3 mb-8 font-mono-code text-xs">
             <div className="bg-[#12121c] p-3 border border-zinc-800">
-              <div className="text-zinc-500 text-[10px]">THROUGHPUT CAPACITY</div>
-              <div className="text-white font-bold text-sm mt-0.5 text-[#ccff00]">{currentArch.metrics.throughput}</div>
+              <div className="text-zinc-500 text-[10px]">WORKFLOW SCOPE</div>
+              <div className="text-white font-bold text-sm mt-0.5 text-[#ccff00]">{currentArch.metrics.coverage}</div>
             </div>
             <div className="bg-[#12121c] p-3 border border-zinc-800">
-              <div className="text-zinc-500 text-[10px]">EXECUTION LATENCY</div>
-              <div className="text-white font-bold text-sm mt-0.5">{currentArch.metrics.latency}</div>
+              <div className="text-zinc-500 text-[10px]">TECHNOLOGY STACK</div>
+              <div className="text-white font-bold text-sm mt-0.5">{currentArch.metrics.stack}</div>
             </div>
             <div className="bg-[#12121c] p-3 border border-zinc-800">
-              <div className="text-zinc-500 text-[10px]">SERVICE RELIABILITY</div>
-              <div className="text-white font-bold text-sm mt-0.5">{currentArch.metrics.reliability}</div>
+              <div className="text-zinc-500 text-[10px]">PRIMARY FOCUS</div>
+              <div className="text-white font-bold text-sm mt-0.5">{currentArch.metrics.focus}</div>
             </div>
           </div>
 
-          {/* Two-Column Area: Left Interactive Step Nodes, Right Inspector Drawer */}
+          {/* Steps & Inspector Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             {/* Left Steps List */}
             <div className="lg:col-span-6 space-y-3">
               <div className="text-xs font-mono-code text-zinc-400 uppercase tracking-wider mb-2 flex items-center justify-between">
-                <span>PIPELINE EXECUTION NODES (CLICK TO INSPECT):</span>
+                <span>PIPELINE NODES (CLICK TO INSPECT):</span>
                 <span className="text-[#ccff00]">STEP {selectedStep + 1} OF {currentArch.steps.length}</span>
               </div>
 
               {currentArch.steps.map((step, idx) => {
-                const isPassed = simStep > idx;
+                const isPassed = simStep > idx || (isCompleted && idx === currentArch.steps.length - 1);
                 const isCurrent = simStep === idx && isRunning;
                 const isSelected = selectedStep === idx;
 
@@ -456,16 +367,15 @@ export default function ArchitectureVisualizer() {
               })}
             </div>
 
-            {/* Right Live Node & Payload Inspector */}
+            {/* Right Live Payload & Contract Inspector */}
             <div className="lg:col-span-6 space-y-4">
               <div className="text-xs font-mono-code text-zinc-400 uppercase tracking-wider mb-2 flex items-center gap-2">
                 <FileJson className="w-3.5 h-3.5 text-[#ccff00]" />
                 <span>INSPECTOR: NODE #{selectedStep + 1} PAYLOAD & CODE CONTRACT</span>
               </div>
 
-              {/* Inspector Window */}
+              {/* Inspector Box */}
               <div className="bg-[#08080d] border-2 border-zinc-700 p-5 space-y-4 font-mono-code">
-                {/* Node Top Header */}
                 <div className="flex items-center justify-between border-b border-zinc-800 pb-3">
                   <div>
                     <div className="text-xs text-[#ccff00] font-bold">

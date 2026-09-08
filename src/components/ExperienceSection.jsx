@@ -3,24 +3,24 @@ import { workExperience } from '../data/portfolioData';
 import { Briefcase, Building2, CheckCircle2, ChevronRight, Calendar, Layers, Activity } from 'lucide-react';
 
 export default function ExperienceSection() {
-  const [selectedId, setSelectedId] = useState(workExperience[1].id);
+  const [selectedId, setSelectedId] = useState(workExperience[0].id);
   const activeExp = workExperience.find(item => item.id === selectedId) || workExperience[0];
 
   return (
     <section id="experience" className="py-24 bg-[#07070b] border-t-2 border-b-2 border-[#1c1c24] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-12 gap-6">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-10 gap-4">
           <div>
             <div className="inline-flex items-center gap-2 text-xs font-mono-code text-[#ccff00] uppercase tracking-widest mb-2 bg-[#121218] px-3 py-1 border border-zinc-800">
               <Briefcase className="w-3.5 h-3.5" />
-              <span>//02_PRODUCTION_RECORD</span>
+              <span>//02_WORK_EXPERIENCE</span>
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white uppercase font-display">
-              WORK HISTORY & ENTERPRISE DRILLS
+              PROFESSIONAL EXPERIENCE
             </h2>
             <p className="text-xs sm:text-sm font-mono-code text-zinc-400 max-w-2xl mt-2">
-              Rekam jejak eksekusi arsitektur dan integrasi sistem pada sektor fintech BUMN, korporat manajemen strategis, dan platform digital.
+              Rekam jejak pengalaman kerja nyata dalam analisis sistem, perancangan diagram BPMN, integrasi microservices Java Spring Boot, dan software engineering.
             </p>
           </div>
         </div>
@@ -28,9 +28,9 @@ export default function ExperienceSection() {
         {/* Experience Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Company Selector Sidebar */}
-          <div className="lg:col-span-4 space-y-3.5">
+          <div className="lg:col-span-4 space-y-3">
             <div className="text-xs font-mono-code text-zinc-400 uppercase tracking-wider mb-2">
-              SELECT PRODUCTION DRILL:
+              SELECT EXPERIENCE RECORD:
             </div>
 
             {workExperience.map((exp) => {
@@ -51,11 +51,15 @@ export default function ExperienceSection() {
                     </span>
                     <ChevronRight className={`w-4 h-4 transition-transform ${isActive ? 'rotate-90 text-[#ccff00]' : 'text-zinc-600'}`} />
                   </div>
-                  <div className="text-lg font-bold text-white mt-1.5 font-sans">
+                  <div className="text-base sm:text-lg font-bold text-white mt-1.5 font-sans">
                     {exp.company}
                   </div>
                   <div className="text-xs text-zinc-400 mt-0.5">
-                    {exp.role}
+                    {exp.role.split('—')[0].trim()}
+                  </div>
+                  <div className="text-[11px] text-zinc-500 mt-1 flex items-center gap-1">
+                    <Calendar className="w-3 h-3 text-[#ccff00]" />
+                    <span>{exp.period}</span>
                   </div>
                 </button>
               );
@@ -97,7 +101,7 @@ export default function ExperienceSection() {
             {/* Key Deliverables */}
             <div className="space-y-3.5 mb-8">
               <h4 className="text-xs font-mono-code uppercase tracking-widest text-[#ccff00] font-bold flex items-center gap-2">
-                <span>// SPECIFIC DELIVERABLES & TECHNICAL DRILLS:</span>
+                <span>// RESPONSIBILITIES & DELIVERABLES (CV VERIFIED):</span>
               </h4>
               <div className="space-y-2.5">
                 {activeExp.highlights.map((h, i) => (

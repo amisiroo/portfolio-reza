@@ -16,7 +16,7 @@ export default function ContactSection() {
 
   const handleSendEmail = (e) => {
     e.preventDefault();
-    const mailtoUrl = `mailto:${personalInfo.email}?subject=${encodeURIComponent(subject || 'Inquiry: System Integration / Strategic Tech Drill')}&body=${encodeURIComponent(message)}`;
+    const mailtoUrl = `mailto:${personalInfo.email}?subject=${encodeURIComponent(subject || 'Inquiry: System Analyst Opportunity')}&body=${encodeURIComponent(message)}`;
     window.location.href = mailtoUrl;
     setSentStatus(true);
     setTimeout(() => setSentStatus(false), 5000);
@@ -24,9 +24,6 @@ export default function ContactSection() {
 
   return (
     <section id="contact" className="py-24 bg-[#050507] relative overflow-hidden">
-      {/* Glow */}
-      <div className="absolute bottom-0 right-0 w-[500px] h-[300px] bg-[#ccff00]/5 blur-[100px] pointer-events-none rounded-full" />
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           {/* Left Column */}
@@ -37,12 +34,12 @@ export default function ContactSection() {
             </div>
 
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white uppercase font-display leading-[0.95]">
-              READY FOR PRODUCTION <br />
-              <span className="text-[#ccff00]">DEPLOYMENT.</span>
+              READY FOR SYSTEM <br />
+              <span className="text-[#ccff00]">ANALYSIS ROLES.</span>
             </h2>
 
             <p className="text-base sm:text-lg text-zinc-300 font-sans leading-relaxed">
-              Membuka peluang kerja sama strategis, posisi penuh waktu sebagai <strong className="text-white">System Analyst / Technical Integration Specialist</strong>, atau konsultasi arsitektur workflow korporat.
+              Membuka peluang kerja sama posisi <strong className="text-white">System Analyst / IT Integration Specialist</strong>, konsultasi alur kerja BPMN, atau diskusi integrasi backend microservices.
             </p>
 
             {/* Direct Contact Cards */}
@@ -77,7 +74,7 @@ export default function ContactSection() {
                     <MessageSquare className="w-5 h-5" />
                   </div>
                   <div>
-                    <div className="text-[10px] font-mono-code text-zinc-400 uppercase">WHATSAPP DIRECT ENCRYPTED</div>
+                    <div className="text-[10px] font-mono-code text-zinc-400 uppercase">WHATSAPP DIRECT</div>
                     <div className="text-sm sm:text-base font-mono-code font-bold text-white mt-0.5">{personalInfo.phone}</div>
                   </div>
                 </div>
@@ -114,20 +111,20 @@ export default function ContactSection() {
                   type="text"
                   value={subject}
                   onChange={(e) => setSubject(e.target.value)}
-                  placeholder="e.g. System Analyst Role / LOS Camunda Consultation"
+                  placeholder="e.g. System Analyst Opportunity / Technical Interview"
                   className="w-full bg-[#12121c] border-2 border-zinc-700 p-3.5 text-white focus:border-[#ccff00] focus:outline-none placeholder:text-zinc-600 font-mono-code"
                 />
               </div>
 
               <div>
                 <label className="block text-zinc-300 mb-1.5 uppercase font-bold">
-                  PROJECT SPECIFICATIONS & REQUIREMENTS:
+                  MESSAGE & SPECIFICATIONS:
                 </label>
                 <textarea
                   rows={5}
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
-                  placeholder="Ceritakan gambaran sistem yang ingin dianalisis, integrasi API, atau jadwal koordinasi teknis..."
+                  placeholder="Ceritakan detail posisi, lingkup sistem yang ingin dianalisis, atau jadwal diskusi..."
                   className="w-full bg-[#12121c] border-2 border-zinc-700 p-3.5 text-white focus:border-[#ccff00] focus:outline-none placeholder:text-zinc-600 resize-none font-sans text-sm"
                 />
               </div>
