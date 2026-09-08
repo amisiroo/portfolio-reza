@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { personalInfo } from '../data/portfolioData';
 import { Mail, MessageSquare, Send, Copy, Check, Sparkles, MapPin, Globe, Coffee, Shield } from 'lucide-react';
+import { SpadeCardSticker, DicePairSticker } from './GamblerStickers';
 
 export default function ContactSection() {
   const [copied, setCopied] = useState(false);
@@ -25,9 +26,9 @@ export default function ContactSection() {
   return (
     <section id="contact" className="py-24 bg-[#050507] relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Left Column */}
-          <div className="lg:col-span-6 space-y-6">
+          <div className="lg:col-span-6 space-y-6 relative">
             <div className="inline-flex items-center gap-2 text-xs font-mono-code text-[#ccff00] uppercase tracking-widest bg-[#121218] px-3 py-1 border border-zinc-800">
               <Mail className="w-3.5 h-3.5" />
               <span>//07_COMMUNICATION_DISPATCH</span>
@@ -93,8 +94,13 @@ export default function ContactSection() {
             </div>
           </div>
 
-          {/* Right Column: Dispatch Form */}
-          <div className="lg:col-span-6 bg-[#0c0c14] border-2 border-white p-6 sm:p-8 shadow-[8px_8px_0px_#ccff00]">
+          {/* Right Column: Dispatch Form with Floating Sticker */}
+          <div className="lg:col-span-6 bg-[#0c0c14] border-2 border-white p-6 sm:p-8 shadow-[8px_8px_0px_#ccff00] relative">
+            {/* Corner Gambler Sticker Accent */}
+            <div className="absolute -top-7 -right-6 hidden sm:block z-20">
+              <DicePairSticker size={56} rotation="18deg" />
+            </div>
+
             <div className="flex items-center justify-between mb-1">
               <h3 className="text-2xl font-extrabold text-white font-display uppercase tracking-wide">
                 DISPATCH COLLABORATION INQUIRY

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Workflow, Play, RefreshCw, CheckCircle2, ArrowRight, ShieldCheck, Database, Layers, GitFork, Terminal, Code2, Server, Cpu, Box, FileJson, Check, Coffee } from 'lucide-react';
+import { LuckySevenSticker } from './GamblerStickers';
 
 export default function ArchitectureVisualizer() {
   const [activeTab, setActiveTab] = useState('los');
@@ -199,17 +200,22 @@ export default function ArchitectureVisualizer() {
     <section id="architecture" className="py-24 bg-[#07070b] border-t-2 border-b-2 border-[#1c1c24] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="mb-8">
-          <div className="inline-flex items-center gap-2 text-xs font-mono-code text-[#ccff00] uppercase tracking-widest mb-2 bg-[#121218] px-3 py-1 border border-zinc-800">
-            <Workflow className="w-3.5 h-3.5" />
-            <span>//04_WORKFLOW_SIMULATOR</span>
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-8 gap-4 relative">
+          <div>
+            <div className="inline-flex items-center gap-2 text-xs font-mono-code text-[#ccff00] uppercase tracking-widest mb-2 bg-[#121218] px-3 py-1 border border-zinc-800">
+              <Workflow className="w-3.5 h-3.5" />
+              <span>//04_WORKFLOW_SIMULATOR</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white uppercase font-display">
+              ARCHITECTURE & WORKFLOW SIMULATOR
+            </h2>
+            <p className="text-xs sm:text-sm font-mono-code text-zinc-400 max-w-2xl mt-2">
+              Simulasi alur kerja sistem enterprise berbasis pengalaman kerja nyata. Pilih flow di bawah dan jalankan simulasi interaktif untuk menginspeksi alur data dan kontrak kode.
+            </p>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white uppercase font-display">
-            ARCHITECTURE & WORKFLOW SIMULATOR
-          </h2>
-          <p className="text-xs sm:text-sm font-mono-code text-zinc-400 max-w-2xl mt-2">
-            Simulasi alur kerja sistem enterprise berbasis pengalaman kerja nyata. Pilih flow di bawah dan jalankan simulasi interaktif untuk menginspeksi alur data dan kontrak kode.
-          </p>
+          <div className="hidden lg:block absolute -top-4 right-0">
+            <LuckySevenSticker size={64} rotation="6deg" />
+          </div>
         </div>
 
         {/* Main Board Container with Embedded Integrated Switcher */}

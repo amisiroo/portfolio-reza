@@ -1,12 +1,21 @@
 import React from 'react';
 import { personalInfo, heroStats } from '../data/portfolioData';
-import { Terminal, ArrowDownRight, Briefcase, Award, Code2, Layers, Zap, Sparkles, Coffee } from 'lucide-react';
+import { Terminal, ArrowDownRight, Briefcase, Award, Code2, Layers, Zap, Sparkles } from 'lucide-react';
+import { SpadeCardSticker, DicePairSticker } from './GamblerStickers';
 
 export default function Hero() {
   return (
     <section id="profile" className="relative pt-28 pb-20 overflow-hidden border-b-2 border-[#1c1c24] bg-cyber-grid">
       {/* Background Ambient Glow */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[650px] h-[320px] bg-[#ccff00]/5 blur-[100px] pointer-events-none rounded-full" />
+
+      {/* Floating Gambler Stickers in Hero */}
+      <div className="hidden md:block absolute top-32 right-12 lg:right-24 z-20 pointer-events-auto">
+        <div className="relative">
+          <SpadeCardSticker size={84} rotation="-8deg" className="relative z-10" />
+          <DicePairSticker size={62} rotation="16deg" className="absolute -bottom-6 -left-10 z-20" />
+        </div>
+      </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="border-l-2 border-zinc-800/80 pl-4 sm:pl-8 py-2 relative">

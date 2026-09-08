@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { workExperience } from '../data/portfolioData';
 import { Briefcase, Building2, CheckCircle2, ChevronRight, Calendar, Layers, Activity } from 'lucide-react';
+import { PokerChipSticker } from './GamblerStickers';
 
 export default function ExperienceSection() {
   const [selectedId, setSelectedId] = useState(workExperience[0].id);
@@ -10,7 +11,7 @@ export default function ExperienceSection() {
     <section id="experience" className="py-24 bg-[#07070b] border-t-2 border-b-2 border-[#1c1c24] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-10 gap-4">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-10 gap-4 relative">
           <div>
             <div className="inline-flex items-center gap-2 text-xs font-mono-code text-[#ccff00] uppercase tracking-widest mb-2 bg-[#121218] px-3 py-1 border border-zinc-800">
               <Briefcase className="w-3.5 h-3.5" />
@@ -22,6 +23,10 @@ export default function ExperienceSection() {
             <p className="text-xs sm:text-sm font-mono-code text-zinc-400 max-w-2xl mt-2">
               Rekam jejak pengalaman kerja nyata dalam analisis sistem, perancangan diagram BPMN, integrasi microservices Java Spring Boot, dan software engineering.
             </p>
+          </div>
+
+          <div className="hidden lg:block absolute -top-4 right-0">
+            <PokerChipSticker size={58} rotation="-10deg" />
           </div>
         </div>
 
@@ -67,7 +72,7 @@ export default function ExperienceSection() {
           </div>
 
           {/* Active Detail Display Card */}
-          <div className="lg:col-span-8 bg-[#0c0c14] border-2 border-white p-6 sm:p-8 shadow-[8px_8px_0px_#ccff00]">
+          <div className="lg:col-span-8 bg-[#0c0c14] border-2 border-white p-6 sm:p-8 shadow-[8px_8px_0px_#ccff00] relative">
             <div className="flex flex-wrap items-start justify-between gap-4 border-b-2 border-zinc-800 pb-6 mb-6">
               <div>
                 <div className="text-xs font-mono-code text-[#ccff00] font-bold uppercase tracking-widest flex items-center gap-2">
