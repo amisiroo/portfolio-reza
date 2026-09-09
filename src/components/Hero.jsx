@@ -5,7 +5,7 @@ import { SpadeCardSticker, DicePairSticker } from './GamblerStickers';
 
 export default function Hero() {
   return (
-    <section id="profile" className="relative pt-28 pb-20 overflow-hidden border-b-2 border-[#1c1c24] bg-cyber-grid">
+    <section id="profile" className="relative pt-28 pb-20">
       {/* Background Ambient Glow */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[650px] h-[320px] bg-[#ccff00]/5 blur-[100px] pointer-events-none rounded-full" />
 
@@ -16,6 +16,7 @@ export default function Hero() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="border-l-2 border-zinc-800/80 pl-4 sm:pl-8 py-2 relative">
+
           {/* Top Corner HUD Marker */}
           <div className="absolute -top-3 -left-3 font-mono-code text-[10px] text-[#ccff00] bg-black px-1.5 py-0.5 border border-zinc-800">
             [SYS_INTEGRATION]
@@ -29,9 +30,9 @@ export default function Hero() {
               <span>PT. AGANSA PRIMATAMA (OSM DEPT)</span>
             </div>
 
-            <div className="inline-flex items-center gap-1.5 bg-[#14141e] border border-zinc-800 px-3 py-1 text-xs text-zinc-300">
-              <span className="text-[#ccff00] font-bold">ALUMNI:</span>
-              <span>ITB (S1 STI 2019 – 2025)</span>
+            <div className="inline-flex items-center gap-1.5 bg-[#181820] border border-zinc-700 px-3 py-1 text-xs text-zinc-300">
+              <span className="text-[#ccff00] font-bold">SPECIALIZATION:</span>
+              <span>SYSTEM ARCHITECTURE &amp; INTEGRATION</span>
             </div>
 
             <div className="inline-flex items-center gap-1.5 bg-[#14141e] border border-zinc-800 px-3 py-1 text-xs text-zinc-300">
@@ -53,6 +54,10 @@ export default function Hero() {
                 NUR FAUZI
               </span>
             </h1>
+            <div className="mt-2 inline-flex items-center gap-2 font-mono-code text-xs bg-[#101018] border border-[#ccff00]/50 px-3 py-1 text-[#ccff00] tracking-widest">
+              <span className="opacity-60">@</span>
+              <span className="font-bold">amisiroo</span>
+            </div>
 
             {/* AI Philosophy & Pragmatic Realism Paragraph */}
             <p className="text-base sm:text-lg text-zinc-300 max-w-3xl font-sans leading-relaxed pt-2">
@@ -84,7 +89,7 @@ export default function Hero() {
               className="flex items-center gap-2 bg-[#101018] text-zinc-100 hover:text-white font-bold text-xs sm:text-sm px-5 py-3.5 border border-zinc-700 hover:border-[#ccff00] shadow-[3px_3px_0px_#000000] hover:translate-y-[-1px] transition-all group"
             >
               <Terminal className="w-4 h-4 text-[#ccff00] group-hover:animate-pulse" />
-              <span>REZA.OS CLI</span>
+              <span>AMISIROO.OS CLI</span>
             </a>
 
             <a

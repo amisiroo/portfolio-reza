@@ -7,7 +7,7 @@ export default function TerminalSimulator() {
   const [inputVal, setInputVal] = useState('');
   const [history, setHistory] = useState([
     { id: 1, type: 'system', text: '╔══════════════════════════════════════════════════════════════════╗' },
-    { id: 2, type: 'system', text: '║  REZA.OS v3.5.0 (x86_64-hermes-system) • PRODUCTION ACTIVE       ║' },
+    { id: 2, type: 'system', text: '║  AMISIROO v3.5.0 (x86_64-hermes-system) • PRODUCTION ACTIVE      ║' },
     { id: 3, type: 'system', text: '║  SYSTEM ANALYST • BACKEND ENGINEER • AI ENTHUSIAST               ║' },
     { id: 4, type: 'system', text: '╚══════════════════════════════════════════════════════════════════╝' },
     { id: 5, type: 'system', text: 'Type "help" to inspect commands, or press [Tab] / click quick chips below.' }
@@ -97,7 +97,7 @@ ${highlightsFormatted}
 
     switch (cleanCmd) {
       case 'help':
-        outputText = `AVAILABLE COMMANDS IN REZA.OS:
+        outputText = `AVAILABLE COMMANDS IN AMISIROO.SYS:
   • bio        : Ringkasan profil & latar belakang akademik STI ITB
   • exp        : Riwayat pengalaman terstruktur (PT Agansa, Padepokan 79, Foom)
   • skills     : Audit lengkap matriks kompetensi teknis & framework
@@ -149,9 +149,9 @@ PASSION     : System Analysis, BPMN 2.0 Camunda, ANTLR v4 Parser, & AI Engineeri
         break;
 
       case 'neofetch':
-        outputText = `       __             reza@hermes-os
+        outputText = `       __             amisiroo@hermes-os
       /  \\            -------------
-     / /\\ \\           OS: REZA.OS Enterprise x86_64
+     / /\\ \\           OS: AMISIROO.SYS Enterprise x86_64
     / /  \\ \\          Host: Institut Teknologi Bandung (STI 2019-2025)
    /_/    \\_\\         Role: System Analyst & AI Enthusiast
                       Active: PT. Agansa Primatama (Divisi OSM)
@@ -186,7 +186,7 @@ PASSION     : System Analysis, BPMN 2.0 Camunda, ANTLR v4 Parser, & AI Engineeri
 
     const newHistory = [
       ...history,
-      { id: inputEntryId, type: 'input', text: `reza@os:~$ ${cmdStr}` },
+      { id: inputEntryId, type: 'input', text: `amisiroo@sys-matrix:~$ ${cmdStr}` },
       { id: outputEntryId, type: isError ? 'error' : 'output', text: outputText, isStreaming: true }
     ];
 
@@ -230,7 +230,7 @@ PASSION     : System Analysis, BPMN 2.0 Camunda, ANTLR v4 Parser, & AI Engineeri
   const quickChips = ['help', 'bio', 'skills', 'exp', 'bpmn', 'cv', 'neofetch', 'contact', 'clear'];
 
   return (
-    <section id="terminal" className="py-24 bg-[#050507] relative border-b-2 border-[#1c1c24]">
+    <section id="terminal" className="py-24 bg-transparent relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-8 gap-6">
@@ -240,7 +240,7 @@ PASSION     : System Analysis, BPMN 2.0 Camunda, ANTLR v4 Parser, & AI Engineeri
               <span>//05_CLI_SHELL_SIMULATOR</span>
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white uppercase font-display">
-              INTERACTIVE REZA.OS TERMINAL
+              INTERACTIVE AMISIROO TERMINAL
             </h2>
             <p className="text-xs sm:text-sm font-mono-code text-zinc-400 mt-2">
               Interface shell developer dengan simulasi komputasi karakter per karakter (*typewriter stream*), autocompletion [Tab], dan history [↑/↓].
@@ -249,6 +249,8 @@ PASSION     : System Analysis, BPMN 2.0 Camunda, ANTLR v4 Parser, & AI Engineeri
           <div className="hidden lg:block shrink-0 pb-1">
             <SpadeCardSticker size={52} rotation="-8deg" />
           </div>
+
+
         </div>
 
         {/* Terminal Window Box (FIXED HEIGHT 480px to prevent layout shift) */}
@@ -260,7 +262,7 @@ PASSION     : System Analysis, BPMN 2.0 Camunda, ANTLR v4 Parser, & AI Engineeri
               <div className="w-3 h-3 rounded-full bg-[#ffbd2e] border border-black/40" />
               <div className="w-3 h-3 rounded-full bg-[#27c93f] border border-black/40" />
               <span className="text-xs font-mono-code font-bold text-zinc-300 ml-2 flex items-center gap-2">
-                <span>reza@macbook-pro: ~/sys_analyst (zsh)</span>
+                <span>amisiroo@sys-matrix: ~/sys_analyst (zsh)</span>
                 {isTyping && (
                   <span className="text-[10px] text-[#ccff00] font-mono-code animate-pulse">
                     [COMPUTING_STREAM...]
@@ -332,7 +334,7 @@ PASSION     : System Analysis, BPMN 2.0 Camunda, ANTLR v4 Parser, & AI Engineeri
 
           {/* Interactive Input Prompt */}
           <div className="bg-[#0e0e18] border-t-2 border-zinc-800 px-4 py-3 flex items-center gap-3 font-mono-code shrink-0">
-            <span className="text-[#ccff00] font-extrabold text-sm sm:text-base">reza@os:~$</span>
+            <span className="text-[#ccff00] font-extrabold text-sm sm:text-base">amisiroo@sys-matrix:~$</span>
             <input
               type="text"
               value={inputVal}

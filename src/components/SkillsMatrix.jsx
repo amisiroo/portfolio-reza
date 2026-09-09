@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { skillCategories } from '../data/portfolioData';
-import { Layers, Server, Database, Cpu, Terminal, CheckCircle2, Zap } from 'lucide-react';
-import { SpadeCardSticker, WildCardSticker } from './GamblerStickers';
+import { Layers, Server, Database, Cpu, Terminal } from 'lucide-react';
+import { WildCardSticker } from './GamblerStickers';
 
 const iconMap = {
   Layers: Layers,
@@ -9,11 +9,27 @@ const iconMap = {
   Database: Database,
 };
 
+// Map level string to badge style
+function getLevelStyle(level) {
+  if (level === 'Advanced / Senior') return 'bg-[#ccff00] text-black border-white';
+  if (level === 'Advanced')          return 'bg-[#ccff00]/20 text-[#ccff00] border-[#ccff00]/50';
+  if (level === 'Strong Mid')        return 'bg-[#a3e635]/10 text-[#a3e635] border-[#a3e635]/40';
+  if (level === 'Competent')         return 'bg-zinc-800 text-zinc-300 border-zinc-600';
+  return                                    'bg-[#181824] text-zinc-400 border-zinc-700';
+}
+
+// score string "2.8/4.0" → progress % of 4.0
+function scoreToPercent(score) {
+  if (!score) return 70;
+  const num = parseFloat(score);
+  return Math.round((num / 4.0) * 100);
+}
+
 export default function SkillsMatrix() {
   const [activeCategory, setActiveCategory] = useState(0);
 
   return (
-    <section id="skills" className="py-24 bg-[#050507] relative border-b-2 border-[#1c1c24]">
+    <section id="skills" className="py-24 bg-transparent relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-8 gap-4 relative">
@@ -23,14 +39,14 @@ export default function SkillsMatrix() {
               <span>//03_CORE_COMPETENCIES</span>
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white uppercase font-display">
-              SKILLS & TECHNICAL CAPABILITIES
+              SKILLS &amp; TECHNICAL CAPABILITIES
             </h2>
             <p className="text-xs sm:text-sm font-mono-code text-zinc-400 max-w-2xl mt-2">
               Matriks keahlian teknis terstruktur: analisis kebutuhan sistem, pemodelan BPMN Camunda, static code mapping ANTLR v4, arsitektur backend microservices, hingga audit database.
             </p>
           </div>
 
-          {/* Right Header Sticker: Wild Card Joker */}
+          {/* Right Header Sticker */}
           <div className="hidden lg:block shrink-0 pb-1">
             <WildCardSticker size={64} rotation="10deg" />
           </div>
@@ -80,36 +96,53 @@ export default function SkillsMatrix() {
             {/* Skills Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {skillCategories[activeCategory].skills.map((skill, sIdx) => {
-                const isExpert = skill.level === 'Expert';
+                const pct = scoreToPercent(skill.score);
+                const isTopTier = skill.level === 'Advanced / Senior';
+                const barColor = isTopTier ? '#ccff00' : skill.level === 'Advanced' ? '#a3e635' : '#6ee7b7';
                 return (
                   <div
                     key={sIdx}
                     className="bg-[#101018] p-4 border border-zinc-800/90 hover:border-zinc-600 transition-all hover:bg-[#13131f] group"
                   >
+                    {/* Name + Level badge */}
                     <div className="flex items-start justify-between gap-2">
                       <span className="text-sm font-bold text-zinc-100 font-sans leading-tight">
                         {skill.name}
                       </span>
-                      <span className={`text-[10px] font-mono-code font-bold px-2 py-0.5 border shrink-0 ${
-                        isExpert 
-                          ? 'bg-[#ccff00] text-black border-white' 
-                          : 'bg-[#181824] text-[#ccff00] border-zinc-700'
-                      }`}>
+                      <span className={`text-[10px] font-mono-code font-bold px-2 py-0.5 border shrink-0 ${getLevelStyle(skill.level)}`}>
                         {skill.level}
                       </span>
                     </div>
 
-                    <div className="text-[11px] font-mono-code text-zinc-400 mt-2 flex items-center gap-1.5">
+                    {/* Score metric */}
+                    {skill.score && (
+                      <div className="flex items-center gap-2 mt-2">
+                        <span className="text-[11px] font-mono-code font-bold text-[#ccff00]">
+                          {skill.score}
+                        </span>
+                        <span className="text-[10px] font-mono-code text-zinc-500 uppercase tracking-wider">
+                          calibrated
+                        </span>
+                      </div>
+                    )}
+
+                    {/* Context */}
+                    <div className="text-[11px] font-mono-code text-zinc-400 mt-1.5 flex items-center gap-1.5">
                       <span className="text-[#ccff00]">›</span>
                       <span>{skill.context}</span>
                     </div>
 
-                    {/* Progress Bar */}
+                    {/* Progress Bar — score / 4.0 */}
                     <div className="w-full bg-zinc-800/70 h-1 mt-3 overflow-hidden">
-                      <div 
-                        className={`h-full ${isExpert ? 'bg-[#ccff00]' : 'bg-[#a3e635]'}`}
-                        style={{ width: isExpert ? '95%' : skill.level === 'Advanced' ? '85%' : '75%' }}
+                      <div
+                        className="h-full transition-all duration-500"
+                        style={{ width: `${pct}%`, backgroundColor: barColor }}
                       />
+                    </div>
+                    <div className="flex justify-between mt-1">
+                      <span className="text-[9px] font-mono-code text-zinc-600">0.0</span>
+                      <span className="text-[9px] font-mono-code text-zinc-500">{pct}%</span>
+                      <span className="text-[9px] font-mono-code text-zinc-600">4.0</span>
                     </div>
                   </div>
                 );

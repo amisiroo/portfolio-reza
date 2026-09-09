@@ -8,16 +8,16 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-[#030305] border-t-2 border-zinc-900 py-12 relative font-mono-code">
+    <footer className="bg-transparent py-12 relative font-mono-code">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-zinc-400">
           {/* Left Brand */}
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 bg-black border-2 border-[#ccff00] flex items-center justify-center text-[#ccff00] font-black text-sm shadow-[2px_2px_0px_#ccff00]">
-              R
+              A
             </div>
             <div>
-              <div className="text-zinc-200 font-bold tracking-wider">{personalInfo.name}</div>
+              <div className="text-zinc-200 font-bold tracking-wider">AMISIROO // SYS.ARCH</div>
               <div className="text-[10px] text-zinc-500">
                 SYSTEM ANALYST • BACKEND ENGINEER • AI ENTHUSIAST (STI ITB)
               </div>

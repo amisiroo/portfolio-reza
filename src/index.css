@@ -3,16 +3,20 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    background-color: #000000;
+  }
   body {
     background-color: #050507;
     color: #f4f4f5;
+    position: relative;
   }
 }
 
-/* Custom Scanlines & Grid Utility */
+/* Custom Scanlines & Grid Utility (used by Hero) */
 .bg-cyber-grid {
-  background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+  background-image:
+    linear-gradient(to right,  rgba(255, 255, 255, 0.04) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
   background-size: 3.5rem 3.5rem;
 }

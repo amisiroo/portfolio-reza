@@ -8,7 +8,7 @@ export default function ExperienceSection() {
   const activeExp = workExperience.find(item => item.id === selectedId) || workExperience[0];
 
   return (
-    <section id="experience" className="py-24 bg-[#07070b] border-t-2 border-b-2 border-[#1c1c24] relative">
+    <section id="experience" className="py-24 bg-transparent relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-10 gap-4 relative">
@@ -29,6 +29,8 @@ export default function ExperienceSection() {
           <div className="hidden lg:block absolute -top-4 right-0">
             <PokerChipSticker size={58} rotation="-10deg" />
           </div>
+
+
         </div>
 
         {/* Experience Layout */}

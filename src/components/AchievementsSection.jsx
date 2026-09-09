@@ -5,7 +5,7 @@ import { SpadeCardSticker, PokerChipSticker } from './GamblerStickers';
 
 export default function AchievementsSection() {
   return (
-    <section id="achievements" className="py-24 bg-[#07070b] border-t-2 border-b-2 border-[#1c1c24] relative">
+    <section id="achievements" className="py-24 bg-transparent relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header with balanced side stickers in open space */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-12 gap-6">

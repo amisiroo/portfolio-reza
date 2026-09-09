@@ -37,10 +37,10 @@ export default function Navbar() {
 
           <a href="#profile" className="flex items-center gap-2.5 group">
             <div className="w-7 h-7 bg-black border border-[#ccff00] flex items-center justify-center font-mono-code font-black text-sm text-[#ccff00] shadow-[2px_2px_0px_#ccff00] group-hover:translate-x-[1px] group-hover:translate-y-[1px] transition-transform">
-              R
+              A
             </div>
             <div className="font-mono-code font-bold text-xs sm:text-sm text-white tracking-wider flex items-center gap-1.5">
-              <span>REZA.OS</span>
+              <span>AMISIROO // SYS.ARCH</span>
               <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#ccff00] animate-pulse"></span>
             </div>
           </a>

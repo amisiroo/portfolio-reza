@@ -12,7 +12,7 @@ Personal portfolio and technical showcase of **Muhammad Reza Nur Fauzi**, System
 - **Brutalist Cybernetic Aesthetic**: Neo-brutalist dark layout, high contrast `#ccff00` neon accents, crisp monospace and display typography.
 - **Enterprise Experience Drills**: Detailed breakdown of roles at PT. Agansa Primatama (OSM), PT Pegadaian (LOS Camunda Phase 2), and Omnichannel platforms.
 - **Interactive Architecture & Flow Visualizer**: Live step-by-step pipeline runner for Camunda BPMN 2.0 and Agentic AI workflows.
-- **Interactive REZA_OS CLI Terminal**: Interactive terminal emulator with command parsing (`help`, `bio`, `skills`, `exp`, `bpmn`, `contact`, `hire`, `clear`).
+- **Interactive AMISIROO_OS CLI Terminal**: Interactive terminal emulator with command parsing (`help`, `bio`, `skills`, `exp`, `bpmn`, `contact`, `hire`, `clear`).
 - **Comprehensive Competency Matrix**: System Analysis, BPMN, Java 17 Spring Boot OpenFeign, and AI orchestration.
 
 ---

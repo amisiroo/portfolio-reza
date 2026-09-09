@@ -197,7 +197,7 @@ export default function ArchitectureVisualizer() {
   };
 
   return (
-    <section id="architecture" className="py-24 bg-[#07070b] border-t-2 border-b-2 border-[#1c1c24] relative">
+    <section id="architecture" className="py-24 bg-transparent relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header with Ace of Hearts card in clear open space */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-8 gap-6">
@@ -217,6 +217,8 @@ export default function ArchitectureVisualizer() {
           <div className="hidden lg:block shrink-0 pb-1">
             <AceOfHeartsCard size={62} rotation="8deg" />
           </div>
+
+
         </div>
 
         {/* Main Board Container with Embedded Integrated Switcher */}

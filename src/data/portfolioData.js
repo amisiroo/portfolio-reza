@@ -1,5 +1,7 @@
 export const personalInfo = {
   name: "Muhammad Reza Nur Fauzi",
+  nickname: "amisiroo",
+  handle: "amisiroo",
   title: "System Analyst, Backend Engineer & AI Enthusiast",
   location: "Bandung, Indonesia",
   timezone: "UTC+07:00 (WIB)",
@@ -30,9 +32,9 @@ export const heroStats = [
     desc: "Camunda Modeler & ANTLR v4 Code Graph"
   },
   {
-    label: "Alumni Credential",
-    value: "ITB",
-    desc: "S1 Sistem & Teknologi Informasi"
+    label: "Microservices",
+    value: "Java 17",
+    desc: "Spring Boot & Feign Client"
   },
   {
     label: "AI & Modern Tech",
@@ -121,16 +123,15 @@ export const workExperience = [
 
 export const skillCategories = [
   {
-    title: "System Analysis & Mapping",
+    title: "System Analysis & Architecture",
     icon: "Layers",
     color: "#ccff00",
     skills: [
-      { name: "ANTLR v4 Static Code Analysis", level: "Expert", context: "Function call graph & Kafka topic mapping" },
-      { name: "BPMN 2.0 & Camunda Modeler", level: "Expert", context: "30+ production workflows modeled" },
-      { name: "AS-IS / TO-BE Gap Analysis", level: "Advanced", context: "Workflow refactoring & Migration risk" },
-      { name: "Technical Documentation", level: "Advanced", context: "API specs & Service communication docs" },
-      { name: "Salesforce CRM Management", level: "Advanced", context: "Corporate management & workflow sync" },
-      { name: "Figma UI/UX & Wireframing", level: "Advanced", context: "AIS Competition 2nd Runner Up" }
+      { name: "BPMN 2.0 & Camunda Modeler", score: "2.7/4.0", level: "Strong Mid", context: "30+ enterprise workflows, conditional gateway routing, async execution" },
+      { name: "AS-IS / TO-BE Gap Analysis", score: "3.0/4.0", level: "Advanced", context: "Legacy-to-Cloud modernization & SRS architectural delta" },
+      { name: "API Contracts & Anti-Corruption Layer (ACL)", score: "3.0/4.0", level: "Advanced", context: "OpenFeign specs, domain isolation, error boundaries" },
+      { name: "Requirements Engineering & SRS", score: "3.0/4.0", level: "Advanced", context: "System specifications, functional rules, technical impact" },
+      { name: "ANTLR v4 Parser Grammar", score: "2.5/4.0", level: "Competent", context: "Domain-specific parsing & static metadata mapping" }
     ]
   },
   {
@@ -138,25 +139,23 @@ export const skillCategories = [
     icon: "Server",
     color: "#a3e635",
     skills: [
-      { name: "Java 17 & Spring Boot", level: "Advanced", context: "Enterprise Microservices & REST APIs" },
-      { name: "Kafka Event Communication", level: "Advanced", context: "Asynchronous topic event streaming" },
-      { name: "Node.js & Express.js", level: "Advanced", context: "REST API Backend Services" },
-      { name: "PHP & Laravel Framework", level: "Advanced", context: "Omnichannel Commerce Platforms" },
-      { name: "AI Engineering & Workflows", level: "Enthusiast", context: "Agentic pipelines & LLM tool-calling" },
-      { name: "Git & Linux Terminal", level: "Expert", context: "Git workflows, CLI debugging, DevOps" }
+      { name: "Java 17 & Spring Boot", score: "2.8/4.0", level: "Strong Mid", context: "Enterprise microservice controllers & RESTful services" },
+      { name: "Spring Cloud OpenFeign", score: "2.8/4.0", level: "Strong Mid", context: "Idempotency key enforcement, inter-service resilience" },
+      { name: "Apache Kafka & Event Streaming", score: "3.0/4.0", level: "Advanced", context: "Asynchronous topic pub/sub, decoupled middleware pipeline" },
+      { name: "PHP Laravel & Node.js", score: "2.8/4.0", level: "Strong Mid", context: "Omnichannel ERP sync, webhook listeners, high-throughput APIs" },
+      { name: "Autonomous Multi-Agent Orchestration", score: "3.0/4.0", level: "Advanced", context: "Hermes Agent delegation, subagent task routing, tool execution" },
+      { name: "LLM Tool-Calling & Structured I/O", score: "3.0/4.0", level: "Advanced", context: "Pydantic validation, deterministic pipelines" },
+      { name: "Git, Linux Terminal & CI/CD", score: "3.0/4.0", level: "Advanced", context: "Bash scripting, automated deployment pipelines" }
     ]
   },
   {
-    title: "Databases & Tools",
+    title: "Database Concurrency & Persistence",
     icon: "Database",
     color: "#ccff00",
     skills: [
-      { name: "SQL Server & PostgreSQL", level: "Advanced", context: "Query access pattern audit & JPA" },
-      { name: "MySQL & MariaDB", level: "Advanced", context: "Relational schema & transaction locks" },
-      { name: "MongoDB", level: "Proficient", context: "Document persistence & NoSQL storage" },
-      { name: "DBeaver & Postman", level: "Expert", context: "Database inspection & API test suite" },
-      { name: "Camunda Modeler & VS Code", level: "Expert", context: "Daily analysis & dev environment" },
-      { name: "Adobe Illustrator", level: "Proficient", context: "Vector graphics & design assets" }
+      { name: "Database Concurrency & Race Protection", score: "3.2/4.0", level: "Advanced / Senior", context: "Atomic update patterns, isolation level management, zero-deadlock throughput" },
+      { name: "Microsoft SQL Server & PostgreSQL", score: "3.0/4.0", level: "Advanced", context: "Financial transactional locking, audit logging, query tuning" },
+      { name: "MySQL & MongoDB", score: "2.8/4.0", level: "Strong Mid", context: "High-volume inventory indexing & document telemetry" }
     ]
   }
 ];
