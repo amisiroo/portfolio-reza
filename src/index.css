@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer base {
+  html, body {
+    scroll-behavior: auto; /* RAF engine handles easing; native smooth-scroll fights it */
+    overflow-x: clip;      /* clip (not hidden) — preserves scroll context so RAF works */
+  }
   html {
     background-color: #000000;
   }
@@ -65,4 +69,67 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background: #ccff00;
+}
+
+/* ===== Experience Detail Card: Morph Emerge Animation ===== */
+@keyframes exp-card-expand {
+  0%   { opacity: 0; transform: translateX(-40px) scale(0.94); }
+  100% { opacity: 1; transform: translateX(0)    scale(1);    }
+}
+
+@keyframes exp-content-fade {
+  0%   { opacity: 0; transform: translateY(18px); }
+  100% { opacity: 1; transform: translateY(0);    }
+}
+
+.exp-detail-card {
+  animation: exp-card-expand 0.42s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.exp-detail-card .exp-card-inner {
+  animation: exp-content-fade 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both;
+}
+
+/* ===== Floating Scroll-to-Top Button ===== */
+.scroll-top-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 999;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: opacity 0.25s ease-out, transform 0.25s ease-out;
+}
+
+.scroll-top-btn.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.scroll-top-btn button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  background: #0e0e16;
+  color: #ccff00;
+  border: 1.5px solid #ccff00;
+  box-shadow: 3px 3px 0px #ccff00;
+  cursor: pointer;
+  transition: all 0.2s ease-out;
+}
+
+.scroll-top-btn button:hover {
+  background: #ccff00;
+  color: #000000;
+  box-shadow: 4px 4px 0px #ffffff;
+  transform: translateY(-2px);
+}
+
+.scroll-top-btn button:active {
+  transform: scale(0.96) translateY(0);
+  box-shadow: 2px 2px 0px #ccff00;
 }

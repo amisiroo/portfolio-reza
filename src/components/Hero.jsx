@@ -5,7 +5,7 @@ import { SpadeCardSticker, DicePairSticker } from './GamblerStickers';
 
 export default function Hero() {
   return (
-    <section id="profile" className="relative pt-28 pb-20">
+    <section id="profile" className="relative pt-28 pb-20 scroll-mt-24">
       {/* Background Ambient Glow */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[650px] h-[320px] bg-[#ccff00]/5 blur-[100px] pointer-events-none rounded-full" />
 
@@ -22,30 +22,11 @@ export default function Hero() {
             [SYS_INTEGRATION]
           </div>
 
-          {/* Status Badges */}
-          <div className="flex flex-wrap items-center gap-2.5 mb-6 font-mono-code pt-3">
-            <div className="inline-flex items-center gap-2 bg-[#101018] border border-[#ccff00]/40 px-3 py-1 text-xs text-zinc-200 shadow-[0_0_15px_rgba(204,255,0,0.12)]">
-              <span className="w-2 h-2 rounded-full bg-[#ccff00] animate-ping"></span>
-              <span className="text-[#ccff00] font-extrabold">ACTIVE:</span>
-              <span>PT. AGANSA PRIMATAMA (OSM DEPT)</span>
-            </div>
-
-            <div className="inline-flex items-center gap-1.5 bg-[#181820] border border-zinc-700 px-3 py-1 text-xs text-zinc-300">
-              <span className="text-[#ccff00] font-bold">SPECIALIZATION:</span>
-              <span>SYSTEM ARCHITECTURE &amp; INTEGRATION</span>
-            </div>
-
-            <div className="inline-flex items-center gap-1.5 bg-[#14141e] border border-zinc-800 px-3 py-1 text-xs text-zinc-300">
-              <span className="text-[#ccff00] font-bold">PASSION:</span>
-              <span>SYSTEM ANALYST • AI ENTHUSIAST</span>
-            </div>
-          </div>
-
           {/* Main Headline */}
           <div className="space-y-4 max-w-4xl">
             <div className="text-xs sm:text-sm font-mono-code tracking-widest text-[#ccff00] uppercase flex items-center gap-2 font-bold">
               <span className="inline-block w-8 h-[2px] bg-[#ccff00]"></span>
-              <span>SYSTEM ANALYSIS • BACKEND ENGINEERING • AI ENTHUSIAST</span>
+              <span>SYSTEM ANALYSIS • AI MANAGEMENT SYSTEMS • AI AUTOMATION</span>
             </div>
 
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white uppercase font-display leading-[0.95]">
@@ -59,9 +40,9 @@ export default function Hero() {
               <span className="font-bold">amisiroo</span>
             </div>
 
-            {/* AI Philosophy & Pragmatic Realism Paragraph */}
+            {/* Elevator Pitch — AI Human Amplification Philosophy */}
             <p className="text-base sm:text-lg text-zinc-300 max-w-3xl font-sans leading-relaxed pt-2">
-              ai itu alat paling gila buat percepat hidup dan kerjaan kalo paham cara pakenya, tapi bisa jadi bumerang konyol kalo dipasrahin gitu aja tanpa mikir. buat saya, ai itu murni amplifier: ngebantu banget buat automasi dan beresin hal teknis sampe 10x lebih cepet, tapi kalo logika dasarnya aja udah salah arah, ai cuma bakal mempercepat kita nabrak tembok dan bikin kerusakannya 10x lebih berantakan. tetep kritis, tetep waras, jangan mau disetir.
+              AI bukan diciptakan untuk menggantikan manusia, melainkan menjadi katalisator bagi manusia untuk melipatgandakan potensi dan kapabilitasnya melampaui batas yang sebelumnya dianggap mustahil. Berfokus pada <strong>System Analysis</strong>, <strong>AI Management Systems (AIMS)</strong>, dan <strong>AI Automation</strong>, saya merancang arsitektur sistem yang mengintegrasikan kecerdasan buatan ke dalam alur kerja enterprise—menciptakan ekosistem yang adaptif, terotomatisasi, dan memberdayakan manusia untuk mengeksekusi strategi serta inovasi pada skala yang jauh lebih tinggi.
             </p>
           </div>
 
@@ -88,7 +69,7 @@ export default function Hero() {
               href="#terminal"
               className="flex items-center gap-2 bg-[#101018] text-zinc-100 hover:text-white font-bold text-xs sm:text-sm px-5 py-3.5 border border-zinc-700 hover:border-[#ccff00] shadow-[3px_3px_0px_#000000] hover:translate-y-[-1px] transition-all group"
             >
-              <Terminal className="w-4 h-4 text-[#ccff00] group-hover:animate-pulse" />
+              <Terminal className="w-4 h-4 text-[#ccff00]" />
               <span>AMISIROO.OS CLI</span>
             </a>
 

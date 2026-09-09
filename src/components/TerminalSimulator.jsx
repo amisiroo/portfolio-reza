@@ -8,7 +8,7 @@ export default function TerminalSimulator() {
   const [history, setHistory] = useState([
     { id: 1, type: 'system', text: '╔══════════════════════════════════════════════════════════════════╗' },
     { id: 2, type: 'system', text: '║  AMISIROO v3.5.0 (x86_64-hermes-system) • PRODUCTION ACTIVE      ║' },
-    { id: 3, type: 'system', text: '║  SYSTEM ANALYST • BACKEND ENGINEER • AI ENTHUSIAST               ║' },
+    { id: 3, type: 'system', text: '║  SYSTEM ANALYST • AI MANAGEMENT SYSTEMS • AI AUTOMATION SPECIALIST  ║' },
     { id: 4, type: 'system', text: '╚══════════════════════════════════════════════════════════════════╝' },
     { id: 5, type: 'system', text: 'Type "help" to inspect commands, or press [Tab] / click quick chips below.' }
   ]);
@@ -111,12 +111,13 @@ ${highlightsFormatted}
 
       case 'bio':
         outputText = `IDENTIFIER  : ${personalInfo.name}
-ROLE        : ${personalInfo.title}
+ROLE        : System Analyst & AI Automation Specialist
+PASSION     : Applied AI to Enterprise Systems, AIMS, Multi-Agent Orchestration
 ALUMNI      : ${personalInfo.education.institution} (${personalInfo.education.degree})
 PERIOD      : ${personalInfo.education.period}
 LOCATION    : ${personalInfo.location} (${personalInfo.timezone})
-CURRENT     : PT. Agansa Primatama (OSM Dept — Salesforce Management & Web)
-PASSION     : System Analysis, BPMN 2.0 Camunda, ANTLR v4 Parser, & AI Engineering.`;
+CURRENT     : PT. Agansa Primatama (OSM Dept — IT Technical & System Integration)
+FOCUS       : System Analysis, AI Management Systems (AIMS), AI Automation & Agentic Workflows, BPMN 2.0, AS-IS / TO-BE Gap Analysis.`;
         break;
 
       case 'exp':
@@ -153,11 +154,11 @@ PASSION     : System Analysis, BPMN 2.0 Camunda, ANTLR v4 Parser, & AI Engineeri
       /  \\            -------------
      / /\\ \\           OS: AMISIROO.SYS Enterprise x86_64
     / /  \\ \\          Host: Institut Teknologi Bandung (STI 2019-2025)
-   /_/    \\_\\         Role: System Analyst & AI Enthusiast
+   /_/    \\_\\         Role: System Analyst & AI Automation Specialist (Applied AI to Enterprise Systems, AIMS, Multi-Agent Orchestration)
                       Active: PT. Agansa Primatama (Divisi OSM)
-                      Kernel: 6.8.0-spring-boot-camunda-antlr4
-                      Shell: zsh 5.9 (system-analyst-interactive)
-                      Stack: Java 17, Spring Boot, BPMN, ANTLR v4, Kafka, Salesforce, PHP`;
+                      Kernel: 6.8.0-spring-boot-camunda-aims-agentic
+                      Shell: zsh 5.9 (ai-automation-interactive)
+                      Stack: BPMN 2.0, AIMS, Multi-Agent LLM, Java 17, Spring Boot, Kafka, Salesforce, PHP`;
         break;
 
       case 'contact':
@@ -230,7 +231,7 @@ PASSION     : System Analysis, BPMN 2.0 Camunda, ANTLR v4 Parser, & AI Engineeri
   const quickChips = ['help', 'bio', 'skills', 'exp', 'bpmn', 'cv', 'neofetch', 'contact', 'clear'];
 
   return (
-    <section id="terminal" className="py-24 bg-transparent relative">
+    <section id="terminal" className="py-24 bg-transparent relative scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-8 gap-6">

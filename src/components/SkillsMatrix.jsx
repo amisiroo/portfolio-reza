@@ -29,7 +29,7 @@ export default function SkillsMatrix() {
   const [activeCategory, setActiveCategory] = useState(0);
 
   return (
-    <section id="skills" className="py-24 bg-transparent relative">
+    <section id="skills" className="py-24 bg-transparent relative scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-8 gap-4 relative">

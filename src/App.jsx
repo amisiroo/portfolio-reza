@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import ExperienceSection from './components/ExperienceSection';
@@ -8,6 +8,30 @@ import TerminalSimulator from './components/TerminalSimulator';
 import AchievementsSection from './components/AchievementsSection';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
+import { ArrowUp } from 'lucide-react';
+import { smoothScrollTo } from './utils/smoothScroll';
+
+function ScrollToTopButton() {
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setVisible(window.scrollY > 300);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  const handleClick = () => {
+    smoothScrollTo(0, 500);
+  };
+
+  return (
+    <div className={`scroll-top-btn${visible ? ' visible' : ''}`} aria-hidden={!visible}>
+      <button onClick={handleClick} aria-label="Scroll to top" title="Back to top">
+        <ArrowUp className="w-5 h-5 stroke-[2.5]" />
+      </button>
+    </div>
+  );
+}
 
 export default function App() {
   return (
@@ -46,6 +70,9 @@ export default function App() {
           <Footer />
         </div>
       </div>
+
+      {/* Floating back-to-top — rendered above z-10 layer */}
+      <ScrollToTopButton />
     </>
   );
 }

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Workflow, Play, RefreshCw, CheckCircle2, ArrowRight, ShieldCheck, Database, Layers, GitFork, Terminal, Code2, Server, Cpu, Box, FileJson, Check } from 'lucide-react';
 import { AceOfHeartsCard, DicePairSticker } from './GamblerStickers';
+import AnimatedHeight from './AnimatedHeight';
 
 export default function ArchitectureVisualizer() {
   const [activeTab, setActiveTab] = useState('los');
@@ -197,7 +198,7 @@ export default function ArchitectureVisualizer() {
   };
 
   return (
-    <section id="architecture" className="py-24 bg-transparent relative">
+    <section id="architecture" className="py-24 bg-transparent relative scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header with Ace of Hearts card in clear open space */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-8 gap-6">
@@ -325,7 +326,7 @@ export default function ArchitectureVisualizer() {
                       isSelected
                         ? 'bg-[#161624] border-[#ccff00] shadow-[4px_4px_0px_#ccff00] translate-x-1'
                         : isCurrent
-                        ? 'bg-[#181826] border-[#ccff00] animate-pulse'
+                        ? 'bg-[#181826] border-[#ccff00]'
                         : isPassed
                         ? 'bg-[#0f0f18] border-zinc-700 text-zinc-300'
                         : 'bg-[#09090e] border-zinc-800/80 text-zinc-500 hover:border-zinc-600'
@@ -336,7 +337,7 @@ export default function ArchitectureVisualizer() {
                         <div
                           className={`w-7 h-7 flex items-center justify-center font-bold text-xs border ${
                             isCurrent
-                              ? 'bg-[#ccff00] text-black border-white animate-bounce'
+                              ? 'bg-[#ccff00] text-black border-white'
                               : isSelected
                               ? 'bg-[#ccff00] text-black border-white'
                               : isPassed
@@ -358,7 +359,7 @@ export default function ArchitectureVisualizer() {
 
                       <div>
                         {isCurrent && (
-                          <span className="text-[10px] font-bold bg-[#ccff00] text-black px-2 py-0.5 animate-pulse">
+                          <span className="text-[10px] font-bold bg-[#ccff00] text-black px-2 py-0.5">
                             ACTIVE
                           </span>
                         )}
@@ -389,7 +390,8 @@ export default function ArchitectureVisualizer() {
               </div>
 
               {/* Inspector Box */}
-              <div className="bg-[#08080d] border-2 border-zinc-700 p-5 space-y-4 font-mono-code">
+              <AnimatedHeight>
+                <div className="bg-[#08080d] border-2 border-zinc-700 p-5 space-y-4 font-mono-code">
                 <div className="flex items-center justify-between border-b border-zinc-800 pb-3">
                   <div>
                     <div className="text-xs text-[#ccff00] font-bold">
@@ -426,12 +428,13 @@ export default function ArchitectureVisualizer() {
                   </pre>
                 </div>
               </div>
+            </AnimatedHeight>
 
               {/* Real-Time Telemetry Log Box */}
               <div className="bg-[#08080d] border border-zinc-800 p-4 font-mono-code text-xs space-y-2">
                 <div className="text-[10px] text-zinc-500 uppercase tracking-wider flex items-center justify-between">
                   <span>LIVE EXECUTION LOGS</span>
-                  <span className="text-[#ccff00] animate-pulse">● LIVE STREAM</span>
+                  <span className="text-[#ccff00]">● LIVE STREAM</span>
                 </div>
                 <div ref={logBoxRef} className="h-28 overflow-y-auto space-y-1 text-zinc-300 text-[11px] bg-[#050508] p-2 border border-zinc-900">
                   {logs.map((log, i) => (

@@ -2,7 +2,8 @@ export const personalInfo = {
   name: "Muhammad Reza Nur Fauzi",
   nickname: "amisiroo",
   handle: "amisiroo",
-  title: "System Analyst, Backend Engineer & AI Enthusiast",
+  title: "System Analyst & AI Automation Specialist",
+  tagline: "Architecting intelligent enterprise systems: bridging formal business process modeling with AI Management Systems, autonomous agentic orchestration, and operational automation.",
   location: "Bandung, Indonesia",
   timezone: "UTC+07:00 (WIB)",
   email: "mrezanurfauzi@gmail.com",
@@ -22,25 +23,25 @@ export const personalInfo = {
 
 export const heroStats = [
   {
-    label: "Active Corporate Role",
-    value: "OSM Dept",
-    desc: "PT. Agansa Primatama (Salesforce & Web)"
+    label: "Process Orchestration",
+    value: "30+ BPMN",
+    desc: "Camunda Modeler Workflows"
   },
   {
-    label: "BPMN & Static Analysis",
-    value: "30+ Flow",
-    desc: "Camunda Modeler & ANTLR v4 Code Graph"
+    label: "AI Management Systems",
+    value: "AIMS",
+    desc: "AI Governance & Architecture"
   },
   {
-    label: "Microservices",
-    value: "Java 17",
-    desc: "Spring Boot & Feign Client"
+    label: "AI Automation",
+    value: "Agentic",
+    desc: "Multi-Agent LLM Orchestration"
   },
   {
-    label: "AI & Modern Tech",
-    value: "Enthusiast",
-    desc: "Autonomous Workflows & Agentic AI"
-  }
+    label: "System Modernization",
+    value: "AS-IS / TO-BE",
+    desc: "Gap Analysis & Integration"
+  },
 ];
 
 export const workExperience = [
@@ -73,7 +74,7 @@ export const workExperience = [
     division: "Enterprise Banking & Financing Systems",
     period: "Dec 2025 – Jun 2026",
     badge: "SYSTEM ANALYST DRILL",
-    type: "Contract / Project",
+    type: "Contract",
     description: "Menganalisis sistem eksisting LOS Phase 2 untuk memahami end-to-end financing workflows, business rules, dan technical dependencies. Memetakan application logic & komunikasi antarlayanan menggunakan static code analysis ANTLR v4 (membuat function call graph dan pemetaan komunikasi Kafka topics). Merancang 30+ diagram alur kerja BPMN pada Camunda Modeler, mendokumentasikan pola akses query SQL Server, serta mengembangkan backend Java 17 Spring Boot.",
     highlights: [
       "Menganalisis sistem eksisting LOS Phase 2 untuk memahami end-to-end alur pembiayaan, aturan bisnis, dan dependensi teknis.",
@@ -103,7 +104,7 @@ export const workExperience = [
     division: "Commerce & Digital Platforms",
     period: "Jul 2022 – Oct 2022",
     badge: "COMMERCE INTEGRATION",
-    type: "Project / Full-time",
+    type: "Internship / Magang",
     description: "Mengembangkan aplikasi web menggunakan PHP Laravel & MySQL, serta membangun integrasi omnichannel terpadu dengan platform e-commerce, sistem ERP, dan API ekspedisi logistik untuk sinkronisasi otomatis pesanan, stok, dan pengiriman.",
     highlights: [
       "Mengembangkan fitur aplikasi web menggunakan PHP, Laravel, dan MySQL untuk platform omnichannel commerce.",
