@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { skillCategories } from '../data/portfolioData';
 import { Layers, Server, Database, Cpu, Terminal } from 'lucide-react';
 import { WildCardSticker } from './GamblerStickers';
@@ -81,7 +82,7 @@ export default function SkillsMatrix() {
 
           {/* Outer container animates height exactly like ExperienceSection */}
           <AnimatedHeight>
-            <div key={activeCategory}>
+            <div>
             <div className="flex items-center justify-between border-b border-zinc-800 pb-4 mb-6">
               <div className="flex items-center gap-3">
                 <span className="text-xs font-mono-code font-bold text-[#ccff00]">
@@ -105,7 +106,7 @@ export default function SkillsMatrix() {
                 const barColor = isTopTier ? '#ccff00' : skill.level === 'Advanced' ? '#a3e635' : '#6ee7b7';
                 return (
                   <div
-                    key={`${activeCategory}-${sIdx}`}
+                    key={`skill-slot-${sIdx}`}
                     className="bg-[#101018] p-4 border border-zinc-800/90 hover:border-zinc-600 transition-colors hover:bg-[#13131f] group"
                   >
                     {/* Name + Level badge */}
@@ -136,11 +137,14 @@ export default function SkillsMatrix() {
                       <span>{skill.context}</span>
                     </div>
 
-                    {/* Static progress bar */}
+                    {/* Animated progress bar */}
                     <div className="w-full bg-zinc-800/70 h-1 mt-3 overflow-hidden">
-                      <div
+                      <motion.div
                         className="h-full"
-                        style={{ width: `${pct}%`, backgroundColor: barColor }}
+                        initial={false}
+                        animate={{ width: `${pct}%` }}
+                        transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+                        style={{ backgroundColor: barColor }}
                       />
                     </div>
                     <div className="flex justify-between mt-1">
