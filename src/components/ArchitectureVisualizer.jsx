@@ -248,6 +248,10 @@ export default function ArchitectureVisualizer() {
             </button>
           </div>
 
+          {/* Dynamic content — AnimatedHeight for smooth tab-switch expansion */}
+          <AnimatedHeight>
+          <div key={activeTab}>
+
           {/* Workflow Header Card */}
           <div className="flex flex-wrap items-start justify-between gap-4 border-b-2 border-zinc-800 pb-6 mb-8">
             <div className="space-y-1.5 max-w-3xl">
@@ -447,6 +451,9 @@ export default function ArchitectureVisualizer() {
               </div>
             </div>
           </div>
+
+          </div>{/* end key={activeTab} */}
+          </AnimatedHeight>
         </div>
       </div>
     </section>

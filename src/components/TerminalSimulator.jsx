@@ -255,7 +255,7 @@ FOCUS       : System Analysis, AI Management Systems (AIMS), AI Automation & Age
         </div>
 
         {/* Terminal Window Box (FIXED HEIGHT 480px to prevent layout shift) */}
-        <div className="bg-[#09090f] border-2 border-white shadow-[8px_8px_0px_#ccff00] h-[480px] flex flex-col justify-between">
+        <div className="bg-[#09090f] border-2 border-white shadow-[8px_8px_0px_#ccff00] h-[620px] sm:h-[680px] flex flex-col justify-between">
           {/* Top Titlebar */}
           <div className="bg-[#12121c] border-b-2 border-zinc-800 px-4 py-2.5 flex items-center justify-between shrink-0">
             <div className="flex items-center gap-2">

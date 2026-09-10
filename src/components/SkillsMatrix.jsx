@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { skillCategories } from '../data/portfolioData';
 import { Layers, Server, Database, Cpu, Terminal } from 'lucide-react';
 import { WildCardSticker } from './GamblerStickers';
+import AnimatedHeight from './AnimatedHeight';
 
 const iconMap = {
   Layers: Layers,
@@ -24,6 +25,8 @@ function scoreToPercent(score) {
   const num = parseFloat(score);
   return Math.round((num / 4.0) * 100);
 }
+
+
 
 export default function SkillsMatrix() {
   const [activeCategory, setActiveCategory] = useState(0);
@@ -76,8 +79,9 @@ export default function SkillsMatrix() {
             })}
           </div>
 
-          {/* Active Category Display */}
-          <div>
+          {/* Outer container animates height exactly like ExperienceSection */}
+          <AnimatedHeight>
+            <div key={activeCategory}>
             <div className="flex items-center justify-between border-b border-zinc-800 pb-4 mb-6">
               <div className="flex items-center gap-3">
                 <span className="text-xs font-mono-code font-bold text-[#ccff00]">
@@ -93,7 +97,7 @@ export default function SkillsMatrix() {
               </span>
             </div>
 
-            {/* Skills Grid */}
+            {/* Skills Grid — static, no per-card animation */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {skillCategories[activeCategory].skills.map((skill, sIdx) => {
                 const pct = scoreToPercent(skill.score);
@@ -101,8 +105,8 @@ export default function SkillsMatrix() {
                 const barColor = isTopTier ? '#ccff00' : skill.level === 'Advanced' ? '#a3e635' : '#6ee7b7';
                 return (
                   <div
-                    key={sIdx}
-                    className="bg-[#101018] p-4 border border-zinc-800/90 hover:border-zinc-600 transition-all hover:bg-[#13131f] group"
+                    key={`${activeCategory}-${sIdx}`}
+                    className="bg-[#101018] p-4 border border-zinc-800/90 hover:border-zinc-600 transition-colors hover:bg-[#13131f] group"
                   >
                     {/* Name + Level badge */}
                     <div className="flex items-start justify-between gap-2">
@@ -132,10 +136,10 @@ export default function SkillsMatrix() {
                       <span>{skill.context}</span>
                     </div>
 
-                    {/* Progress Bar — score / 4.0 */}
+                    {/* Static progress bar */}
                     <div className="w-full bg-zinc-800/70 h-1 mt-3 overflow-hidden">
                       <div
-                        className="h-full transition-all duration-500"
+                        className="h-full"
                         style={{ width: `${pct}%`, backgroundColor: barColor }}
                       />
                     </div>
@@ -148,7 +152,8 @@ export default function SkillsMatrix() {
                 );
               })}
             </div>
-          </div>
+            </div>
+          </AnimatedHeight>
         </div>
       </div>
     </section>
