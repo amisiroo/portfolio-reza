@@ -85,7 +85,8 @@ export default function ExperienceSection() {
 
           {/* Active Detail Display Card (Right Side) — animated on change */}
           <div className="lg:col-span-8">
-            <AnimatedHeight>
+            {/* p-3 -m-3: gutter so overflow:hidden never clips the 8px green shadow */}
+            <AnimatedHeight className="p-3 -m-3">
               <div
                 key={activeExp.id}
                 className="exp-detail-card bg-[#0c0c14] border-2 border-white p-6 sm:p-8 shadow-[8px_8px_0px_#ccff00] relative"
