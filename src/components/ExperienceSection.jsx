@@ -85,14 +85,12 @@ export default function ExperienceSection() {
 
           {/* Active Detail Display Card (Right Side) — animated on change */}
           <div className="lg:col-span-8">
-            {/* p-3 -m-3: gutter so overflow:hidden never clips the 8px green shadow */}
-            <AnimatedHeight className="p-3 -m-3">
-              <div
-                key={activeExp.id}
-                className="exp-detail-card bg-[#0c0c14] border-2 border-white p-6 sm:p-8 shadow-[8px_8px_0px_#ccff00] relative"
-              >
-              {/* exp-card-inner: staggered fade-in after card emerges */}
-              <div className="exp-card-inner">
+            {/* Border+shadow live OUTSIDE AnimatedHeight so overflow:hidden never clips them */}
+            <div className="bg-[#0c0c14] border-2 border-white shadow-[8px_8px_0px_#ccff00] relative">
+              <AnimatedHeight>
+                <div key={activeExp.id} className="exp-detail-card p-6 sm:p-8">
+                {/* exp-card-inner: staggered fade-in after card emerges */}
+                <div className="exp-card-inner">
                 <div className="flex flex-wrap items-start justify-between gap-4 border-b-2 border-zinc-800 pb-6 mb-6">
                   <div>
                     <div className="text-xs font-mono-code text-[#ccff00] font-bold uppercase tracking-widest flex items-center gap-2">
@@ -153,9 +151,10 @@ export default function ExperienceSection() {
                     ))}
                   </div>
                 </div>
-              </div>
+                </div>
+                </div>
+              </AnimatedHeight>
             </div>
-          </AnimatedHeight>
           </div>
         </div>
       </div>
