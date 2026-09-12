@@ -4,6 +4,7 @@ import Hero from './components/Hero';
 import ExperienceSection from './components/ExperienceSection';
 import SkillsMatrix from './components/SkillsMatrix';
 import ArchitectureVisualizer from './components/ArchitectureVisualizer';
+// import ArcadeSection from './components/ArcadeSection';
 import TerminalSimulator from './components/TerminalSimulator';
 import AchievementsSection from './components/AchievementsSection';
 import ContactSection from './components/ContactSection';
@@ -63,6 +64,7 @@ export default function App() {
             <ExperienceSection />
             <SkillsMatrix />
             <ArchitectureVisualizer />
+            {/* <ArcadeSection /> */}
             <TerminalSimulator />
             <AchievementsSection />
             <ContactSection />

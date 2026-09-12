@@ -1,8 +1,25 @@
 import React from 'react';
+import { motion } from "framer-motion";
 import { achievements } from '../data/portfolioData';
 import { Award, Trophy, GraduationCap, CheckCircle2, Shield, ExternalLink } from 'lucide-react';
 import { SpadeCardSticker, PokerChipSticker } from './GamblerStickers';
 
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.1,
+    }
+  }
+};
+
+const fadeUpItem = {
+  hidden: { opacity: 0, y: 30 },
+  show: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 70, damping: 15 } }
+};
 export default function AchievementsSection() {
   return (
     <section id="achievements" className="py-24 bg-transparent relative">
@@ -30,16 +47,17 @@ export default function AchievementsSection() {
 
         {/* Grid 3 Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {achievements.map((item, idx) => (
-            <div
-              key={idx}
-              className="bg-[#0c0c14] border-2 border-zinc-800/90 p-7 flex flex-col justify-between hover:border-[#ccff00] transition-all relative group shadow-[5px_5px_0px_#000000] hover:shadow-[5px_5px_0px_#ccff00]"
-            >
-              <div>
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-[11px] font-mono-code font-extrabold bg-[#161622] text-[#ccff00] px-2.5 py-1 border border-zinc-700">
-                    {item.badge}
-                  </span>
+          {achievements.map((item, idx) => {
+                return (
+                <div
+                  key={idx}
+                  className="bg-[#0e0e16] border-2 border-zinc-800/90 p-7 flex flex-col justify-between hover:border-[#ccff00] transition-all relative group shadow-[5px_5px_0px_#000000] hover:shadow-[5px_5px_0px_#ccff00]"
+                >
+                  <div>
+                    <div className="flex items-center justify-between mb-4">
+                      <span className="text-[11px] font-mono-code font-extrabold bg-[#161622] text-[#ccff00] px-2.5 py-1 border border-zinc-700">
+                        {item.badge}
+                      </span>
                   <span className="text-xs font-mono-code text-zinc-500 font-bold">
                     {item.year}
                   </span>
@@ -68,7 +86,8 @@ export default function AchievementsSection() {
                 </span>
               </div>
             </div>
-          ))}
+          );
+        })}
         </div>
       </div>
     </section>

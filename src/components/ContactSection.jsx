@@ -1,8 +1,25 @@
 import React, { useState } from 'react';
+import { motion } from "framer-motion";
 import { personalInfo } from '../data/portfolioData';
 import { Mail, MessageSquare, Send, Copy, Check, MapPin } from 'lucide-react';
 import { AceOfHeartsCard, DicePairSticker } from './GamblerStickers';
 
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.1,
+    }
+  }
+};
+
+const fadeUpItem = {
+  hidden: { opacity: 0, y: 30 },
+  show: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 70, damping: 15 } }
+};
 export default function ContactSection() {
   const [copied, setCopied] = useState(false);
   const [subject, setSubject] = useState('');
@@ -77,7 +94,7 @@ export default function ContactSection() {
                   </div>
                   <div>
                     <div className="text-[10px] font-mono-code text-zinc-400 uppercase">WHATSAPP DIRECT ENCRYPTED</div>
-                    <div className="text-sm sm:text-base font-mono-code font-bold text-white mt-0.5">{personalInfo.displayPhone} ({personalInfo.phone})</div>
+                    <div className="text-sm sm:text-base font-mono-code font-bold text-white mt-0.5">{personalInfo.displayPhone}</div>
                   </div>
                 </div>
                 <span className="text-xs font-mono-code font-bold text-[#ccff00] group-hover:translate-x-1 transition-transform flex items-center gap-1">

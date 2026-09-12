@@ -1,15 +1,32 @@
 import React, { useState } from 'react';
+import { motion } from "framer-motion";
 import { workExperience } from '../data/portfolioData';
 import { Briefcase, Building2, CheckCircle2, ChevronRight, Calendar, Layers, Activity } from 'lucide-react';
 import { PokerChipSticker, KingSpadeCardSticker } from './GamblerStickers';
 import AnimatedHeight from './AnimatedHeight';
 
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.1,
+    }
+  }
+};
+
+const fadeUpItem = {
+  hidden: { opacity: 0, y: 30 },
+  show: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 70, damping: 15 } }
+};
 export default function ExperienceSection() {
   const [selectedId, setSelectedId] = useState(workExperience[0].id);
   const activeExp = workExperience.find(item => item.id === selectedId) || workExperience[0];
 
   return (
-    <section id="experience" className="py-24 bg-transparent relative scroll-mt-24">
+    <motion.section id="experience" className="py-24 bg-transparent relative scroll-mt-24" variants={staggerContainer} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-100px" }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-10 gap-4 relative">
@@ -158,6 +175,6 @@ export default function ExperienceSection() {
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

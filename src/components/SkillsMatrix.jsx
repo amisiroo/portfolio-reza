@@ -5,6 +5,22 @@ import { Layers, Server, Database, Cpu, Terminal } from 'lucide-react';
 import { WildCardSticker } from './GamblerStickers';
 import AnimatedHeight from './AnimatedHeight';
 
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.1,
+    }
+  }
+};
+
+const fadeUpItem = {
+  hidden: { opacity: 0, y: 30 },
+  show: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 70, damping: 15 } }
+};
 const iconMap = {
   Layers: Layers,
   Server: Server,
@@ -33,7 +49,7 @@ export default function SkillsMatrix() {
   const [activeCategory, setActiveCategory] = useState(0);
 
   return (
-    <section id="skills" className="py-24 bg-transparent relative scroll-mt-24">
+    <motion.section id="skills" className="py-24 bg-transparent relative scroll-mt-24" variants={staggerContainer} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-100px" }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-8 gap-4 relative">
@@ -138,7 +154,7 @@ export default function SkillsMatrix() {
                     </div>
 
                     {/* Animated progress bar */}
-                    <div className="w-full bg-zinc-800/70 h-1 mt-3 overflow-hidden">
+                    <div className="w-full bg-zinc-800/90 border border-zinc-700/50 h-1.5 mt-3 overflow-hidden">
                       <motion.div
                         className="h-full"
                         initial={false}
@@ -160,6 +176,6 @@ export default function SkillsMatrix() {
           </AnimatedHeight>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

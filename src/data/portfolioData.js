@@ -7,7 +7,7 @@ export const personalInfo = {
   location: "Bandung, Indonesia",
   timezone: "UTC+07:00 (WIB)",
   email: "mrezanurfauzi@gmail.com",
-  phone: "08988090008",
+  phone: "+62 898-8090-008",
   displayPhone: "+62 898-8090-008",
   waLink: "https://wa.me/628988090008?text=Halo%20Reza,%20saya%20melihat%20portfolio%20anda.",
   education: {

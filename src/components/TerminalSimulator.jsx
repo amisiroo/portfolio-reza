@@ -1,8 +1,25 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { motion } from "framer-motion";
 import { personalInfo, workExperience, skillCategories } from '../data/portfolioData';
 import { Terminal as TermIcon, CornerDownLeft, Trash2, Download } from 'lucide-react';
 import { SpadeCardSticker } from './GamblerStickers';
 
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.1,
+    }
+  }
+};
+
+const fadeUpItem = {
+  hidden: { opacity: 0, y: 30 },
+  show: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 70, damping: 15 } }
+};
 export default function TerminalSimulator() {
   const [inputVal, setInputVal] = useState('');
   const [history, setHistory] = useState([
